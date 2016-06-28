@@ -1,0 +1,17 @@
+/vendor
+/node_modules
+/public/storage
+Homestead.yaml
+Homestead.json
+.env
+.idea/
+/public/assets
+/public/build
+/public/uploads/*
+/resources/assets/css/*
+!/resources/assets/css/common.css
+/resources/assets/js/*
+!/resources/assets/js/common.js
+/resources/assets/img
+/resources/assets/fonts
+/resources/assets/plugins

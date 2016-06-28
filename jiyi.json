@@ -1,0 +1,129 @@
+[
+  {
+      "fieldInput": "id:increments",
+      "htmlType": "",
+      "validations": "",
+      "searchable": false,
+      "fillable": false,
+      "primary": true,
+      "inForm": false,
+      "inIndex": false
+  },
+  {
+    "fieldInput": "studentID:string,20",
+    "htmlType": "text",
+    "validations": "required",
+    "searchable": true,
+    "inForm": true,
+    "inIndex": true
+  },
+  {
+      "fieldInput": "name:string,30",
+      "htmlType": "text",
+      "validations": "required",
+      "searchable": true,
+      "inForm": true,
+      "inIndex": true
+  },
+  {
+    "fieldInput": "province:string",
+    "htmlType": "select:Type1,Type2,Type3,Type4",
+    "validations": "required",
+    "searchable": true
+  },
+  {
+    "fieldInput": "gender:string",
+    "htmlType": "radio:Male,Female",
+    "validations": "required"
+  },
+  {
+    "fieldInput": "politics:string,30",
+    "htmlType": "select:Type1,Type2,Type3,Type4",
+    "validations": "required",
+    "searchable": true
+  },
+  {
+    "fieldInput": "stature:string,5",
+    "htmlType": "select:Type1,Type2,Type3,Type4",
+    "validations": "required",
+    "searchable": true
+  },
+  {
+    "fieldInput": "academy:string,30",
+    "htmlType": "select:Type1,Type2,Type3,Type4",
+    "validations": "required",
+    "searchable": true
+  },
+  {
+    "fieldInput": "profession:string,30",
+    "htmlType": "select:Type1,Type2,Type3,Type4",
+    "validations": "required",
+    "searchable": true
+  },
+  {
+    "fieldInput": "middleschool:string,30",
+    "htmlType": "text",
+    "validations": "required",
+    "searchable": false
+  },
+  {
+    "fieldInput": "telphone:string,20",
+    "htmlType": "text",
+    "validations": "required",
+    "searchable": false
+  },
+  {
+    "fieldInput": "postcode:string,10",
+    "htmlType": "text",
+    "validations": "required",
+    "searchable": false
+  },
+  {
+    "fieldInput": "address:string,100",
+    "htmlType": "text",
+    "validations": "required",
+    "searchable": false
+  },
+  {
+    "fieldInput": "family:text",
+    "htmlType": "textarea",
+    "validations": "required",
+    "searchable": false
+  },
+  {
+    "fieldInput": "hobby:string,50",
+    "htmlType": "textarea",
+    "validations": "required",
+    "searchable": false
+  },
+  {
+    "fieldInput": "reward:string,255",
+    "htmlType": "textarea",
+    "validations": "required",
+    "searchable": false
+  },
+  {
+    "fieldInput": "personal:string,100",
+    "htmlType": "file",
+    "validations": "required",
+    "searchable": false
+  },
+  {
+    "fieldInput": "certificate:string,100",
+    "htmlType": "file",
+    "validations": "required",
+    "searchable": false
+  },
+  {
+    "fieldInput": "video:string,100",
+    "htmlType": "file",
+    "validations": "required",
+    "searchable": false
+  },
+  {
+    "fieldInput": "state:string",
+    "htmlType": "radio:正常,拉黑",
+    "validations": "required",
+    "searchable": false
+  }
+]

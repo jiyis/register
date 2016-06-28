@@ -1,0 +1,11 @@
+{
+  "name": "jiyi",
+  "description": "Jiyi Backend CMS",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor/bower_dl",
+    "test",
+    "tests"
+  ]
+}
