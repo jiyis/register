@@ -165,6 +165,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Stevenyangecho\UEditor\UEditorServiceProvider::class,
         App\Providers\LocalServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
 
     ],
 
@@ -219,6 +220,7 @@ return [
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
 
     ],
 

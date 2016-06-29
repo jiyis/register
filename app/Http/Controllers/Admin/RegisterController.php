@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\CreateRegisterRequest;
 use App\Http\Requests\Admin\UpdateRegisterRequest;
-use App\Repositories\Admin\RegisterRepository;
+use App\Repository\RegisterRepository;
 use Illuminate\Http\Request;
 use Breadcrumbs, Toastr, Response;
 

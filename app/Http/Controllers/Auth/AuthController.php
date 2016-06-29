@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\Index\LoginRequest;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -30,6 +31,10 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
 
+    protected $guard = 'web';
+
+    protected $username = 'student_id';
+
     /**
      * Create a new authentication controller instance.
      *
@@ -49,8 +54,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'student_id' => 'required|max:255',
+            //'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -64,9 +69,29 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'student_id' => $data['student_id'],
+            //'email' => $data['email'],
+            'password' => $data['password'],
         ]);
     }
+
+    /*public function login(LoginRequest $request)
+    {
+        $field = filter_var($request->input('student_id'), FILTER_VALIDATE_EMAIL) ? 'email' : 'student_id';
+        $request->merge([$field => $request->input('student_id')]);
+
+        if ($this->auth->attempt($request->only($field, 'password')))
+        {
+            return redirect('/');
+        }
+
+        return redirect('/login')->withErrors([
+            'error' => '请输入正确的登录信息',
+        ]);
+    }
+
+    protected function getFailedLoginMessage()
+    {
+        return '登录信息有误，请重新输入';
+    }*/
 }

@@ -1,19 +1,7 @@
-<!-- Id Field -->
+<!-- Userid Field -->
 <div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $register->id !!}</p>
-</div>
-
-<!-- Studentid Field -->
-<div class="form-group">
-    {!! Form::label('studentID', 'Studentid:') !!}
-    <p>{!! $register->studentID !!}</p>
-</div>
-
-<!-- Name Field -->
-<div class="form-group">
-    {!! Form::label('name', 'Name:') !!}
-    <p>{!! $register->name !!}</p>
+    {!! Form::label('userid', 'Userid:') !!}
+    <p>{!! $register->userid !!}</p>
 </div>
 
 <!-- Province Field -->

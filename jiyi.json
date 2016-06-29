@@ -1,6 +1,6 @@
 [
   {
-      "fieldInput": "id:increments",
+      "fieldInput": "userid:string,20",
       "htmlType": "",
       "validations": "",
       "searchable": false,
@@ -16,14 +16,6 @@
     "searchable": true,
     "inForm": true,
     "inIndex": true
-  },
-  {
-      "fieldInput": "name:string,30",
-      "htmlType": "text",
-      "validations": "required",
-      "searchable": true,
-      "inForm": true,
-      "inIndex": true
   },
   {
     "fieldInput": "province:string",

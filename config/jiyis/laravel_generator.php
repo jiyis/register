@@ -17,13 +17,13 @@ return [
 
         'datatables'        => app_path('DataTables/'),
 
-        'repository'        => app_path('Repositories/'),
+        'repository'        => app_path('Repository/'),
 
         'routes'            => app_path('Http/routes.php'),
 
         'api_routes'        => app_path('Http/api_routes.php'),
 
-        'request'           => app_path('Http/Requests/'),
+        'request'           => app_path('Http/Requests/Admin'),
 
         'api_request'       => app_path('Http/Requests/API/'),
 
@@ -57,13 +57,13 @@ return [
 
         'datatables'        => 'App\DataTables',
 
-        'repository'        => 'App\Repositories',
+        'repository'        => 'App\Repository',
 
         'controller'        => 'App\Http\Controllers',
 
         'api_controller'    => 'App\Http\Controllers\API',
 
-        'request'           => 'App\Http\Requests',
+        'request'           => 'App\Http\Requests\Admin',
 
         'api_request'       => 'App\Http\Requests\API',
     ],

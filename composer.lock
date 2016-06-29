@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "00431b330b436cee95fe6e20c2564f3c",
-    "content-hash": "79f1de5f45ffb5d16cf213fb6d68bc1f",
+    "hash": "afa3857c9b688494540125c5a979c2fe",
+    "content-hash": "9d672d77f440f7a54332741039802234",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -803,6 +803,63 @@
                 "rest"
             ],
             "time": "2015-10-07 14:48:58"
+        },
+        {
+            "name": "mews/captcha",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mewebstudio/captcha.git",
+                "reference": "15d3ddc92c99d4e2cc5aa68afa701c73ad52d75b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/mewebstudio/captcha/15d3ddc92c99d4e2cc5aa68afa701c73ad52d75b.zip",
+                "reference": "15d3ddc92c99d4e2cc5aa68afa701c73ad52d75b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "illuminate/config": "~5.0",
+                "illuminate/filesystem": "~5.0",
+                "illuminate/hashing": "~5.0",
+                "illuminate/support": "~5.0",
+                "intervention/image": "~2.2",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~4.1"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Mews\\Captcha\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muharrem ERİN",
+                    "email": "me@mewebstudio.com",
+                    "homepage": "https://github.com/mewebstudio",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel 5 Captcha Package",
+            "homepage": "https://github.com/mewebstudio/captcha",
+            "keywords": [
+                "captcha",
+                "laravel5 Captcha",
+                "laravel5 Security"
+            ],
+            "time": "2016-03-15 12:59:02"
         },
         {
             "name": "monolog/monolog",

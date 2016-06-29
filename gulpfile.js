@@ -145,6 +145,8 @@ elixir(function(mix) {
     mix.copy('resources/assets/img/', 'public/assets/img/');
     mix.copy('resources/assets/img/', 'public/build/assets/img/');
 
+    mix.copy('resources/assets/images/', 'public/assets/images');
+
     mix.copy('resources/assets/css/*.png', 'public/assets/css/');
     mix.copy('resources/assets/css/*.png', 'public/build/assets/css/');
 
@@ -208,5 +210,33 @@ elixir(function(mix) {
         'public/assets/css/login.css',
         'resources/assets/css/'
     );
-    mix.version(['assets/css/admin.css', 'assets/js/admin.js', 'assets/css/login.css', 'assets/js/login.js']);
+
+    //前台所需要的样式文件
+    mix.styles(
+        [
+            'bootstrap.min.css',
+            'font-awesome.min.css',
+            'ionicons.min.css',
+            'select2.min.css',
+            //'pace.min.css',
+            'sweetalert.css',
+            'blue.css',
+            'fcommon.css',
+
+        ],
+        'public/assets/css/frontend.css',
+        'resources/assets/css/'
+    );
+    mix.scripts(
+        [
+            'jQuery-2.2.0.min.js',
+            'bootstrap.min.js',
+            'icheck.min.js',
+            'fcommon.js'
+        ],
+        'public/assets/js/frontend.js',
+        'resources/assets/js/'
+    );
+
+    mix.version(['assets/css/admin.css', 'assets/js/admin.js', 'assets/css/login.css', 'assets/js/login.js','assets/css/frontend.css','assets/js/frontend.js']);
 });

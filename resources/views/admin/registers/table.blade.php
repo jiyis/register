@@ -6,25 +6,15 @@
                 <label for="selectall"></label>
             </span>
         </th>
-        <th>Studentid</th>
-        <th>Name</th>
-        <th>Province</th>
-        <th>Gender</th>
-        <th>Politics</th>
-        <th>Stature</th>
-        <th>Academy</th>
-        <th>Profession</th>
-        <th>Middleschool</th>
-        <th>Telphone</th>
-        <th>Postcode</th>
-        <th>Address</th>
-        <th>Family</th>
-        <th>Hobby</th>
-        <th>Reward</th>
-        <th>Personal</th>
-        <th>Certificate</th>
-        <th>Video</th>
-        <th>State</th>
+        <th>省份</th>
+        <th>性别</th>
+        <th>政治面貌</th>
+        <th>身高</th>
+        <th>录取学院</th>
+        <th>毕业中学</th>
+        <th>手机号码</th>
+        <th>注册时间</th>
+        <th>操作</th>
     </thead>
     <tbody>
     @foreach($registers as $register)
@@ -36,25 +26,14 @@
                     <label for="id-{{ $register->id }}"></label>
                 </div>
             </td>
-            <td>{!! $register->studentID !!}</td>
-            <td>{!! $register->name !!}</td>
             <td>{!! $register->province !!}</td>
             <td>{!! $register->gender !!}</td>
             <td>{!! $register->politics !!}</td>
             <td>{!! $register->stature !!}</td>
             <td>{!! $register->academy !!}</td>
             <td>{!! $register->profession !!}</td>
-            <td>{!! $register->middleschool !!}</td>
             <td>{!! $register->telphone !!}</td>
-            <td>{!! $register->postcode !!}</td>
-            <td>{!! $register->address !!}</td>
-            <td>{!! $register->family !!}</td>
-            <td>{!! $register->hobby !!}</td>
-            <td>{!! $register->reward !!}</td>
-            <td>{!! $register->personal !!}</td>
-            <td>{!! $register->certificate !!}</td>
-            <td>{!! $register->video !!}</td>
-            <td>{!! $register->state !!}</td>
+            <td>{!! $register->created_at !!}</td>
             <td>
                 {!! Form::open(['route' => ['admin.registers.destroy', $register->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

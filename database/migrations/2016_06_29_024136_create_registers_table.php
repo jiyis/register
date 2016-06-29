@@ -14,9 +14,7 @@ class CreateregistersTable extends Migration
     public function up()
     {
         Schema::create('registers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('studentID', 20);
-            $table->string('name', 30);
+            $table->integer('user_id')->unsigned();
             $table->string('province');
             $table->string('gender');
             $table->string('politics', 30);
@@ -36,6 +34,9 @@ class CreateregistersTable extends Migration
             $table->string('state');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->primary(['user_id']);
         });
     }
 

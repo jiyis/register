@@ -23,4 +23,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+    /**
+     * 获取关相关学生的档案
+     */
+    public function register()
+    {
+        return $this->hasOne('App\Modes\Register','user_id');
+    }
 }

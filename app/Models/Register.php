@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin;
+namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -18,10 +18,9 @@ class Register extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected $primaryKey = 'userid';
 
     public $fillable = [
-        'studentID',
-        'name',
         'province',
         'gender',
         'politics',
@@ -47,9 +46,8 @@ class Register extends Model
      * @var array
      */
     protected $casts = [
-        'studentID' => 'string',
-        'name' => 'string',
-        /*'province' => 'string',
+        /*'userid' => 'string',
+        'province' => 'string',
         'gender' => 'string',
         'politics' => 'string',
         'stature' => 'string',
@@ -74,8 +72,6 @@ class Register extends Model
      * @var array
      */
     public static $rules = [
-        'studentID' => 'required',
-        'name' => 'required',
         'province' => 'required',
         'gender' => 'required',
         'politics' => 'required',

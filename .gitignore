@@ -10,8 +10,10 @@ Homestead.json
 /public/uploads/*
 /resources/assets/css/*
 !/resources/assets/css/common.css
+!/resources/assets/css/fcommon.css
 /resources/assets/js/*
 !/resources/assets/js/common.js
+!/resources/assets/js/fcommon.js
 /resources/assets/img
 /resources/assets/fonts
 /resources/assets/plugins

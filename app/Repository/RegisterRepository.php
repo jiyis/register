@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Admin;
+namespace App\Repository;
 
-use App\Models\Admin\Register;
+use App\Models\Register;
 use Jiyis\Generator\Common\BaseRepository;
 
 class RegisterRepository extends BaseRepository
@@ -11,8 +11,6 @@ class RegisterRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'studentID',
-        'name',
         'province',
         'politics',
         'stature',

@@ -5,21 +5,6 @@
 @endsection
 
 <div class="panel-body panel-body-nopadding">
-	<!-- Studentid Field -->
-    <div class="form-group col-sm-12">
-        {!! Form::label('studentID', '考生号:',['class'=>'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
-            {!! Form::text('studentID', null, ['class' => 'form-control tooltips']) !!}
-        </div>
-    </div>
-
-    <!-- Name Field -->
-    <div class="form-group col-sm-12">
-        {!! Form::label('name', '姓名:',['class'=>'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
-            {!! Form::text('name', null, ['class' => 'form-control tooltips']) !!}
-        </div>
-    </div>
 
     <!-- Province Field -->
     <div class="form-group col-sm-12">
