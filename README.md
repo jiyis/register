@@ -45,11 +45,17 @@ sudp npm install        #安装项目Node依赖、Laravel Elixir
 sudo bower install admin-lte
 sudo bower install fontawesome
 sudo bower install ionicons
-sudo bower install git@github.com:smalot/bootstrap-datetimepicker.git
+sudo bower install https://github.com/smalot/bootstrap-datetimepicker.git
 sudo bower install DataTables
+sudo bower install sweetalert
+sudo bower install dropzone
 
-cnpm install --save-dev gulp-import-css
+npm install --save-dev gulp-import-css
+npm install gulp-cssimport
 gulp copyfiles
 gulp
+
+php artisan migrate
+php artisan key:generate
 
 #火狐中datetmepick的插件会报错，但是其他的插件没有时间选项，解决方法把js文件中this.defaultTimeZone=(new Date()).toString().split("(")[1].slice(0,-1);改为this.defaultTimeZone='GMT '+(new Date()).getTimezoneOffset()/60

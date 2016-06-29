@@ -29,7 +29,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectPath = '/admin/home';
+    //protected $redirectPath = '/admin/home'; //5.1版本
 
     protected $redirectAfterLogout = '/admin/login';
 
@@ -39,7 +39,7 @@ class AuthController extends Controller
 
     protected $registerView = 'admin.auth.register';
 
-    protected $redirectTo = '/admin/home';
+    protected $redirectTo = '/admin';
 
 
     /**
