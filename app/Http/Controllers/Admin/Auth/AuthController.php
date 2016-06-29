@@ -39,6 +39,8 @@ class AuthController extends Controller
 
     protected $registerView = 'admin.auth.register';
 
+    protected $redirectTo = '/admin/home';
+
 
     /**
      * Create a new authentication controller instance.
@@ -47,7 +49,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest:admin', ['except' => 'logout']);
     }
 
     /**

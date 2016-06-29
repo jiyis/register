@@ -232,6 +232,9 @@ elixir(function(mix) {
             'jQuery-2.2.0.min.js',
             'bootstrap.min.js',
             'icheck.min.js',
+            'app.min.js',
+            'select2.full.min.js',
+            'sweetalert.min.js',
             'fcommon.js'
         ],
         'public/assets/js/frontend.js',

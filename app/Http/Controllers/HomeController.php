@@ -26,4 +26,9 @@ class HomeController extends BaseController
     {
         return view('index/home');
     }
+
+    public function store()
+    {
+        
+    }
 }

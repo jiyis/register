@@ -1,0 +1,26 @@
+.form-bordered .control-group {
+    border-top: 1px solid #d3d7db;
+    margin: 0;
+    padding: 15px 0;
+}
+.form-bordered .control-group:first-child,.form-bordered .control-group:nth-child(2),.form-bordered .control-group:nth-child(3) {
+    border-top: 0 none;
+}
+.form-horizontal .control-label {
+    text-align: center;
+}
+.family-title{
+    font-size: 14px;
+    font-family: 宋体;
+    color: mediumpurple;
+}
+.table-bordered{
+    border: 1px dashed #ddd;
+    color: mediumpurple;
+}
+.table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th{
+    border: 1px dashed #ddd;
+}
+textarea{
+    resize: none;
+}
