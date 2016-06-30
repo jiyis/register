@@ -24,3 +24,37 @@
 textarea{
     resize: none;
 }
+.select2-container {
+    vertical-align: unset;
+}
+.dropzone{
+    padding: 0;
+    border:1px solid #d3d7db;
+    width:150px;
+}
+.dropzone .dz-message{
+    color: dimgrey;
+}
+.dropzone .dz-image{
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+.dz-remove{
+    margin-top:5px;
+}
+.dropzone .dz-preview{
+    margin: 3px auto 0;
+    display: block;
+}
+.dropzone .dz-preview .dz-image{
+    margin: 0 auto;
+}
+.dropzone .dz-preview .dz-error-message{
+    top:150px;
+}
+.uploadtips{
+    color: #c23321;
+    font-size: 12px;
+    margin-top: 20px;
+    display: block;
+}

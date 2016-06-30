@@ -30,8 +30,6 @@ class UploadManager extends ImageManager
      */
     public function deleteFiles($path)
     {
-        $path = $this->cleanFolder($path);
-
         if(!$this->disk->exists($path)){
             return "文件不存在！";
         }
@@ -49,7 +47,7 @@ class UploadManager extends ImageManager
      */
     public function saveFile($path, $content, $thumbW=100, $thumbH=100,$resize=false)
     {
-        $path = $this->cleanFolder($path);
+        //$path = $this->cleanFolder($path);
 
         if($this->disk->exists($path)){
             return '文件已存在！';
@@ -150,17 +148,17 @@ class UploadManager extends ImageManager
     /**
      * 返回文件完整的web路径
      */
-    public function fileWebpath($path)
+    public function fileWebpath($path,$prefix)
     {
-        $path = rtrim(config('upload.uploads.webpath'), '/') . '/' .ltrim($path, '/');
+        $path = rtrim($prefix, '/') . '/' .ltrim($path, '/');
         return url($path);
     }
     /**
      * 返回文件的基本路径
      */
-    public function filepath($path)
+    public function filepath($path,$prefix)
     {
-        $path = rtrim(config('upload.userpic'), '/') . '/' .ltrim($path, '/');
+        $path = rtrim($prefix, '/') . '/' .ltrim($path, '/');
         return $path;
     }
 

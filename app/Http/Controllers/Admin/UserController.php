@@ -14,6 +14,7 @@ use App\Services\CommonServices;
 use Breadcrumbs, Toastr;
 use App\Http\Requests\Admin\CreateAdminUserRequest;
 use App\Http\Requests\Admin\UpdateAdminUserRequest;
+use Illuminate\Http\Request;
 
 class UserController extends BaseController
 {

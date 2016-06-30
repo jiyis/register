@@ -92,4 +92,26 @@ class CommonServices
         return $menus;
     }
 
+    /**
+     * @return array
+     * 获取身高范围
+     */
+    public static function getStatures()
+    {
+        $arr = [];
+        for($i=150;$i<=195;$i++){
+            $arr[$i] = $i.'cm';
+        }
+        return $arr;
+    }
+
+    public static function getAcademy()
+    {
+        $arr = [];
+        $academy = config('common.academy');
+        foreach ($academy as $key => $item) {
+            $arr[$key] = $item['name'];
+        }
+        return $arr;
+    }
 }

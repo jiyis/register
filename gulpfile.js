@@ -220,7 +220,7 @@ elixir(function(mix) {
             'select2.min.css',
             //'pace.min.css',
             'sweetalert.css',
-            'blue.css',
+            'purple.css',
             'fcommon.css',
 
         ],

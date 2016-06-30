@@ -79,15 +79,14 @@ class Register extends Model
         'academy' => 'required',
         'profession' => 'required',
         'middleschool' => 'required',
-        'telphone' => 'required',
+        'telphone' => 'required|regex:/([0-1])[0-9]{10}/',
         'postcode' => 'required',
         'address' => 'required',
-        'family' => 'required',
+        //'family' => 'required',
         'hobby' => 'required',
         'reward' => 'required',
         'personal' => 'required',
         'certificate' => 'required',
         'video' => 'required',
-        'state' => 'required'
     ];
 }

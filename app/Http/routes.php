@@ -18,6 +18,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth.admin'], function () {
 
     Route::get('home', ['as' => 'admin.home', 'uses' => 'HomeController@index']);
+    Route::get('/', ['as' => 'admin.home', 'uses' => 'HomeController@index']);
     Route::resource('users', 'UserController');
     Route::post('users/destroyall',['as'=>'admin.users.destroy.all','uses'=>'UserController@destroyAll']);
     Route::resource('role', 'RoleController');
@@ -39,6 +40,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index');
     Route::get('home', 'HomeController@index');
     Route::post('home/store', ['as'=>'home.store','uses'=>'HomeController@store']);
+    Route::get('home/getAcademy', ['as'=>'home.getAcademy','uses'=>'HomeController@getAcademy']);
+    Route::post('upload/uploadFile',['as'=>'upload.uploadfile','uses'=>'UploadController@uploadFile']);
+    Route::post('upload/deleteFile',['as'=>'upload.deletefile','uses'=>'UploadController@deleteFile']);
 });
 
 Route::any('captcha', function()
