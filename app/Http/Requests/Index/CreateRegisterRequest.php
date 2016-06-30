@@ -30,9 +30,9 @@ class CreateRegisterRequest extends Request
      */
     public function rules()
     {
-        return Register::$rules;
+        return Match::$rules;
     }
-
+    
     public function messages()
     {
         return [
