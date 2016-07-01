@@ -31,8 +31,10 @@
 	                                @include('admin.registers.table')
 	                            @endif
 	                        </div>
-	                        
-        @include('core-templates::common.paginate', ['records' => $registers])
+
+                            <div class="row">
+                                {!! $registers->render() !!}
+                            </div>
 
 						</div><!-- panel-body -->
                 	</div>

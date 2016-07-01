@@ -105,12 +105,30 @@ class CommonServices
         return $arr;
     }
 
+    /**
+     * @return array
+     * 获取所有的学院
+     */
     public static function getAcademy()
     {
         $arr = [];
         $academy = config('common.academy');
         foreach ($academy as $key => $item) {
             $arr[$key] = $item['name'];
+        }
+        return $arr;
+    }
+
+    /**
+     * @return array
+     * 获取所有专业
+     */
+    public static function getProfession()
+    {
+        $arr = [];
+        $academy = config('common.academy');
+        foreach ($academy as $key => $item) {
+            $arr = $arr + $item['profession'];
         }
         return $arr;
     }

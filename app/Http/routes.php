@@ -29,10 +29,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::post('permission/destroyall',['as'=>'admin.permission.destroy.all','uses'=>'PermissionController@destroyAll']);
     Route::post('upload/uploadFile',['as'=>'admin.upload.uploadfile','uses'=>'UploadController@uploadFile']);
 
-
     Route::resource('registers', 'RegisterController');
     Route::post('registers/destroyall',['as'=>'admin.registers.destroy.all','uses'=>'RegisterController@destroyAll']);
-
+    Route::get('download',['as'=>'admin.download','uses'=>'RegisterController@download']);
 });
 
 Route::auth();

@@ -33,6 +33,7 @@ class UploadController extends BaseController
         $content =$file->getPathname();
         $result = $this->manager->saveFile($path, $content);
         $path = $this->manager->filepath($result->basename);
+        $path = str_replace('\\','/',$path);
         return response()->json(['msg'=>'success','code'=>'1','path'=>$path]);
     }
     /**

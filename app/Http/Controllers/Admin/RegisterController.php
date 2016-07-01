@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\UpdateRegisterRequest;
 use App\Repository\RegisterRepository;
 use Illuminate\Http\Request;
 use Breadcrumbs, Toastr, Response;
+use App\Services\CommonServices;
 
 class RegisterController extends BaseController
 {
@@ -22,6 +23,10 @@ class RegisterController extends BaseController
             $breadcrumbs->parent('控制台');
             $breadcrumbs->push('报名成员管理', route('admin.registers.index'));
         });
+        //身高范围
+        view()->share('statures', CommonServices::getStatures());
+        view()->share('academy', CommonServices::getAcademy());
+        view()->share('profession', CommonServices::getProfession());
     }
 
     /**
@@ -104,19 +109,19 @@ class RegisterController extends BaseController
      */
     public function edit($id)
     {
-        Breadcrumbs::register('admin-registers-edit', function ($breadcrumbs) {
+        Breadcrumbs::register('admin-registers-edit', function ($breadcrumbs) use ($id) {
             $breadcrumbs->parent('admin-registers');
             $breadcrumbs->push('编辑报名成员', route('admin.registers.edit', ['id' => $id]));
         });
 
-        $register = $this->registerRepository->findWithoutFail($id);
+        /*$register = $this->registerRepository->findWithoutFail($id);
 
         if (empty($register)) {
             Toastr::error('Register not found');
 
             return redirect(route('admin.registers.index'));
-        }
-
+        }*/
+        $register = $this->registerRepository->find($id);
         return view('admin.registers.edit')->with('register', $register);
     }
 
@@ -154,19 +159,11 @@ class RegisterController extends BaseController
      */
     public function destroy($id)
     {
-        $register = $this->registerRepository->findWithoutFail($id);
-
-        if (empty($register)) {
-            Toastr::error('Register not found');
-
-            return redirect(route('admin.registers.index'));
-        }
-
-        $this->registerRepository->delete($id);
+        $result = $this->registerRepository->delete($id);
 
         Toastr::success('Register删除成功.');
 
-        return redirect(route('admin.registers.index'));
+        return response()->json($result ? ['status' => 1] : ['status' => 0]);
     }
 
      /**
@@ -184,5 +181,19 @@ class RegisterController extends BaseController
             $result = $this->registerRepository->delete($id);
         }
         return response()->json($result ? ['status' => 1] : ['status' => 0]);
+    }
+
+    public function download(Request $request)
+    {
+        $filename = $request->get('path');
+        $file = public_path($filename);
+
+        if(file_exists($file)){
+            return response()->download($file);
+        }else{
+            Toastr::error('文件不存在！');
+
+            return redirect(route('admin.registers.index'));
+        }
     }
 }

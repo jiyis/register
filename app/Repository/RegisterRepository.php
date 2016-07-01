@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Register;
+use App\User;
 use Jiyis\Generator\Common\BaseRepository;
 
 class RegisterRepository extends BaseRepository
@@ -49,6 +50,15 @@ class RegisterRepository extends BaseRepository
     {
         $attributes['family'] = json_encode($attributes['family']);
         $register = parent::create($attributes);
+        return $register;
+    }
+
+    public function find($id, $columns = ['*'])
+    {
+        $register =  parent::find($id, $columns);
+        $user = User::find($register->user_id);
+        $register->name = $user->name;
+        $register->student_id = $user->student_id;
         return $register;
     }
 }

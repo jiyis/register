@@ -34,8 +34,8 @@ class CreateregistersTable extends Migration
             $table->string('state');
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('cascade')->onDelete('cascade');
+            /*$table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');*/
             $table->primary(['user_id']);
         });
     }

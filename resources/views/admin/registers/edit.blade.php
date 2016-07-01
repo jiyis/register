@@ -12,8 +12,7 @@
                         <div class="panel-heading">
                             <h4 class="panel-title">编辑报名成员</h4>
                         </div>
-
-                       {!! Form::model($register, ['route' => ['admin.registers.update', $register->id], 'method' => 'patch']) !!}
+                       {!! Form::model($register, ['route' => ['admin.registers.update', 1],'class' => 'form-horizontal form-bordered', 'method' => 'patch', 'files' => true]) !!}
 
                         @include('admin.registers.fields')
 

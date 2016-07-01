@@ -298,6 +298,7 @@
     -moz-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
     -webkit-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
     box-shadow: 0 3px 0 rgba(12,12,12,0.03);
+    margin: 0;
 }
 
 .panel-heading,
@@ -1027,4 +1028,39 @@ small.media-desc {
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
     background-color: #428bca;
     color: #fff;
+}
+.dropzone{
+    padding: 0;
+    border:1px solid #d3d7db;
+    width:150px;
+}
+.dropzone .dz-message{
+    color: dimgrey;
+}
+.dropzone .dz-image{
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+.dz-remove{
+    margin-top:5px;
+}
+.dropzone .dz-preview{
+    margin: 3px auto 0;
+    display: block;
+}
+.dropzone .dz-preview .dz-image{
+    margin: 0 auto;
+}
+.dropzone .dz-preview .dz-error-message{
+    top:150px;
+}
+.uploadtips{
+    color: #c23321;
+    font-size: 12px;
+    margin-top: 20px;
+    display: block;
+}
+.dz-image img{
+    width: 100%;
+    height: auto;
 }

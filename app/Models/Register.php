@@ -18,7 +18,7 @@ class Register extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $primaryKey = 'userid';
+    protected $primaryKey = 'user_id';
 
     public $fillable = [
         'user_id',
