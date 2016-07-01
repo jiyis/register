@@ -130,54 +130,54 @@
         <tbody>
         <tr>
             <td>
-                <input name="family['name1']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['name1']" class="form-control input-sm" value="{{ old('family.name1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['age1']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['age1']" class="form-control input-sm" value="{{ old('family.age1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['relation1']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['relation1']" class="form-control input-sm" value="{{ old('family.relation1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['work1']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['work1']" class="form-control input-sm" value="{{ old('family.work1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['position1']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['position1']" class="form-control input-sm" value="{{ old('family.position1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['salary1']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['salary1']" class="form-control input-sm" value="{{ old('family.salary1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['healthy1']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['healthy1']" class="form-control input-sm" value="{{ old('family.healthy1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['tel1']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['tel1']" class="form-control input-sm" value="{{ old('family.tel1') }}" type="text" placeholder="" required="required">
             </td>
         </tr>
         <tr>
             <td>
-                <input name="family['name2']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['name2']" class="form-control input-sm" value="{{ old('family.name2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['age2']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['age2']" class="form-control input-sm" value="{{ old('family.age2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['relation2']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['relation2']" class="form-control input-sm" value="{{ old('family.relation2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['work2']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['work2']" class="form-control input-sm" value="{{ old('family.work2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['position2']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['position2']" class="form-control input-sm" value="{{ old('family.position2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['salary2']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['salary2']" class="form-control input-sm" value="{{ old('family.salary2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['healthy2']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['healthy2']" class="form-control input-sm" value="{{ old('family.healthy2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['tel2']" class="form-control input-sm" value="" type="text" placeholder="" required="required">
+                <input name="family['tel2']" class="form-control input-sm" value="{{ old('family.tel2') }}" type="text" placeholder="" required="required">
             </td>
         </tr>
         </tbody>
@@ -218,7 +218,7 @@
         </div>
     </div>
 
-    <!-- 获奖证书 字段 -->
+    <!-- 视频文件 字段 -->
     <div class="control-group col-sm-12">
         <label class="col-sm-2 control-label" for="video"><span>视频文件 *</span><br><span class="uploadtips">最大上传200M。</span></label>
         <div class="col-sm-6">
@@ -248,6 +248,21 @@
                 checkboxClass: 'icheckbox_square-purple',
                 radioClass: 'iradio_square-purple'
             });
+            if($('#academy').val() != ''){
+                $.ajax({
+                    type: 'GET',
+                    url: '{{ url("home/getAcademy") }}',
+                    data: {academy: $('#academy').val()},
+                    success:function(data) {
+                        $.each(data, function(key, value) {
+                            $('#profession').append($("<option></option>")
+                                    .attr("value",key)
+                                    .text(value));
+                        });
+                    },
+                    dataType: 'json',
+                });
+            }
             //专业跟学院联动
             $('#academy').change(function(){
                 $('#profession').empty();
@@ -268,7 +283,7 @@
             //上传个人自述扫描件
             Dropzone.autoDiscover = false;//防止报"Dropzone already attached."的错误
             $("#personal").dropzone({
-                url: "{!! route('upload.uploadfile') !!}",
+                url: "{!! route('upload.uploadimage') !!}",
                 method: "post",
                 addRemoveLinks: true,
                 dictDefaultMessage: "点击或者拖拽<br><span style='line-height: 50px;'>文件到这里上传</span>",
@@ -279,6 +294,7 @@
                 acceptedFiles: "image/*",
                 sending: function(file, xhr, formData) {
                     formData.append("_token", $('[name=_token]').val()); // Laravel expect the token post value to be named _token by default
+                    formData.append("name", 'personal');
                 },
                 init: function() {
                     var myDropzone = this;
@@ -290,6 +306,7 @@
                     this.on("success", function(file,result) {
                         if(result.code == '0'){
                             swal({title:'上传失败，错误原因：'+result.msg,confirmButtonColor: "#DD6B55"});
+                            myDropzone.removeFile(file);
                             return false;
                         }
                         $('#personalval').val(result.path);
@@ -312,6 +329,7 @@
                 acceptedFiles: ".rar,.zip,.gz,.7z,.tar.gz",
                 sending: function(file, xhr, formData) {
                     formData.append("_token", $('[name=_token]').val()); // Laravel expect the token post value to be named _token by default
+                    formData.append("name", 'certificate');
                 },
                 init: function() {
                     var myDropzone = this;
@@ -323,6 +341,7 @@
                     this.on("success", function(file,result) {
                         if(result.code == '0'){
                             swal({title:'上传失败，错误原因：'+result.msg,confirmButtonColor: "#DD6B55"});
+                            myDropzone.removeFile(file);
                             return false;
                         }
                         $('#certificateval').val(result.path);
@@ -342,9 +361,10 @@
                 dictRemoveFile: '移除文件',
                 maxFiles: 1,
                 maxFilesize: 200,
-                acceptedFiles: "'video/*",
+                acceptedFiles: "video/*",
                 sending: function(file, xhr, formData) {
                     formData.append("_token", $('[name=_token]').val()); // Laravel expect the token post value to be named _token by default
+                    formData.append("name", 'video');
                 },
                 init: function() {
                     var myDropzone = this;
@@ -356,6 +376,7 @@
                     this.on("success", function(file,result) {
                         if(result.code == '0'){
                             swal({title:'上传失败，错误原因：'+result.msg,confirmButtonColor: "#DD6B55"});
+                            myDropzone.removeFile(file);
                             return false;
                         }
                         $('#videoval').val(result.path);
@@ -368,7 +389,7 @@
 
             //删除文件
             function deleteFile(filename){
-                if(filename == '') swal({title:'文件名不能为空！',confirmButtonColor: "#DD6B55"});
+                //if(filename == '') swal({title:'文件名不能为空！',confirmButtonColor: "#DD6B55"});
                 $.ajax({
                     type: 'POST',
                     url: '{!! route('upload.deletefile') !!}',

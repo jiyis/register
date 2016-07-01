@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\CommonServices;
 use App\Http\Requests\Index\CreateRegisterRequest;
 use App\Repository\RegisterRepository;
+use Toastr;
 
 class HomeController extends BaseController
 {
@@ -33,14 +34,29 @@ class HomeController extends BaseController
      */
     public function index()
     {
-
+        //判断是否已经报名成功，报名后不允许再次进入
+        if(!$this->register->check($this->user_id)){
+            return view('index/result');
+        }
         return view('index/home');
     }
 
+    /**
+     * @param CreateRegisterRequest $request
+     * @return mixed
+     * 保存报名信息
+     */
     public function store(CreateRegisterRequest $request)
     {
-        $result = $this->adminUser->create($request->all());
-        dd($request->all());
+        $attributes = $request->all();
+        $attributes['user_id'] = $this->user_id;
+        $result = $this->register->create($attributes);
+        if(!$result) {
+            Toastr::error('报名失败!');
+            return redirect(url('/home'));
+        }
+        Toastr::success('新用户添加成功!');
+        return redirect('home');
     }
 
     /**

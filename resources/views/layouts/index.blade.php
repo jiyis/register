@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <title>苏州科技学院敬文书院</title>
+    <title>苏州科技大学敬文书院</title>
 
     @section('css')
         <link rel="stylesheet" href="{{ elixir('assets/css/frontend.css') }}">
@@ -17,25 +17,17 @@
     <div class="container">
         <div class="navbar-header">
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                苏州科技学院敬文书院
+                苏州科技大学敬文书院
             </a>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
+            <!--<ul class="nav navbar-nav">
                 <li><a href="{{ url('/home') }}">Home</a></li>
-            </ul>
+            </ul>-->
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
@@ -45,6 +37,7 @@
                     </a>
 
                     <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ url('/changepwd') }}"><i class="fa fa-user"></i>修改密码</a></li>
                         <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>退出</a></li>
                     </ul>
                 </li>

@@ -36,14 +36,17 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 });
 
 Route::auth();
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', 'HomeController@index');
-    Route::get('home', 'HomeController@index');
-    Route::post('home/store', ['as'=>'home.store','uses'=>'HomeController@store']);
-    Route::get('home/getAcademy', ['as'=>'home.getAcademy','uses'=>'HomeController@getAcademy']);
-    Route::post('upload/uploadFile',['as'=>'upload.uploadfile','uses'=>'UploadController@uploadFile']);
-    Route::post('upload/deleteFile',['as'=>'upload.deletefile','uses'=>'UploadController@deleteFile']);
-});
+
+Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
+Route::get('changepwd', 'UserController@edit');
+Route::patch('changepwd/update/{role} ', ['as'=>'user.update','uses'=>'UserController@update']);
+Route::post('home/store', ['as'=>'home.store','uses'=>'HomeController@store']);
+Route::get('home/getAcademy', ['as'=>'home.getAcademy','uses'=>'HomeController@getAcademy']);
+Route::post('upload/uploadFile',['as'=>'upload.uploadfile','uses'=>'UploadController@uploadFile']);
+Route::post('upload/uploadImage',['as'=>'upload.uploadimage','uses'=>'UploadController@uploadImage']);
+Route::post('upload/deleteFile',['as'=>'upload.deletefile','uses'=>'UploadController@deleteFile']);
+
 
 Route::any('captcha', function()
 {

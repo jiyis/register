@@ -21,6 +21,7 @@ class Register extends Model
     protected $primaryKey = 'userid';
 
     public $fillable = [
+        'user_id',
         'province',
         'gender',
         'politics',
@@ -36,8 +37,7 @@ class Register extends Model
         'reward',
         'personal',
         'certificate',
-        'video',
-        'state'
+        'video'
     ];
 
     /**

@@ -45,7 +45,7 @@ class UploadManager extends ImageManager
      * @param bool $resize
      * @return \Intervention\Image\Image|string
      */
-    public function saveFile($path, $content, $thumbW=100, $thumbH=100,$resize=false)
+    public function saveImage($path, $content, $thumbW=100, $thumbH=100,$resize=false)
     {
         //$path = $this->cleanFolder($path);
 
@@ -55,6 +55,18 @@ class UploadManager extends ImageManager
         if($resize) return parent::make($content)->fit($thumbW, $thumbH)->save($path);
 
         return parent::make($content)->save($path);
+    }
+    /**
+     * 保存文件
+     */
+    public function saveFile($path, $content)
+    {
+
+        if ($this->disk->exists($path)) {
+            return "文件已存在.";
+        }
+
+        return $this->disk->put($content,$path);
     }
 
     /**

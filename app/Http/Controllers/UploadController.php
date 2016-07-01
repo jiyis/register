@@ -10,7 +10,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\UploadManager;
-use Auth, File;
+use File;
 
 class UploadController extends BaseController
 {
@@ -18,25 +18,27 @@ class UploadController extends BaseController
 
     public function __construct(UploadManager $manager)
     {
+        parent::__construct();
         $this->manager = $manager;
     }
     /**
-     * 上传文件
+     * 上传图片
      */
-    public function uploadFile(Request $request)
+    public function uploadImage(Request $request)
     {
         try{
+            $student_id = $this->student_id;
+            $name = $request->get('name');
             $file = $request->file('file');
             $extName = $file->getClientOriginalExtension();
-            $fileName = time().str_random(3).'.'.$extName;
-            $student_id = Auth::guard('web')->user()->student_id;
+            $fileName = empty($name) ? time().str_random(3).'.'.$extName : $name . '-' . $student_id . '.' . $extName;
             $lastpath = public_path() . '/' . str_finish(config('common.studentFile'), '/') . $student_id . '/';
             if(!is_dir($lastpath)){
                 File::makeDirectory($lastpath, 0755, true);
             }
             $filepath = $lastpath . $fileName;
             $content =$file->getPathname();
-            $result = $this->manager->saveFile($filepath, $content);
+            $result = $this->manager->saveImage($filepath, $content);
             $path = $this->manager->filepath($result->basename,str_finish(config('common.studentFile'), '/') . $student_id . '/');
             return response()->json(['msg'=>'success','code'=>'1','path'=>$path]);
         }catch(\Exception $e){
@@ -44,7 +46,30 @@ class UploadController extends BaseController
         }
 
     }
+    /**
+     * 上传附件或者视频
+     */
+    public function uploadFile(Request $request)
+    {
+        try{
+            $student_id = $this->student_id;
+            $name = $request->get('name');
+            $file = $request->file('file');
+            $extName = $file->getClientOriginalExtension();
+            $fileName = empty($name) ? time().str_random(3).'.'.$extName : $name . '-' . $student_id . '.' . $extName;
+            $lastpath = str_finish(config('common.studentFile'), '/') . $student_id . '/';
+            if(!is_dir($lastpath)){
+                File::makeDirectory($lastpath, 0755, true);
+            }
+            //$content =$file->getPathname();
+            $result = $file->move($lastpath,$fileName);
+            $path = $result->getPathname();
+            return response()->json(['msg'=>'success','code'=>'1','path'=>$path]);
+        }catch(\Exception $e){
+            return response()->json(['msg'=>$e->getMessage(),'code'=>'0']);
+        }
 
+    }
     /**
      * @param Request $request
      * 删除上传的文件
