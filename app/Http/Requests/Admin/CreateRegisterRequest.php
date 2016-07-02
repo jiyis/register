@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\Models\Admin\Register;
+use App\Models\Register;
 
 class CreateRegisterRequest extends Request
 {

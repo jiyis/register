@@ -130,6 +130,12 @@ gulp.task("copyfiles", function() {
         .pipe(gulp.dest("resources/assets/plugins/datatables/"));
     gulp.src("vendor/bower_dl/datatables/media/js/dataTables.bootstrap.min.js")
         .pipe(gulp.dest("resources/assets/plugins/datatables/"));
+
+    //toastr
+    gulp.src("vendor/bower_dl/toastr/toastr.min.css")
+        .pipe(gulp.dest("resources/assets/plugins/toastr/"));
+    gulp.src("vendor/bower_dl/toastr/toastr.min.js")
+        .pipe(gulp.dest("resources/assets/plugins/toastr/"));
 });
 
 elixir(function(mix) {
@@ -218,7 +224,6 @@ elixir(function(mix) {
             'font-awesome.min.css',
             'ionicons.min.css',
             'select2.min.css',
-            //'pace.min.css',
             'sweetalert.css',
             'purple.css',
             'fcommon.css',

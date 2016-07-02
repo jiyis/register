@@ -64,6 +64,7 @@ class UploadController extends BaseController
             //$content =$file->getPathname();
             $result = $file->move($lastpath,$fileName);
             $path = $result->getPathname();
+            $path = str_replace('\\','/',$path);
             return response()->json(['msg'=>'success','code'=>'1','path'=>$path]);
         }catch(\Exception $e){
             return response()->json(['msg'=>$e->getMessage(),'code'=>'0']);

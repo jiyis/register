@@ -61,4 +61,31 @@ class RegisterRepository extends BaseRepository
         $register->student_id = $user->student_id;
         return $register;
     }
+    public function all($columns = ['*'])
+    {
+        $registers =  parent::all($columns);
+        $idrows = array_column($registers->toArray(),'user_id');
+        $allusers = \App\User::whereIn('id',$idrows)->get()->toArray();
+        foreach ($allusers as $index => $user) {
+            $users[$user['id']] = $user;
+        }
+        $common = config('common');
+        foreach ($registers as $key => $register) {
+            $register->student_id = $users[$register->user_id]['student_id'];
+            $register->name = $users[$register->user_id]['name'];
+            $register->gender =  $register->gender ? '男' : '女';
+            $register->province =  $common['province'][$register->province];
+            $register->politics =  $common['politics'][$register->politics];
+            $register->profession =  $common['academy'][$register->academy]['profession'][$register->profession];
+            $register->academy =  $common['academy'][$register->academy]['name'];
+            $registers[$key] = $register;
+        }
+        return $registers;
+    }
+
+
+    /*public function presenter()
+    {
+        return "App\\Presenter\\RegisterPresenter";
+    }*/
 }

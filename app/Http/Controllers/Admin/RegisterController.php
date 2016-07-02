@@ -42,7 +42,7 @@ class RegisterController extends BaseController
             $breadcrumbs->push('报名成员列表', route('admin.registers.index'));
         });
 
-        $registers = $this->registerRepository->paginate(10);
+        $registers = $this->registerRepository->all();
 
         return view('admin.registers.index')
             ->with('registers', $registers);
@@ -59,7 +59,11 @@ class RegisterController extends BaseController
             $breadcrumbs->parent('admin-registers');
             $breadcrumbs->push('新建报名成员', route('admin.registers.create'));
         });
-        return view('admin.registers.create');
+        $register = new \stdClass();
+        $register->personal = '';
+        $register->certificate  = '';
+        $register->video = '';
+        return view('admin.registers.create',compact('register'));
     }
 
     /**

@@ -1,16 +1,18 @@
-<table class="table table-responsive"  id="registers-matches">
+<table class="table table-responsive"  id="datatables">
     <thead>
         <th>
             <label>
                 <input type="checkbox" class="square" id="selectall">
             </label>
         </th>
+        <th>学号</th>
+        <th>姓名</th>
         <th>省份</th>
         <th>性别</th>
         <th>政治面貌</th>
         <th>身高</th>
         <th>录取学院</th>
-        <th>毕业中学</th>
+        <th>录取专业</th>
         <th>手机号码</th>
         <th>注册时间</th>
         <th>操作</th>
@@ -20,9 +22,11 @@
         <tr>
             <td>
                 <label>
-                    <input type="checkbox" class="square selectall-item" name="id" id="id-{{ $register->id }}" value="{{ $register->id }}" />
+                    <input type="checkbox" class="square selectall-item" name="id" id="id-{{ $register->user_id }}" value="{{ $register->user_id }}" />
                 </label>
             </td>
+            <td>{!! $register->student_id !!}</td>
+            <td>{!! $register->name !!}</td>
             <td>{!! $register->province !!}</td>
             <td>{!! $register->gender !!}</td>
             <td>{!! $register->politics !!}</td>
@@ -42,32 +46,3 @@
     @endforeach
     </tbody>
 </table>
-@section('javascript')
-    @parent
-    <script type="text/javascript">
-        $(function(){
-
-            //iCheck for checkbox and radio inputs
-            $('input[type="checkbox"].square, input[type="radio"].square').iCheck({
-                checkboxClass: 'icheckbox_square-purple',
-                radioClass: 'iradio_square-purple'
-            });
-        })
-        $(".user-delete").click(function () {
-            Rbac.ajax.delete({
-                confirmTitle: '确定删除用户?',
-                href: $(this).data('href'),
-                successTitle: '用户删除成功'
-            });
-        });
-
-        $(".deleteall").click(function () {
-            Rbac.ajax.deleteAll({
-                confirmTitle: '确定删除选中的用户?',
-                href: $(this).data('href'),
-                successTitle: '用户删除成功'
-            });
-        });
-    </script>
-
-@endsection

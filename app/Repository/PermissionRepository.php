@@ -22,5 +22,10 @@ class PermissionRepository extends BaseRepository
     {
         return Permission::class;
     }
+
+    public function topPermissions()
+    {
+        return $this->model->where('fid', 0)->orderBy('sort', 'asc')->orderBy('id', 'asc')->get();
+    }
     
 }
