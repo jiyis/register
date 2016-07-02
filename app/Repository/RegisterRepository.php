@@ -41,24 +41,13 @@ class RegisterRepository extends BaseRepository
         return true;
     }
 
-    /**
-     * @param array $attributes
-     * @return mixed
-     * 把家庭成员组合成json格式存储
-     */
-    public function create(array $attributes)
-    {
-        $attributes['family'] = json_encode($attributes['family']);
-        $register = parent::create($attributes);
-        return $register;
-    }
-
     public function find($id, $columns = ['*'])
     {
         $register =  parent::find($id, $columns);
         $user = User::find($register->user_id);
         $register->name = $user->name;
         $register->student_id = $user->student_id;
+
         return $register;
     }
     public function all($columns = ['*'])

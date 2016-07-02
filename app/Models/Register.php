@@ -89,4 +89,19 @@ class Register extends Model
         'certificate' => 'required',
         'video' => 'required',
     ];
+
+    /**
+     * @param array $attributes
+     * @return mixed
+     * 把家庭成员组合成json格式存储
+     */
+    public function setFamilyAttribute($family)
+    {
+        $this->attributes['family'] = json_encode($family);
+    }
+
+    public function getFamilyAttribute($family)
+    {
+       return json_decode($family);
+    }
 }

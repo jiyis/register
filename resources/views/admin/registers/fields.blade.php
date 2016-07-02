@@ -105,10 +105,93 @@
 
     <!-- Family Field -->
     <div class="form-group col-sm-12 col-lg-12">
-        {!! Form::label('family', '家庭成员:',['class'=>'col-sm-3 control-label']) !!}
-        <div class="col-sm-8">
-            {!! Form::textarea('family', null, ['class' => 'form-control init-ueditor', 'rows' => '5']) !!}
-        </div>
+        <table class="table  table-bordered table-hover family-table">
+            <thead>
+            <tr>
+                <th colspan="8" class="text-center family-title">家庭成员信息</th>
+            </tr>
+            <tr>
+                <th style="width: 12%">
+                    姓名
+                </th>
+                <th style="width: 8%">
+                    年龄
+                </th>
+                <th style="width: 10%">
+                    与学生关系
+                </th>
+                <th style="width: 20%">
+                    工作单位
+                </th>
+                <th style="width: 18%">
+                    职务
+                </th>
+                <th style="width: 10%">
+                    年收入(万元)
+                </th>
+                <th style="width: 10%">
+                    健康状况
+                </th>
+                <th style="width: 12%">
+                    手机
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    {!! Form::text('family[name1]', old('family.name1'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[age1]', old('family.age1'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[relation1]', old('family.relation1'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[work1]', old('family.work1'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[position1]', old('family.position1'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[salary1]', old('family.salary1'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[healthy1]', old('family.healthy1'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[tel1]', old('family.tel1'), ['class' => 'form-control tooltips']) !!}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {!! Form::text('family[name2]', old('family.name2'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[age2]', old('family.age2'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[relation2]', old('family.relation2'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[work2]', old('family.work2'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[position2]', old('family.position2'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[salary2]', old('family.salary2'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[healthy2]', old('family.healthy2'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[tel2]', old('family.tel2'), ['class' => 'form-control tooltips']) !!}
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
 

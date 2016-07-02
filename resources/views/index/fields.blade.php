@@ -130,54 +130,54 @@
         <tbody>
         <tr>
             <td>
-                <input name="family['name1']" class="form-control input-sm" value="{{ old('family.name1') }}" type="text" placeholder="" required="required">
+                <input name="family[name1]" class="form-control input-sm" value="{{ old('family.name1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['age1']" class="form-control input-sm" value="{{ old('family.age1') }}" type="text" placeholder="" required="required">
+                <input name="family[age1]" class="form-control input-sm" value="{{ old('family.age1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['relation1']" class="form-control input-sm" value="{{ old('family.relation1') }}" type="text" placeholder="" required="required">
+                <input name="family[relation1]" class="form-control input-sm" value="{{ old('family.relation1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['work1']" class="form-control input-sm" value="{{ old('family.work1') }}" type="text" placeholder="" required="required">
+                <input name="family[work1]" class="form-control input-sm" value="{{ old('family.work1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['position1']" class="form-control input-sm" value="{{ old('family.position1') }}" type="text" placeholder="" required="required">
+                <input name="family[position1]" class="form-control input-sm" value="{{ old('family.position1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['salary1']" class="form-control input-sm" value="{{ old('family.salary1') }}" type="text" placeholder="" required="required">
+                <input name="family[salary1]" class="form-control input-sm" value="{{ old('family.salary1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['healthy1']" class="form-control input-sm" value="{{ old('family.healthy1') }}" type="text" placeholder="" required="required">
+                <input name="family[healthy1]" class="form-control input-sm" value="{{ old('family.healthy1') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['tel1']" class="form-control input-sm" value="{{ old('family.tel1') }}" type="text" placeholder="" required="required">
+                <input name="family[tel1]" class="form-control input-sm" value="{{ old('family.tel1') }}" type="text" placeholder="" required="required">
             </td>
         </tr>
         <tr>
             <td>
-                <input name="family['name2']" class="form-control input-sm" value="{{ old('family.name2') }}" type="text" placeholder="" required="required">
+                <input name="family[name2]" class="form-control input-sm" value="{{ old('family.name2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['age2']" class="form-control input-sm" value="{{ old('family.age2') }}" type="text" placeholder="" required="required">
+                <input name="family[age2]" class="form-control input-sm" value="{{ old('family.age2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['relation2']" class="form-control input-sm" value="{{ old('family.relation2') }}" type="text" placeholder="" required="required">
+                <input name="family[relation2]" class="form-control input-sm" value="{{ old('family.relation2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['work2']" class="form-control input-sm" value="{{ old('family.work2') }}" type="text" placeholder="" required="required">
+                <input name="family[work2]" class="form-control input-sm" value="{{ old('family.work2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['position2']" class="form-control input-sm" value="{{ old('family.position2') }}" type="text" placeholder="" required="required">
+                <input name="family[position2]" class="form-control input-sm" value="{{ old('family.position2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['salary2']" class="form-control input-sm" value="{{ old('family.salary2') }}" type="text" placeholder="" required="required">
+                <input name="family[salary2]" class="form-control input-sm" value="{{ old('family.salary2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['healthy2']" class="form-control input-sm" value="{{ old('family.healthy2') }}" type="text" placeholder="" required="required">
+                <input name="family[healthy2]" class="form-control input-sm" value="{{ old('family.healthy2') }}" type="text" placeholder="" required="required">
             </td>
             <td>
-                <input name="family['tel2']" class="form-control input-sm" value="{{ old('family.tel2') }}" type="text" placeholder="" required="required">
+                <input name="family[tel2]" class="form-control input-sm" value="{{ old('family.tel2') }}" type="text" placeholder="" required="required">
             </td>
         </tr>
         </tbody>
