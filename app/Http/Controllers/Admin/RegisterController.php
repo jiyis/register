@@ -165,7 +165,7 @@ class RegisterController extends BaseController
     {
         $result = $this->registerRepository->delete($id);
 
-        Toastr::success('Register删除成功.');
+        //Toastr::success('Register删除成功.');
 
         return response()->json($result ? ['status' => 1] : ['status' => 0]);
     }

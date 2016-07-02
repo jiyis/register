@@ -14,6 +14,7 @@ class CreateregistersTable extends Migration
     public function up()
     {
         Schema::create('registers', function (Blueprint $table) {
+            $table->integer('id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('province');
             $table->string('gender');
@@ -36,7 +37,7 @@ class CreateregistersTable extends Migration
             $table->softDeletes();
             /*$table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');*/
-            $table->primary(['user_id']);
+            $table->primary(['id']);
         });
     }
 
