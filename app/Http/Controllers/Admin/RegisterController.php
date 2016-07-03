@@ -7,8 +7,8 @@ use App\Http\Requests\Admin\UpdateRegisterRequest;
 use App\Repository\RegisterRepository;
 use Illuminate\Http\Request;
 use Breadcrumbs, Toastr, Response;
-use Excel;
 use App\Services\CommonServices;
+use Excel;
 
 class RegisterController extends BaseController
 {
@@ -227,11 +227,7 @@ class RegisterController extends BaseController
                 for($i=3; $i<=6; $i++) {
                     $sheet->mergeCells('F'.$i.':H'.$i);
                 }
-                $sheet->fromArray(array(
-                    array('C2'=>'江苏师范大学静文书院报名信息表'),
-                    array('data1', 'data2'),
-                    array('data3', 'data4')
-                ), null, 'A1', false, false);
+                $sheet->setCellValue('C3','操你妈');
                 /*$sheet->fromArray(array(
                     array('标题', '名字'),
                     array('data1', 'data2'),
