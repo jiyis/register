@@ -22,7 +22,7 @@
         <tr>
             <td>
                 <label>
-                    <input type="checkbox" class="square selectall-item" name="id" id="id-{{ $register->user_id }}" value="{{ $register->user_id }}" />
+                    <input type="checkbox" class="square selectall-item" name="id" id="id-{{ $register->id }}" value="{{ $register->id }}" />
                 </label>
             </td>
             <td>{!! $register->student_id !!}</td>
@@ -36,11 +36,14 @@
             <td>{!! $register->telphone !!}</td>
             <td>{!! $register->created_at !!}</td>
             <td>
-                <a href="{{ route('admin.registers.edit',['user_id'=>$register->user_id]) }}"
+                <a href="{{ route('admin.registers.edit',['id'=>$register->id]) }}"
                    class="btn btn-white btn-xs"><i class="fa fa-pencil"></i> 编辑</a>
                 <a class="btn btn-danger btn-xs user-delete"
-                   data-href="{{ route('admin.registers.destroy',$register->user_id) }}">
+                   data-href="{{ route('admin.registers.destroy',$register->id) }}">
                     <i class="fa fa-trash-o"></i> 删除</a>
+                <a class="btn btn-info btn-xs"
+                   href="{{ route('admin.registers.export',$register->id) }}">
+                    <i class="fa fa-trash-o"></i> 导出Excel</a>
             </td>
         </tr>
     @endforeach

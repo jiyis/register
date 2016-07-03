@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
     Route::resource('registers', 'RegisterController');
     Route::post('registers/destroyall',['as'=>'admin.registers.destroy.all','uses'=>'RegisterController@destroyAll']);
+    Route::get('registers/export/{registers}',['as'=>'admin.registers.export','uses'=>'RegisterController@export']);
     Route::get('download',['as'=>'admin.download','uses'=>'RegisterController@download']);
 
     Route::resource('students', 'StudentController');

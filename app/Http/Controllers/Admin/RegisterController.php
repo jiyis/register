@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\UpdateRegisterRequest;
 use App\Repository\RegisterRepository;
 use Illuminate\Http\Request;
 use Breadcrumbs, Toastr, Response;
+use Excel;
 use App\Services\CommonServices;
 
 class RegisterController extends BaseController
@@ -96,7 +97,7 @@ class RegisterController extends BaseController
         $register = $this->registerRepository->findWithoutFail($id);
 
         if (empty($register)) {
-            Flash::error('Register not found');
+            Toastr::error('报名成员未找到！');
 
             return redirect(route('admin.registers.index'));
         }
@@ -187,6 +188,11 @@ class RegisterController extends BaseController
         return response()->json($result ? ['status' => 1] : ['status' => 0]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * 下载文件
+     */
     public function download(Request $request)
     {
         $filename = $request->get('path');
@@ -199,5 +205,39 @@ class RegisterController extends BaseController
 
             return redirect(route('admin.registers.index'));
         }
+    }
+
+    public function export($id)
+    {
+        $data = $this->registerRepository->find($id)->toArray();
+       unset($data['family']);
+        return Excel::create('报名', function($excel) use ($data) {
+            $excel->sheet('mySheet', function($sheet) use ($data)
+            {
+                $sheet->mergeCells('A1:H1');
+                $sheet->row(1, array('江苏师范大学静文书院报名信息表'));
+                $sheet->row(2, array('基本信息','基本信息1'));
+                $sheet->cells('A1:H1', function($cells) {
+                    $cells->setAlignment('center');
+                    $cells->setFontSize(16);
+                });
+                $sheet->mergeCells('A2:B7');
+                $sheet->mergeCells('C2:H2');
+                $sheet->mergeCells('D7:H7');
+                for($i=3; $i<=6; $i++) {
+                    $sheet->mergeCells('F'.$i.':H'.$i);
+                }
+                $sheet->fromArray(array(
+                    array('C2'=>'江苏师范大学静文书院报名信息表'),
+                    array('data1', 'data2'),
+                    array('data3', 'data4')
+                ), null, 'A1', false, false);
+                /*$sheet->fromArray(array(
+                    array('标题', '名字'),
+                    array('data1', 'data2'),
+                    array('data3', 'data4')
+                ));*/
+            });
+        })->download('xlsx');
     }
 }
