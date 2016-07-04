@@ -160,7 +160,7 @@ elixir(function(mix) {
     // 合并javascript脚本
     mix.scripts(
         [
-            'jQuery-2.2.0.min.js',
+            'jQuery-2.2.3.min.js',
             'bootstrap.min.js',
             'jquery.slimscroll.min.js',
             'icheck.min.js',
@@ -177,7 +177,7 @@ elixir(function(mix) {
     // 合并登录的javascript脚本
     mix.scripts(
         [
-            'jQuery-2.2.0.min.js',
+            'jQuery-2.2.3.min.js',
             'bootstrap.min.js',
             'icheck.min.js'
         ],
@@ -234,7 +234,7 @@ elixir(function(mix) {
     );
     mix.scripts(
         [
-            'jQuery-2.2.0.min.js',
+            'jQuery-2.2.3.min.js',
             'bootstrap.min.js',
             'icheck.min.js',
             'app.min.js',
