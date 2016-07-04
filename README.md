@@ -40,8 +40,9 @@ sudp npm install        #安装项目Node依赖、Laravel Elixir
 {
     "directory": "vendor/bower_dl"
 }
-#执行命令bower init创建文件bower.json
+#执行命令bower init创建文件bower.json地方
 
+#如果是linux  后面加上 --allow-root
 sudo bower install admin-lte
 sudo bower install fontawesome
 sudo bower install ionicons

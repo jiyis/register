@@ -26,7 +26,7 @@ var options = {};
 gulp.task("copyfiles", function() {
 
     // jQuery
-    gulp.src("vendor/bower_dl/AdminLTE/plugins/jQuery/jQuery-2.2.0.min.js")
+    gulp.src("vendor/bower_dl/AdminLTE/plugins/jQuery/*.js")
         .pipe(gulp.dest("resources/assets/js/"));
 
     // bootstarp
