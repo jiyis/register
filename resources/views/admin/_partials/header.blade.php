@@ -4,7 +4,7 @@
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>J</b>IYIS</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>敬文书院</b></span>
+            <span class="logo-lg"><b>苏州科技大学敬文书院</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -19,7 +19,7 @@
                     <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">4</span>
+                            <span class="label label-success">0</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="header">你有4条消息</li>
@@ -48,7 +48,7 @@
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
+                            <span class="label label-warning">0</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="header">你有10条通知</li>
@@ -69,7 +69,7 @@
                     <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">9</span>
+                            <span class="label label-danger">0</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="header">你有9个任务</li>
@@ -100,16 +100,16 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="/assets/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <img src="/assets/images/user.jpg" class="user-image" alt="User Image">
                             <span class="hidden-xs">{{ $curuser->nickname }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="/assets/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="/assets/images/user.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    Gary P Dong - PHP Developer
+                                    苏州科技大学敬文书院 -- 管理员
                                     <small>上次登录 {{ $curuser->updated_at->toFormattedDateString() }}</small>
                                 </p>
                             </li>

@@ -68,6 +68,14 @@
 				successTitle: 'Matches删除成功'
 			});
 		});
+        //审核学生
+        $(".check").click(function () {
+            Rbac.ajax.check({
+                confirmTitle: '确定要审核该学生吗？',
+                href: $(this).data('href'),
+                successTitle: '学生报名审核成功！'
+            });
+        });
         //批量导出
         $('.multiexport').click(function () {
             var ids = [];
@@ -91,7 +99,7 @@
 			$('#datatables').dataTable({
 				columnDefs:[{
 					orderable:false,//禁用排序
-					'aTargets':[0,3,4,5,6,10]   //指定的列
+					'aTargets':[0,3,4,5,6,9,10]   //指定的列
 				}],
 				order: [[ 1, "asc" ]],
 				autoWidth: true,

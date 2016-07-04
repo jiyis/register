@@ -122,6 +122,29 @@ var Rbac = window.Rbac || {};
             params.data = {ids: ids};
             params.type = 'POST';
             this.delete(params);
-        }
+        },
+        check: function (params) {
+            var params = params || {},
+                _confirmTitle = params.confirmTitle || '确定审核该学生吗?',
+                _successFnc = params.successFnc || function () {
+                        window.location.reload();
+                    },
+                _successTitle = params.successTitle || '审核成功',
+                _errorFnc = params.errorFnc || function () {
+                        swal('审核失败', 'error');
+                    }, _this = this;
+            swal({
+                title: _confirmTitle,
+                type: "warning",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true
+            }, function () {
+                if (params.type == undefined) {
+                    params.type = 'POST';
+                }
+                _this.request(params);
+            });
+        },
     };
 })(Rbac);

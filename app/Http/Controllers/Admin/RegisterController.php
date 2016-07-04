@@ -190,6 +190,20 @@ class RegisterController extends BaseController
 
     /**
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * 审核报名学生
+     */
+    public function check(Request $request)
+    {
+        $id = (int)key($request->all());
+
+        $result = $this->registerRepository->review($id);
+
+        return response()->json($result ? ['status' => 1] : ['status' => 0]);
+    }
+
+    /**
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      * 下载文件
      */

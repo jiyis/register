@@ -32,7 +32,7 @@ class CreateregistersTable extends Migration
             $table->string('personal', 100);
             $table->string('certificate', 100);
             $table->string('video', 100);
-            $table->string('state');
+            $table->tinyInteger('state')->unsigned()->default(0);
             $table->timestamps();
             $table->softDeletes();
             /*$table->foreign('user_id')->references('id')->on('users')

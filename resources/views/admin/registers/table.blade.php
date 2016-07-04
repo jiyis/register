@@ -10,10 +10,10 @@
         <th>省份</th>
         <th>性别</th>
         <th>政治面貌</th>
-        <th>身高</th>
         <th>录取学院</th>
         <th>手机号码</th>
         <th>报名时间</th>
+        <th>状态</th>
         <th>操作</th>
     </thead>
     <tbody>
@@ -29,19 +29,22 @@
             <td>{!! $register->province !!}</td>
             <td>{!! $register->gender !!}</td>
             <td>{!! $register->politics !!}</td>
-            <td>{!! $register->stature !!}</td>
             <td>{!! $register->academy !!}</td>
             <td>{!! $register->telphone !!}</td>
-            <td>{!! $register->created_at !!}</td>
+            <td>{!! $register->created_at->format('Y-m-d') !!}</td>
+            <td>{!! $register->state !!}</td>
             <td>
                 <a href="{{ route('admin.registers.edit',['id'=>$register->id]) }}"
                    class="btn btn-white btn-xs"><i class="fa fa-pencil"></i> 编辑</a>
                 <a class="btn btn-danger btn-xs user-delete"
                    data-href="{{ route('admin.registers.destroy',$register->id) }}">
                     <i class="fa fa-trash-o"></i> 删除</a>
+                <a class="btn btn-success btn-xs check"
+                   data-href="{{ route('admin.registers.check',$register->id) }}">
+                    <i class="fa fa-share"></i> 审核</a>
                 <a class="btn btn-info btn-xs"
-                   href="{{ route('admin.registers.export',$register->id) }}">
-                    <i class="fa fa-share"></i> 导出Excel</a>
+                   href="{{ route('admin.registers.export',['id'=>$register->id]) }}">
+                    <i class="fa fa-share"></i> 导出</a>
             </td>
         </tr>
     @endforeach

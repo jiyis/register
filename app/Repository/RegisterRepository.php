@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Models\Register;
 use App\User;
 use Jiyis\Generator\Common\BaseRepository;
+use App\Criteria\RegisterCriteria;
 
 class RegisterRepository extends BaseRepository
 {
@@ -19,6 +20,12 @@ class RegisterRepository extends BaseRepository
         'profession'
     ];
 
+    /**
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function boot(){
+        $this->pushCriteria(new RegisterCriteria());
+    }
     /**
      * Configure the Model
      **/
@@ -41,6 +48,24 @@ class RegisterRepository extends BaseRepository
         return true;
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     * 审核和取消审核切换
+     */
+    public function review($id)
+    {
+        $register = $this->model->find($id);
+        $result = $this->model->where('id',$id)->update(['state'=>1]);
+
+        return $result;
+    }
+    /**
+     * @param $id
+     * @param array $columns
+     * @return mixed
+     * 查找单个报名信息
+     */
     public function find($id, $columns = ['*'])
     {
         $register =  parent::find($id, $columns);
@@ -51,6 +76,12 @@ class RegisterRepository extends BaseRepository
 
         return $register;
     }
+
+    /**
+     * @param array $columns
+     * @return mixed
+     * 所有报名成员信息
+     */
     public function all($columns = ['*'])
     {
         $registers =  parent::all($columns);

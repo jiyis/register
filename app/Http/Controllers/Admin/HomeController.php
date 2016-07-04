@@ -29,7 +29,7 @@ class HomeController extends BaseController
     {
         Breadcrumbs::register('admin-home-index', function ($breadcrumbs) {
             $breadcrumbs->parent('控制台');
-            $breadcrumbs->push('个人面板', route('admin.home'));
+            $breadcrumbs->push('后台管理', route('admin.home'));
         });
         return view('admin.home');
     }
