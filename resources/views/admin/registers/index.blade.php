@@ -19,11 +19,11 @@
 	                        <div class="pull-right">
 	                            <div class="btn-group mr10">
 	                                <a href="{!! route('admin.registers.create') !!}" class="btn btn-white tooltips"
-	                                   data-toggle="tooltip" data-original-title="新增"><i
-	                                            class="glyphicon glyphicon-plus"></i></a>
+	                                   data-toggle="tooltip" data-original-title="新增"><i class="glyphicon glyphicon-plus"></i></a>
 	                                <a class="btn btn-white tooltips deleteall" data-toggle="tooltip"
-	                                   data-original-title="删除" data-href="{!! route('admin.registers.destroy.all') !!}"><i
-	                                            class="glyphicon glyphicon-trash"></i></a>
+	                                   data-original-title="删除" data-href="{!! route('admin.registers.destroy.all') !!}"><i class="glyphicon glyphicon-trash"></i></a>
+                                    <a class="btn btn-info tooltips multiexport" data-toggle="tooltip"
+                                       data-original-title="批量导出" ><i class="fa fa-share"></i>批量导出</a>
 	                            </div>
 	                        </div><!-- pull-right -->
 
@@ -68,12 +68,30 @@
 				successTitle: 'Matches删除成功'
 			});
 		});
+        //批量导出
+        $('.multiexport').click(function () {
+            var ids = [];
+            $(".selectall-item").each(function (e) {
+                if ($(this).prop('checked')) {
+                    //ids.push($(this).val());
+                    ids = ids + ',' + $(this).val();
+                }
+            });
+
+            if (ids.length == 0) {
+                swal('请选择需要导出的记录', '', 'warning');
+                return false;
+            }
+            var url = "{{ route('admin.export.all') }}";
+            url = url + '?ids=' + ids;
+            window.location.href = url;
+        })
 
 		$(function(){
 			$('#datatables').dataTable({
 				columnDefs:[{
 					orderable:false,//禁用排序
-					'aTargets':[0,3,4,5,6,9,10,11]   //指定的列
+					'aTargets':[0,3,4,5,6,10]   //指定的列
 				}],
 				order: [[ 1, "asc" ]],
 				autoWidth: true,

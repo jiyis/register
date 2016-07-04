@@ -12,9 +12,8 @@
         <th>政治面貌</th>
         <th>身高</th>
         <th>录取学院</th>
-        <th>录取专业</th>
         <th>手机号码</th>
-        <th>注册时间</th>
+        <th>报名时间</th>
         <th>操作</th>
     </thead>
     <tbody>
@@ -32,7 +31,6 @@
             <td>{!! $register->politics !!}</td>
             <td>{!! $register->stature !!}</td>
             <td>{!! $register->academy !!}</td>
-            <td>{!! $register->profession !!}</td>
             <td>{!! $register->telphone !!}</td>
             <td>{!! $register->created_at !!}</td>
             <td>
@@ -43,7 +41,7 @@
                     <i class="fa fa-trash-o"></i> 删除</a>
                 <a class="btn btn-info btn-xs"
                    href="{{ route('admin.registers.export',$register->id) }}">
-                    <i class="fa fa-trash-o"></i> 导出Excel</a>
+                    <i class="fa fa-share"></i> 导出Excel</a>
             </td>
         </tr>
     @endforeach

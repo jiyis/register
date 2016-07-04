@@ -47,6 +47,7 @@ class RegisterRepository extends BaseRepository
         $user = User::find($register->user_id);
         $register->name = $user->name;
         $register->student_id = $user->student_id;
+        $register->userpic = $user->userpic;
 
         return $register;
     }
@@ -54,7 +55,7 @@ class RegisterRepository extends BaseRepository
     {
         $registers =  parent::all($columns);
         $idrows = array_column($registers->toArray(),'user_id');
-        $allusers = \App\User::whereIn('id',$idrows)->get()->toArray();
+        $allusers = User::whereIn('id',$idrows)->get()->toArray();
         foreach ($allusers as $index => $user) {
             $users[$user['id']] = $user;
         }

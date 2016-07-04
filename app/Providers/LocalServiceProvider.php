@@ -22,7 +22,7 @@ class LocalServiceProvider extends ServiceProvider
         //'\InfyOm\CoreTemplates\CoreTemplatesServiceProvider',
         '\Jiyis\Generator\JiyisGeneratorServiceProvider',
         '\Jiyis\CoreTemplates\CoreTemplatesServiceProvider',
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider'
     ];
     protected $aliases = [
         'Debugbar' => 'Barryvdh\Debugbar\Facade',

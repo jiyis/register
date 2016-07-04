@@ -11,8 +11,24 @@
 |
 */
 
+Route::auth();
+
+Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
+Route::get('changepwd', 'UserController@edit');
+Route::patch('changepwd/update/{role} ', ['as'=>'user.update','uses'=>'UserController@update']);
+Route::post('home/store', ['as'=>'home.store','uses'=>'HomeController@store']);
+Route::get('home/getAcademy', ['as'=>'home.getAcademy','uses'=>'HomeController@getAcademy']);
+Route::post('upload/uploadFile',['as'=>'upload.uploadfile','uses'=>'UploadController@uploadFile']);
+Route::post('upload/uploadImage',['as'=>'upload.uploadimage','uses'=>'UploadController@uploadImage']);
+Route::post('upload/deleteFile',['as'=>'upload.deletefile','uses'=>'UploadController@deleteFile']);
+
+
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
-    Route::auth();
+    //Route::auth();
+    Route::get('login', 'Auth\AuthController@getLogin');
+    Route::post('login', 'Auth\AuthController@postLogin');
+    Route::get('logout', 'Auth\AuthController@logout');
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth.admin'], function () {
@@ -32,6 +48,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::resource('registers', 'RegisterController');
     Route::post('registers/destroyall',['as'=>'admin.registers.destroy.all','uses'=>'RegisterController@destroyAll']);
     Route::get('registers/export/{registers}',['as'=>'admin.registers.export','uses'=>'RegisterController@export']);
+    Route::get('exportall',['as'=>'admin.export.all','uses'=>'RegisterController@exportAll']);
     Route::get('download',['as'=>'admin.download','uses'=>'RegisterController@download']);
 
     Route::resource('students', 'StudentController');
@@ -39,17 +56,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
 });
 
-Route::auth();
-
-Route::get('/', 'HomeController@index');
-Route::get('home', 'HomeController@index');
-Route::get('changepwd', 'UserController@edit');
-Route::patch('changepwd/update/{role} ', ['as'=>'user.update','uses'=>'UserController@update']);
-Route::post('home/store', ['as'=>'home.store','uses'=>'HomeController@store']);
-Route::get('home/getAcademy', ['as'=>'home.getAcademy','uses'=>'HomeController@getAcademy']);
-Route::post('upload/uploadFile',['as'=>'upload.uploadfile','uses'=>'UploadController@uploadFile']);
-Route::post('upload/uploadImage',['as'=>'upload.uploadimage','uses'=>'UploadController@uploadImage']);
-Route::post('upload/deleteFile',['as'=>'upload.deletefile','uses'=>'UploadController@deleteFile']);
 
 
 Route::any('captcha', function()

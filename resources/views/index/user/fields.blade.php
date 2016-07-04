@@ -32,7 +32,7 @@
     </div>
 
     <div class="control-group">
-        {!! Form::label('userpic', '个人照片 *',['class'=>'col-sm-3 control-label']) !!}
+        <label class="col-sm-3 control-label" for="userpic">个人照片 *<br><span class="uploadtips">请上传150*210尺寸的照片，否则会出现照片残缺。</span></label>
         <div class="col-sm-6">
             <div id="userpic" class="register-file dropzone"  required="required"> </div>
             <input type="hidden" name="userpic" id="userpicval">

@@ -38,7 +38,11 @@ class UploadController extends BaseController
             }
             $filepath = $lastpath . $fileName;
             $content =$file->getPathname();
-            $result = $this->manager->saveImage($filepath, $content);
+            if($name == 'userpic'){
+                $result = $this->manager->saveImage($filepath, $content,150,210,true);
+            }else{
+                $result = $this->manager->saveImage($filepath, $content);
+            }
             $path = $this->manager->filepath($result->basename,str_finish(config('common.studentFile'), '/') . $student_id . '/');
             return response()->json(['msg'=>'success','code'=>'1','path'=>$path]);
         }catch(\Exception $e){

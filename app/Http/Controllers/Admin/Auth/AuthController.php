@@ -7,7 +7,7 @@ use Validator;
 use App\Http\Controllers\Admin\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -39,7 +39,7 @@ class AuthController extends Controller
 
     protected $registerView = 'admin.auth.register';
 
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/admin/home';
 
 
     /**
@@ -91,5 +91,31 @@ class AuthController extends Controller
     {
         return '账号或密码错误.';
     }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     * 多用户认证跳转有点问题，总是跳到歉霭登录页，有时候就好的，感觉跟记住上一次访问页面有关 redirect()->intended($this->redirectPath())
+     */
+    public function postLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email', 'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (\Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember')))
+        {
+            return redirect('/admin/home');
+        }
+
+        return redirect('/admin/login')
+            ->withInput($request->only('email', 'remember'))
+            ->withErrors([
+                'email' => $this->getFailedLoginMessage(),
+            ]);
+    }
+
 
 }

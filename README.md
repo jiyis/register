@@ -49,6 +49,7 @@ sudo bower install https://github.com/smalot/bootstrap-datetimepicker.git
 sudo bower install DataTables
 sudo bower install sweetalert
 sudo bower install dropzone
+sudo bower install toastr
 
 npm install --save-dev gulp-import-css
 npm install gulp-cssimport
