@@ -32,7 +32,7 @@
             <td>{!! $register->academy !!}</td>
             <td>{!! $register->telphone !!}</td>
             <td>{!! $register->created_at->format('Y-m-d') !!}</td>
-            <td>{!! $register->state !!}</td>
+            <td>{!! $register->state ? '<span class="label label-success">已审核</span>':'<span class="label label-warning">未审核</span>' !!}</td>
             <td>
                 <a href="{{ route('admin.registers.edit',['id'=>$register->id]) }}"
                    class="btn btn-white btn-xs"><i class="fa fa-pencil"></i> 编辑</a>

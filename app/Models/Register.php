@@ -105,8 +105,8 @@ class Register extends Model
        return json_decode($family);
     }
 
-    public function getStateAttribute($state)
+    /*public function getStateAttribute($state)
     {
         return $state ? '<span class="label label-success">已审核</span>':'<span class="label label-warning">未审核</span>';
-    }
+    }*/
 }
