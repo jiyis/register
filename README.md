@@ -51,6 +51,8 @@ sudo bower install DataTables
 sudo bower install sweetalert
 sudo bower install dropzone
 sudo bower install toastr
+sudo bower install fileupload
+sudo bower install fancybox
 
 npm install --save-dev gulp-import-css
 npm install gulp-cssimport

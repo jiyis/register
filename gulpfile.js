@@ -29,6 +29,9 @@ gulp.task("copyfiles", function() {
     gulp.src("vendor/bower_dl/AdminLTE/plugins/jQuery/jQuery-2.2.3.min.js")
         .pipe(gulp.dest("resources/assets/js/"));
 
+    gulp.src("vendor/bower_dl/AdminLTE/plugins/jQuery/jQuery-2.2.3.min.js")
+        .pipe(gulp.dest("resources/assets/plugins/jquery/"));
+
     // bootstarp
     gulp.src("vendor/bower_dl/AdminLTE/bootstrap/css/bootstrap.min.css")
         .pipe(gulp.dest("resources/assets/css/"));
@@ -36,6 +39,12 @@ gulp.task("copyfiles", function() {
         .pipe(gulp.dest("resources/assets/js/"));
     gulp.src("vendor/bower_dl/AdminLTE/bootstrap/fonts/*")
         .pipe(gulp.dest("resources/assets/fonts/"));
+
+    gulp.src("vendor/bower_dl/AdminLTE/bootstrap/js/bootstrap.min.js")
+        .pipe(gulp.dest("resources/assets/plugins/bootstrap/"));
+
+    gulp.src("vendor/bower_dl/AdminLTE/bootstrap/css/bootstrap.min.css")
+        .pipe(gulp.dest("resources/assets/plugins/bootstrap/"));
 
     // AdminLTE
     gulp.src("vendor/bower_dl/AdminLTE/dist/css/AdminLTE.min.css")
@@ -136,6 +145,28 @@ gulp.task("copyfiles", function() {
         .pipe(gulp.dest("resources/assets/plugins/toastr/"));
     gulp.src("vendor/bower_dl/toastr/toastr.min.js")
         .pipe(gulp.dest("resources/assets/plugins/toastr/"));
+
+    //fileupload
+    gulp.src("vendor/bower_dl/blueimp-file-upload/css/jquery.fileupload.css")
+        .pipe(gulp.dest("resources/assets/plugins/blueimp-file-upload/"));
+    gulp.src("vendor/bower_dl/blueimp-file-upload/js/jquery.fileupload.js")
+        .pipe(gulp.dest("resources/assets/plugins/blueimp-file-upload/"));
+    gulp.src("vendor/bower_dl/blueimp-file-upload/js/jquery.iframe-transport.js")
+        .pipe(gulp.dest("resources/assets/plugins/blueimp-file-upload/"));
+    gulp.src("vendor/bower_dl/blueimp-file-upload/js/jquery.fileupload.js")
+        .pipe(gulp.dest("resources/assets/plugins/blueimp-file-upload/"));
+    gulp.src("vendor/bower_dl/blueimp-file-upload/js/vendor/jquery.ui.widget.js")
+        .pipe(gulp.dest("resources/assets/plugins/blueimp-file-upload/"));
+
+    //fancybox
+    gulp.src("vendor/bower_dl/fancybox/source/jquery.fancybox.css")
+        .pipe(gulp.dest("resources/assets/plugins/fancybox/"));
+    gulp.src("vendor/bower_dl/fancybox/source/fancybox_loading.gif")
+        .pipe(gulp.dest("resources/assets/plugins/fancybox/"));
+    gulp.src("vendor/bower_dl/fancybox/source/*.png")
+        .pipe(gulp.dest("resources/assets/plugins/fancybox/"));
+    gulp.src("vendor/bower_dl/fancybox/source/jquery.fancybox.pack.js")
+        .pipe(gulp.dest("resources/assets/plugins/fancybox/"));
 });
 
 elixir(function(mix) {

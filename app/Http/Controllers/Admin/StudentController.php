@@ -10,7 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Repository\UserRepository;
-use Breadcrumbs, Toastr;
+use Breadcrumbs, Toastr,Excel;
 use App\Http\Requests\Index\CreateUserRequest;
 use App\Http\Requests\Index\UpdateUserRequest;
 use Illuminate\Http\Request;
@@ -53,7 +53,6 @@ class StudentController extends BaseController
             $breadcrumbs->parent('admin-student');
             $breadcrumbs->push('添加学生', route('admin.students.create'));
         });
-
         return view('admin.students.create');
     }
 
@@ -166,5 +165,39 @@ class StudentController extends BaseController
         }
 
         return response()->json($result ? ['status' => 1] : ['status' => 0]);
+    }
+
+    public function upload()
+    {
+        return view('admin.upload.import');
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function import(Request $request)
+    {
+        //dd($request->hasFile('files'));
+        if($request->hasFile('files')){
+            $path = $request->file('files')->getRealPath();
+            $data = Excel::load($path, function($reader) {
+                //$reader->ignoreEmpty();
+                //$reader->toArray();
+            })->get();
+
+            if(!empty($data) && $data->count()){
+                foreach ($data as $key => $value) {
+                    dd($value);
+                    //if(empty($value)) continue;
+                    $insert[] = ['student_id' => $value->title, 'name' => $value->description];
+                }
+                dd($insert);
+                if(!empty($insert)){
+                    DB::table('items')->insert($insert);
+                    dd('Insert Record successfully.');
+                }
+            }
+        }
+        return back();
     }
 }

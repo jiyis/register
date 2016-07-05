@@ -63,7 +63,11 @@
                 radioClass: 'iradio_square-purple'
             });
             //上传个人照片
-            var userpic =  "{{ '/'.$user->userpic }}";
+            var userpic = '/';
+            @if(isset($user))
+                var userpic =  "{{ '/'.$user->userpic }}";
+                var student_id = "{{ $user->student_id}}";
+            @endif
             Dropzone.autoDiscover = false;//防止报"Dropzone already attached."的错误
             $("#userpic").dropzone({
                 url: "{!! route('upload.uploadimage') !!}",
@@ -83,7 +87,7 @@
                     var myDropzone = this;
                     //如果已经上传，显示出来
                     if(userpic != '/'){
-                        var mockFile = { name: 'userpic-'+"{{ $user->student_id}}" };
+                        var mockFile = { name: 'userpic-'+student_id };
                         myDropzone.options.addedfile.call(myDropzone, mockFile);
                         myDropzone.options.thumbnail.call(myDropzone, mockFile, userpic);
                         $('.dz-size').empty();
@@ -92,7 +96,7 @@
                         $('.dz-progress').remove();
                         $('.dz-success-mark').remove();
                         $('.dz-error-mark').remove();
-                        $('#userpicval').val("{{ $user->userpic}}");
+                        $('#userpicval').val(userpic);
                     }
 
                     this.on("maxfilesexceeded", function(file) {

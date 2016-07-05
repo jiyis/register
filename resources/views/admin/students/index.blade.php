@@ -1,6 +1,7 @@
 @extends('admin.layouts.admin')
 @section('css')
     @parent
+    <link href="{{ asset('assets/plugins/fancybox/jquery.fancybox.css') }}" rel="stylesheet">
     <style type="text/css">
         .table tbody tr td{
             line-height: 50px;
@@ -31,6 +32,8 @@
                                 <a class="btn btn-white tooltips deleteall" data-toggle="tooltip"
                                    data-original-title="删除" data-href="{{ route('admin.students.destroy.all') }}"><i
                                             class="glyphicon glyphicon-trash"></i></a>
+                                <a class="btn btn-info tooltips various" data-toggle="tooltip"
+                                   data-fancybox-type="iframe" href="{{ route('admin.upload') }}" ><i class="fa fa-share"></i>批量导入</a>
                             </div>
                         </div><!-- pull-right -->
 
@@ -102,6 +105,7 @@
 
 @section('javascript')
     @parent
+    <script src="{{ asset('assets/plugins/fancybox/jquery.fancybox.pack.js') }}"></script>
     <script type="text/javascript">
         $(function(){
 
@@ -109,6 +113,18 @@
             $('input[type="checkbox"].square, input[type="radio"].square').iCheck({
                 checkboxClass: 'icheckbox_square-purple',
                 radioClass: 'iradio_square-purple'
+            });
+
+            $(".various").fancybox({
+                maxWidth	: 800,
+                maxHeight	: 600,
+                fitToView	: false,
+                width		: '70%',
+                height		: '70%',
+                autoSize	: false,
+                closeClick	: false,
+                openEffect	: 'none',
+                closeEffect	: 'none'
             });
         })
         $(".user-delete").click(function () {

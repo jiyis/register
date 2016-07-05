@@ -51,8 +51,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('exportall',['as'=>'admin.export.all','uses'=>'RegisterController@exportAll']);
     Route::get('download',['as'=>'admin.download','uses'=>'RegisterController@download']);
     Route::post('registers/check',['as'=>'admin.registers.check','uses'=>'RegisterController@check']);
+    
+    Route::get('upload/import',['as'=>'admin.upload','uses'=>'StudentController@upload']);
 
     Route::resource('students', 'StudentController');
+    Route::post('students/import',['as'=>'admin.students.import','uses'=>'StudentController@import']);
     Route::post('students/destroyall',['as'=>'admin.students.destroy.all','uses'=>'StudentController@destroyAll']);
 
 });
