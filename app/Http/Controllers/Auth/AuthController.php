@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\Index\LoginRequest;
 use App\User;
-use Validator;
+use Validator, Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -75,22 +75,44 @@ class AuthController extends Controller
         ]);
     }
 
-    /*public function login(LoginRequest $request)
+    private function attempt($credentials)
+    {
+        //Auth::attempt()
+        if ( ! isset( $credentials['password'] ) or ! isset( $credentials['student_id'] )) {
+            return false;
+        }
+
+        $user = User::where('student_id',$credentials['student_id'])
+            ->wherePassword(md5($credentials['password']))
+            ->first();
+        if ($user) {
+            Auth::login($user);
+            return true;
+        }
+        Auth::attempt($credentials);
+
+    }
+    /**
+     * @param LoginRequest $request
+     * @return mixed
+     * 手动认证用户
+     */
+    public function login(LoginRequest $request)
     {
         $field = filter_var($request->input('student_id'), FILTER_VALIDATE_EMAIL) ? 'email' : 'student_id';
         $request->merge([$field => $request->input('student_id')]);
 
-        if ($this->auth->attempt($request->only($field, 'password')))
+        if ($this->attempt($request->only($field, 'password')))
         {
             return redirect('/');
         }
 
         return redirect('/login')->withErrors([
-            'error' => '请输入正确的登录信息',
+            'student_id' => '用户名或密码错误。',
         ]);
     }
 
-    protected function getFailedLoginMessage()
+    /*protected function getFailedLoginMessage()
     {
         return '登录信息有误，请重新输入';
     }*/

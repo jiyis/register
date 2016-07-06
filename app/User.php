@@ -26,7 +26,7 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($password)
     {
-        $this->attributes['password'] = bcrypt($password);
+        $this->attributes['password'] = md5($password);
     }
     /**
      * 获取关相关学生的档案

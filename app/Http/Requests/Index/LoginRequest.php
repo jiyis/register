@@ -12,12 +12,21 @@ use App\Http\Requests\Request;
 class LoginRequest extends Request
 {
 
-
     public function rules()
     {
         return [
             'student_id' => 'required',
             'password' => 'required',
         ];
+    }
+
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
     }
 }
