@@ -1064,3 +1064,6 @@ small.media-desc {
     width: 100%;
     height: auto;
 }
+.sidebar-menu, .main-sidebar .user-panel, .sidebar-menu > li.header{
+    white-space: normal;
+}
