@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var elixir = require('laravel-elixir');
 //var importCss = require('gulp-import-css');
 var cssimport = require("gulp-cssimport");
+var rename = require('gulp-rename');
 var options = {};
 /*
  |--------------------------------------------------------------------------
@@ -26,10 +27,10 @@ var options = {};
 gulp.task("copyfiles", function() {
 
     // jQuery
-    gulp.src("vendor/bower_dl/AdminLTE/plugins/jQuery/jQuery-2.2.3.min.js")
+    gulp.src("vendor/bower_dl/AdminLTE/plugins/jQuery/*.js").pipe(rename('jquery.min.js'))
         .pipe(gulp.dest("resources/assets/js/"));
 
-    gulp.src("vendor/bower_dl/AdminLTE/plugins/jQuery/jQuery-2.2.3.min.js")
+    gulp.src("vendor/bower_dl/AdminLTE/plugins/jQuery/*.js").pipe(rename('jquery.min.js'))
         .pipe(gulp.dest("resources/assets/plugins/jquery/"));
 
     // bootstarp
@@ -191,7 +192,7 @@ elixir(function(mix) {
     // 合并javascript脚本
     mix.scripts(
         [
-            'jQuery-2.2.3.min.js',
+            'jquery-2.2.3.min.js',
             'bootstrap.min.js',
             'jquery.slimscroll.min.js',
             'icheck.min.js',
@@ -208,7 +209,7 @@ elixir(function(mix) {
     // 合并登录的javascript脚本
     mix.scripts(
         [
-            'jQuery-2.2.3.min.js',
+            'jquery-2.2.3.min.js',
             'bootstrap.min.js',
             'icheck.min.js'
         ],
@@ -265,7 +266,7 @@ elixir(function(mix) {
     );
     mix.scripts(
         [
-            'jQuery-2.2.3.min.js',
+            'jquery.min.js',
             'bootstrap.min.js',
             'icheck.min.js',
             'app.min.js',

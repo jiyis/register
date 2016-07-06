@@ -32,7 +32,7 @@
         <div class="progress-bar progress-bar-success"></div>
     </div>
 </div>
-<script src="{{ asset('assets/plugins/jquery/jQuery-2.2.3.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/blueimp-file-upload/jquery.ui.widget.js') }}"></script>
 <script src="{{ asset('assets/plugins/blueimp-file-upload/jquery.iframe-transport.js') }}"></script>
 <script src="{{ asset('assets/plugins/blueimp-file-upload/jquery.fileupload.js') }}"></script>
