@@ -116,8 +116,8 @@
             });
 
             $(".various").fancybox({
-                maxWidth	: 800,
-                maxHeight	: 600,
+                maxWidth	: 900,
+                maxHeight	: 500,
                 fitToView	: false,
                 width		: '70%',
                 height		: '70%',

@@ -19,7 +19,7 @@
 <div class="container">
     <h1>导入学生信息到数据库</h1>
     <blockquote>
-        <p>需要上传指定格式的excel文件，上传过程中可能会需要一些时间，请等到进度条完成后提示操作！！！</p>
+        <p><h5>需要上传指定格式的excel文件，上传过程中可能会需要一些时间，请等到进度条完成后提示操作！！！</h5></p>
     </blockquote>
     <span class="btn btn-success fileinput-button">
         <i class="glyphicon glyphicon-plus"></i>
@@ -47,7 +47,7 @@
             add: function (e, data) {
                 var fileType = data.files[0].name.split('.').pop(), allowdtypes = 'xls,xlsx';
                 if (allowdtypes.indexOf(fileType) < 0) {
-                    alert('Please select excel!');
+                    alert('请选择excel文件!');
                     return false;
                 }else {
                     data.submit();
@@ -55,11 +55,16 @@
 
             },
             done: function (e, data) {
-                /*$.each(data.result.files, function (index, file) {
-                 $('<p/>').text(file.name).appendTo('#files');
-                 });*/
-                alert(data.result.msg);
-                parent.jQuery.fancybox.close();
+
+                if(data.result.status){
+                    parent.location.reload(true);
+                    parent.jQuery.fancybox.close();
+
+                }
+                else{
+                    alert(data.result.msg);
+                }
+
             },
             progressall: function (e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);

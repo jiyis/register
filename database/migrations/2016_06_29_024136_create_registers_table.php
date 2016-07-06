@@ -15,7 +15,7 @@ class CreateregistersTable extends Migration
     {
         Schema::create('registers', function (Blueprint $table) {
             $table->integer('id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->string('user_id');
             $table->string('province');
             $table->string('gender');
             $table->string('politics', 30);

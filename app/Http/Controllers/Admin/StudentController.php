@@ -10,10 +10,11 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Repository\UserRepository;
-use Breadcrumbs, Toastr,Excel;
+use Breadcrumbs, Toastr, Excel, DB;
 use App\Http\Requests\Index\CreateUserRequest;
 use App\Http\Requests\Index\UpdateUserRequest;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class StudentController extends BaseController
 {
@@ -177,27 +178,34 @@ class StudentController extends BaseController
      */
     public function import(Request $request)
     {
-        //dd($request->hasFile('files'));
         if($request->hasFile('files')){
-            $path = $request->file('files')->getRealPath();
-            $data = Excel::load($path, function($reader) {
-                //$reader->ignoreEmpty();
-                //$reader->toArray();
-            })->get();
 
-            if(!empty($data) && $data->count()){
-                foreach ($data as $key => $value) {
-                    dd($value);
-                    //if(empty($value)) continue;
-                    $insert[] = ['student_id' => $value->title, 'name' => $value->description];
+            //取出所有的存在的学生
+            $allStudents = $this->student->all(['student_id'])->toArray();
+            $allStudents = array_column($allStudents,'student_id');
+
+            $path = $request->file('files')->getRealPath();
+
+            $data = Excel::load($path, function($reader) {
+                //$data = $reader->get()->toArray();
+            })->get()->toArray();
+            //只循环第一个worksheet
+            $data = current($data);
+
+            if(!empty($data)){
+                if($res = array_intersect(array_column($data,'ksh'),$allStudents)){
+                    return response()->json(['status' => 0,'msg' => 'excel中部分数据已存在数据库中，请不要重复导入。']);
                 }
-                dd($insert);
+                foreach ($data as $key => $value) {
+                    if(empty($value)) continue;
+                    $insert[] = ['student_id' => $value['ksh'], 'name' => $value['xm'],'email' => $value['ksh'].'@usts.edu.com','password' => bcrypt($value['ksh']),'created_at' => Carbon::now()];
+                }
                 if(!empty($insert)){
-                    DB::table('items')->insert($insert);
-                    dd('Insert Record successfully.');
+                    DB::table('users')->insert($insert);
+                    return response()->json(['status' => 1]);
                 }
             }
         }
-        return back();
+        return response()->json(['status' => 0]);
     }
 }
