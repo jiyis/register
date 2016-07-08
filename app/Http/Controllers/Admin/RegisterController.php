@@ -27,7 +27,6 @@ class RegisterController extends BaseController
         //身高范围
         view()->share('statures', CommonServices::getStatures());
         view()->share('academy', CommonServices::getAcademy());
-        view()->share('profession', CommonServices::getProfession());
     }
 
     /**
@@ -63,7 +62,6 @@ class RegisterController extends BaseController
         $register = new \stdClass();
         $register->personal = '';
         $register->certificate  = '';
-        $register->video = '';
         return view('admin.registers.create',compact('register'));
     }
 
@@ -252,7 +250,7 @@ class RegisterController extends BaseController
                 }
 
                 //合并结束后开始设置titile
-                $sheet->row(1, array('苏州科技大学敬文书院报名信息表'));
+                $sheet->row(1, array('敬文新教育书院报名信息表'));
                 $sheet->setCellValue('C2','基本信息');
                 $sheet->setCellValue('C3','考生号');
                 $sheet->setCellValue('C4','姓名');
@@ -387,7 +385,7 @@ class RegisterController extends BaseController
                 //$sheet->getDefaultRowDimension()->setRowHeight(18);
                 $sheet->fromArray($arr);
                 $sheet->mergeCells('A1:L1');
-                $sheet->row(1, array('苏州科技大学敬文书院报名信息表'));
+                $sheet->row(1, array('敬文新教育书院报名信息表'));
                 $sheet->cells('A1:L1', function($cells) {
                     $cells->setAlignment('center');
                     $cells->setFontSize(16);

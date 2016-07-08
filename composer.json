@@ -26,7 +26,8 @@
         "barryvdh/laravel-debugbar": "dev-master",
         "barryvdh/laravel-ide-helper": "^2.2",
         "jiyis/core-templates": "dev-master",
-        "jiyis/laravel-generator": "dev-master"
+        "jiyis/laravel-generator": "dev-master",
+        "doctrine/dbal": "^2.5"
     },
     "autoload": {
         "classmap": [

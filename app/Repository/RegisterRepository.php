@@ -14,10 +14,8 @@ class RegisterRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'province',
-        'politics',
         'stature',
         'academy',
-        'profession'
     ];
 
     /**
@@ -96,8 +94,8 @@ class RegisterRepository extends BaseRepository
             $register->name = $users[$register->user_id]['name'];
             $register->gender =  $register->gender ? '男' : '女';
             $register->province =  $common['province'][$register->province];
-            $register->politics =  $common['politics'][$register->politics];
-            $register->profession =  $common['academy'][$register->academy]['profession'][$register->profession];
+            //$register->politics =  $common['politics'][$register->politics];
+            //$register->profession =  $common['academy'][$register->academy]['profession'][$register->profession];
             $register->academy =  $common['academy'][$register->academy]['name'];
             $registers[$key] = $register;
         }

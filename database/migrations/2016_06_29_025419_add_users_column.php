@@ -15,6 +15,7 @@ class AddUsersColumn extends Migration
         Schema::table('users', function($table) {
             $table->integer('student_id')->nullable()->unique()->after('id');
             $table->string('userpic')->after('password');
+            $table->string('idcard',30)->after('email');
         });
     }
 
@@ -28,6 +29,7 @@ class AddUsersColumn extends Migration
         Schema::table('users', function($table) {
             $table->dropColumn('student_id');
             $table->dropColumn('userpic');
+            $table->dropColumn('idcard');
         });
     }
 }

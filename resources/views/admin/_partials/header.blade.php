@@ -4,7 +4,7 @@
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>J</b>IYIS</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>苏州科技大学敬文书院</b></span>
+            <span class="logo-lg"><b>敬文新教育书院</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -109,7 +109,7 @@
                                 <img src="/assets/images/user.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    苏州科技大学敬文书院 -- 管理员
+                                    敬文新教育书院 -- 管理员
                                     <small>上次登录 {{ $curuser->updated_at->toFormattedDateString() }}</small>
                                 </p>
                             </li>

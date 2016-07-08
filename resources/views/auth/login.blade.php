@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>苏州科技大学敬文书院报名系统</title>
+    <title>敬文新教育书院报名系统</title>
 
     @section('css')
         <link rel="stylesheet" href="{{ elixir('assets/css/frontend.css') }}">
@@ -99,7 +99,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">苏州科技大学敬文书院报名系统</div>
+                <div class="panel-heading">敬文新教育书院报名系统</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
@@ -157,7 +157,7 @@
     </div>
 </div>
 <footer class="main-footer">
-    <strong>苏州科技大学敬文书院 &nbsp;&nbsp;邮编：215009  &nbsp;&nbsp;&nbsp;&nbsp;Copyright &copy; 2016 苏州科技大学.All rights reserved.</strong>
+    <strong>敬文新教育书院 &nbsp;&nbsp;邮编：215009  &nbsp;&nbsp;&nbsp;&nbsp;Copyright &copy; 2016 苏州科技大学.All rights reserved.</strong>
 </footer>
 <script src="{{ elixir('assets/js/frontend.js') }}"></script>
 <script type="text/javascript">

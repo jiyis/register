@@ -36,7 +36,7 @@ class HomeController extends BaseController
     {
         //判断是否已经报名成功，报名后不允许再次进入
         if(!$this->register->check($this->user_id)){
-            $register = $this->register->find($this->user_id);
+            $register = $this->register->findWhere(['user_id'=>$this->user_id])->first();
             return view('index/result',compact('register'));
         }
         return view('index/home');

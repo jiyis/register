@@ -24,10 +24,9 @@ class Register extends Model
         'user_id',
         'province',
         'gender',
-        'politics',
+        'email',
         'stature',
         'academy',
-        'profession',
         'middleschool',
         'telphone',
         'postcode',
@@ -37,7 +36,7 @@ class Register extends Model
         'reward',
         'personal',
         'certificate',
-        'video'
+        'reason'
     ];
 
     /**
@@ -73,11 +72,10 @@ class Register extends Model
      */
     public static $rules = [
         'province' => 'required',
+        'email' => 'required|email|unique:users,email',
         'gender' => 'required',
-        'politics' => 'required',
         'stature' => 'required',
         'academy' => 'required',
-        'profession' => 'required',
         'middleschool' => 'required',
         'telphone' => 'required|regex:/([0-1])[0-9]{10}/',
         'postcode' => 'required',
@@ -87,7 +85,7 @@ class Register extends Model
         'reward' => 'required',
         'personal' => 'required',
         'certificate' => 'required',
-        'video' => 'required',
+        'reason' => 'required',
     ];
 
     /**
@@ -103,6 +101,16 @@ class Register extends Model
     public function getFamilyAttribute($family)
     {
        return json_decode($family);
+    }
+
+    public function setRewardAttribute($reward)
+    {
+        $this->attributes['reward'] = json_encode($reward);
+    }
+
+    public function getRewardAttribute($reward)
+    {
+        return json_decode($reward);
     }
 
     /*public function getStateAttribute($state)

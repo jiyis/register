@@ -18,6 +18,15 @@
             {!! Form::text('name', old('name'), ['class' => 'form-control tooltips','disabled' => 'disabled']) !!}
         </div>
     </div>
+
+    <!-- 邮箱 字段 -->
+    <div class="form-group col-sm-12">
+        {!! Form::label('name', '邮箱 *',['class'=>'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::email('email', old('email'), ['class' => 'form-control tooltips']) !!}
+        </div>
+    </div>
+
     <!-- Province Field -->
     <div class="form-group col-sm-12">
         {!! Form::label('province', '省份:',['class'=>'col-sm-3 control-label']) !!}
@@ -39,14 +48,6 @@
         </div>
     </div>
 
-    <!-- Politics Field -->
-    <div class="form-group col-sm-12">
-        {!! Form::label('politics', '政治面貌:',['class'=>'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
-            {!! Form::select('politics', config('common.politics') , old('politics'), ['class' => 'select2 form-control tooltips', 'placeholder' => '请选择政治面貌']) !!}
-        </div>
-    </div>
-
     <!-- Stature Field -->
     <div class="form-group col-sm-12">
         {!! Form::label('stature', '身高:',['class'=>'col-sm-3 control-label']) !!}
@@ -60,14 +61,6 @@
         {!! Form::label('academy', '录取学院:',['class'=>'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
             {!! Form::select('academy', $academy, old('academy'), ['class' => 'select2 form-control tooltips', 'placeholder' => '请选择学院']) !!}
-        </div>
-    </div>
-
-    <!-- Profession Field -->
-    <div class="form-group col-sm-12">
-        {!! Form::label('profession', '录取专业:',['class'=>'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
-            {!! Form::select('profession', $profession, old('profession'), ['class' => 'select2 form-control tooltips', 'placeholder' => '请先选择学院']) !!}
         </div>
     </div>
 
@@ -127,9 +120,6 @@
                     职务
                 </th>
                 <th style="width: 10%">
-                    年收入(万元)
-                </th>
-                <th style="width: 10%">
                     健康状况
                 </th>
                 <th style="width: 12%">
@@ -155,9 +145,6 @@
                     {!! Form::text('family[position1]', old('family.position1'), ['class' => 'form-control tooltips']) !!}
                 </td>
                 <td>
-                    {!! Form::text('family[salary1]', old('family.salary1'), ['class' => 'form-control tooltips']) !!}
-                </td>
-                <td>
                     {!! Form::text('family[healthy1]', old('family.healthy1'), ['class' => 'form-control tooltips']) !!}
                 </td>
                 <td>
@@ -181,9 +168,6 @@
                     {!! Form::text('family[position2]', old('family.position2'), ['class' => 'form-control tooltips']) !!}
                 </td>
                 <td>
-                    {!! Form::text('family[salary2]', old('family.salary2'), ['class' => 'form-control tooltips']) !!}
-                </td>
-                <td>
                     {!! Form::text('family[healthy2]', old('family.healthy2'), ['class' => 'form-control tooltips']) !!}
                 </td>
                 <td>
@@ -194,6 +178,13 @@
         </table>
     </div>
 
+    <!-- 申请理由 Field -->
+    <div class="form-group col-sm-12 col-lg-12">
+        {!! Form::label('hobby', '申请理由:',['class'=>'col-sm-3 control-label']) !!}
+        <div class="col-sm-8">
+            {!! Form::textarea('reason', old('reason'), ['class' => 'form-control tooltips', 'rows' => '6','maxlength' => '500','data-toggle' => 'tooltip','data-trigger' => 'hover','data-original-title' => '最多500字',' placeholder' => '最多500字']) !!}
+        </div>
+    </div>
 
     <!-- Hobby Field -->
     <div class="form-group col-sm-12 col-lg-12">
@@ -234,16 +225,6 @@
     </div>
     <div class="clearfix"></div>
 
-    <!-- Video Field -->
-    <div class="form-group col-sm-12">
-        {!! Form::label('video', '视频文件:',['class'=>'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
-            <div id="video" class="register-file dropzone" > </div>
-            <input type="hidden" name="video" id="videoval">
-        </div>
-    </div>
-    <div class="clearfix"></div>
-
     <!-- State Field -->
     <div class="form-group col-sm-12 hidden">
         {!! Form::label('state', '状态:',['class'=>'col-sm-3 control-label']) !!}
@@ -278,7 +259,7 @@
             });
 
             //专业跟学院联动
-            $('#academy').change(function(){
+            /*$('#academy').change(function(){
                 $('#profession').empty();
                 $.ajax({
                     type: 'GET',
@@ -293,7 +274,7 @@
                     },
                     dataType: 'json',
                 });
-            })
+            })*/
             //上传个人自述扫描件
             Dropzone.autoDiscover = false;//防止报"Dropzone already attached."的错误
             var personal =  "{{ '/'.$register->personal }}";
@@ -389,7 +370,7 @@
                 }
             })
             //视频文件，只能传zip限制
-            var video =  "{{ '/'.$register->video }}";
+            /*var video =  "{{ '/'.$register->video }}";
             $("#video").dropzone({
                 url: "{!! route('upload.uploadfile') !!}",
                 method: "post",
@@ -436,7 +417,7 @@
                         deleteFile($('#videoval').val());
                     });
                 }
-            })
+            })*/
 
             //删除文件
             function deleteFile(filename){

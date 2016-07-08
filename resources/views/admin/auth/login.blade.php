@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="login-logo">
-        <a href="/"><b>Jiyi</b>SUMMER</a>
+        <a href="/">敬文新教育书院后台</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
