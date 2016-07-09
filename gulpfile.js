@@ -41,6 +41,8 @@ gulp.task("copyfiles", function() {
     gulp.src("vendor/bower_dl/AdminLTE/bootstrap/fonts/*")
         .pipe(gulp.dest("resources/assets/fonts/"));
 
+    gulp.src("vendor/bower_dl/AdminLTE/bootstrap/fonts/*")
+        .pipe(gulp.dest("resources/assets/plugins/fonts/"));
     gulp.src("vendor/bower_dl/AdminLTE/bootstrap/js/bootstrap.min.js")
         .pipe(gulp.dest("resources/assets/plugins/bootstrap/"));
 

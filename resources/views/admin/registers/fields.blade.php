@@ -174,6 +174,52 @@
                     {!! Form::text('family[tel2]', old('family.tel2'), ['class' => 'form-control tooltips']) !!}
                 </td>
             </tr>
+            <tr>
+                <td>
+                    {!! Form::text('family[name3]', old('family.name3'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[age3]', old('family.age3'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[relation3]', old('family.relation3'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[work3]', old('family.work3'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[position3]', old('family.position3'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[healthy3]', old('family.healthy3'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[tel3]', old('family.tel3'), ['class' => 'form-control tooltips']) !!}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {!! Form::text('family[name4]', old('family.name4'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[age4]', old('family.age4'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[relation4]', old('family.relation4'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[work4]', old('family.work4'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[position4]', old('family.position4'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[healthy4]', old('family.healthy4'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('family[tel4]', old('family.tel4'), ['class' => 'form-control tooltips']) !!}
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
@@ -199,7 +245,99 @@
     <div class="form-group col-sm-12 col-lg-12">
         {!! Form::label('reward', '获奖情况:',['class'=>'col-sm-3 control-label']) !!}
         <div class="col-sm-8">
-            {!! Form::textarea('reward', old('reward'), ['class' => 'form-control tooltips', 'rows' => '5','maxlength' => '200','data-toggle' => 'tooltip','data-trigger' => 'hover','data-original-title' => '最多200字',' placeholder' => '最多200字']) !!}
+            <table class="table  table-bordered table-hover reward-table">
+            <thead>
+            <tr>
+                <th colspan="8" class="text-center family-title">获奖情况<span style="color:#c23321; ">（填校级及以上奖项）</span></th>
+            </tr>
+            <tr>
+                <th style="width: 12%">
+                    奖项名称
+                </th>
+                <th style="width: 6%">
+                    等第
+                </th>
+                <th style="width: 8%">
+                    获奖时间
+                </th>
+                <th style="width: 20%">
+                    颁发部门
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    {!! Form::text('reward[name1]', old('reward.name1'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[level1]', old('reward.level1'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[time1]', old('reward.time1'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[deparment1]', old('reward.deparment1'), ['class' => 'form-control tooltips']) !!}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {!! Form::text('reward[name2]', old('reward.name2'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[level2]', old('reward.level2'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[time2]', old('reward.time2'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[deparment2]', old('reward.deparment2'), ['class' => 'form-control tooltips']) !!}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {!! Form::text('reward[name3]', old('reward.name3'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[level3]', old('reward.level3'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[time3]', old('reward.time3'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[deparment3]', old('reward.deparment3'), ['class' => 'form-control tooltips']) !!}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {!! Form::text('reward[name4]', old('reward.name4'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[level4]', old('reward.level4'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[time4]', old('reward.time4'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[deparment4]', old('reward.deparment4'), ['class' => 'form-control tooltips']) !!}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {!! Form::text('reward[name5]', old('reward.name5'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[level5]', old('reward.level5'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[time5]', old('reward.time5'), ['class' => 'form-control tooltips']) !!}
+                </td>
+                <td>
+                    {!! Form::text('reward[deparment5]', old('reward.deparment5'), ['class' => 'form-control tooltips']) !!}
+                </td>
+            </tr>
+            </tbody>
+            </table>
         </div>
         </div>
     </div>
@@ -370,9 +508,9 @@
                 }
             })
             //视频文件，只能传zip限制
-            /*var video =  "{{ '/'.$register->video }}";
+            /*var video =  " '/'.$register->video }}";
             $("#video").dropzone({
-                url: "{!! route('upload.uploadfile') !!}",
+                url: " route('upload.uploadfile') !!}",
                 method: "post",
                 addRemoveLinks: true,
                 dictDefaultMessage: "点击或者拖拽<br><span style='line-height: 50px;'>文件到这里上传</span>",
@@ -398,7 +536,7 @@
                         $('.dz-progress').remove();
                         $('.dz-success-mark').remove();
                         $('.dz-error-mark').remove();
-                        $('#videoval').val("{{ $register->video}}");
+                        $('#videoval').val("$register->video}}");
                     }
                     this.on("maxfilesexceeded", function(file) {
                         swal("最多只能上传一个文件，请先移除!");

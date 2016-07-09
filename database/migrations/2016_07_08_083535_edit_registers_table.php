@@ -20,7 +20,7 @@ class EditRegistersTable extends Migration
             $table->text('reward')->change();
 
             $table->text('reason')->after('family');
-            $table->sring('email',50)->after('user_id');
+            $table->string('email',50)->after('user_id');
         });
     }
 

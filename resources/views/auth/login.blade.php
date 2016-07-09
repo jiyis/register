@@ -107,7 +107,7 @@
                             <label for="student_id" class="col-md-4 control-label">学号</label>
 
                             <div class="col-md-6">
-                                <input id="student_id" type="text" class="form-control" name="student_id" value="{{ old('student_id') }}"  placeholder="学号" required="required" >
+                                <input id="student_id" type="text" class="form-control" name="student_id" value="{{ old('student_id') }}"  placeholder="学号" required="required">
 
                                 @if ($errors->has('student_id'))
                                     <span class="help-block">

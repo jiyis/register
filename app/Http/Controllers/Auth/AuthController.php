@@ -106,10 +106,10 @@ class AuthController extends Controller
         {
             return redirect('/');
         }
-
+        //session()->flash('student_id',$request->input('student_id'));
         return redirect('/login')->withErrors([
             'student_id' => '用户名或密码错误。',
-        ]);
+        ])->withInput();
     }
 
     /*protected function getFailedLoginMessage()

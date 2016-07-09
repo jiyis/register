@@ -198,7 +198,7 @@ class StudentController extends BaseController
                 }
                 foreach ($data as $key => $value) {
                     if(empty($value)) continue;
-                    $insert[] = ['student_id' => $value['ksh'], 'name' => $value['xm'],'email' => $value['ksh'].'@usts.edu.com','password' => md5($value['ksh']),'created_at' => Carbon::now()];
+                    $insert[] = ['idcard' => $value['sfzh'],'student_id' => $value['ksh'], 'name' => $value['xm'],'email' => $value['ksh'].'@usts.edu.com','password' => md5($value['idcard']),'created_at' => Carbon::now()];
                 }
                 if(!empty($insert)){
                     DB::table('users')->insert($insert);

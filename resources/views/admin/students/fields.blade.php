@@ -22,7 +22,12 @@
             {!! Form::text('email', old('email'), ['class' => 'form-control tooltips','data-toggle' => 'tooltip','data-trigger' => 'hover']) !!}
         </div>
     </div>
-
+    <div class="form-group">
+        {!! Form::label('idcard', '身份证号 *',['class'=>'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('idcard',old('idcard'),  ['class' => 'form-control tooltips','data-toggle' => 'tooltip','data-trigger' => 'hover']) !!}
+        </div>
+    </div>
     <div class="form-group">
         {!! Form::label('password', '密码 *',['class'=>'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
