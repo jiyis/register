@@ -17,12 +17,7 @@
         </div>
     </div>
 
-    <div class="form-group">
-        {!! Form::label('email', '邮箱 *',['class'=>'col-sm-3 control-label']) !!}
-        <div class="col-sm-6">
-            {!! Form::text('email', old('email'), ['class' => 'form-control tooltips','data-toggle' => 'tooltip','data-trigger' => 'hover']) !!}
-        </div>
-    </div>
+
 
     <div class="form-group">
         {!! Form::label('password', '密码 *',['class'=>'col-sm-3 control-label']) !!}
@@ -32,7 +27,7 @@
     </div>
 
     <div class="control-group">
-        <label class="col-sm-3 control-label" for="userpic">个人照片 *<br><span class="uploadtips">请上传150*210尺寸的照片，否则会出现照片残缺。</span></label>
+        <label class="col-sm-3 control-label" for="userpic">个人照片 *<br><span class="uploadtips">请上传125*165尺寸的照片，否则会出现照片残缺。</span></label>
         <div class="col-sm-6">
             <div id="userpic" class="register-file dropzone"  required="required"> </div>
             <input type="hidden" name="userpic" id="userpicval">
@@ -87,6 +82,7 @@
                         myDropzone.options.addedfile.call(myDropzone, mockFile);
                         myDropzone.options.thumbnail.call(myDropzone, mockFile, userpic);
                         $('.dz-details').hide();
+                        $('#userpicval').val(userpic);
                     }
 
                     this.on("maxfilesexceeded", function(file) {

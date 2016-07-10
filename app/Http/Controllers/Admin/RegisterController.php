@@ -230,23 +230,34 @@ class RegisterController extends BaseController
         $common = config('common');
         $data->gender =  $data->gender ? '男' : '女';
         $data->province =  $common['province'][$data->province];
-        $data->politics =  $common['politics'][$data->politics];
-        $data->profession =  $common['academy'][$data->academy]['profession'][$data->profession];
+        //$data->politics =  $common['politics'][$data->politics];
+        //$data->profession =  $common['academy'][$data->academy]['profession'][$data->profession];
         $data->academy =  $common['academy'][$data->academy]['name'];
 
         return Excel::create($data->name, function($excel) use ($data) {
             $excel->sheet('mySheet', function($sheet) use ($data)
             {
                 //$sheet->getDefaultStyle()->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);//水平居左
-                $sheet->mergeCells('A1:H1');
-                $sheet->mergeCells('A2:B10');
-                $sheet->mergeCells('C2:H2');
-                $sheet->mergeCells('D8:H8');
-                $sheet->mergeCells('D9:H9');
-                $sheet->mergeCells('D10:H10');
-                $sheet->mergeCells('A11:H11');
+                $sheet->mergeCells('A1:G1');
+                $sheet->mergeCells('A2:B8');
+                $sheet->mergeCells('C2:G2');
+                $sheet->mergeCells('D8:G8');
+                //$sheet->mergeCells('D9:G9');
+               // $sheet->mergeCells('D10:G10');
+                $sheet->mergeCells('A9:G9');
                 for($i=3; $i<=7; $i++) {
-                    $sheet->mergeCells('F'.$i.':H'.$i);
+                    $sheet->mergeCells('F'.$i.':G'.$i);
+                }
+                $sheet->mergeCells('A15:G15');
+                $sheet->mergeCells('A16:G18');
+
+                $sheet->mergeCells('A19:G19');
+
+                $sheet->mergeCells('A26:G26');
+
+                for($i=20; $i<=25; $i++) {
+                    $sheet->mergeCells('A'.$i.':B'.$i);
+                    $sheet->mergeCells('E'.$i.':G'.$i);
                 }
 
                 //合并结束后开始设置titile
@@ -254,12 +265,10 @@ class RegisterController extends BaseController
                 $sheet->setCellValue('C2','基本信息');
                 $sheet->setCellValue('C3','考生号');
                 $sheet->setCellValue('C4','姓名');
-                $sheet->setCellValue('C5','政治面貌');
-                $sheet->setCellValue('C6','录取专业');
+                $sheet->setCellValue('C5','邮箱地址');
+                $sheet->setCellValue('C6','家庭地址');
                 $sheet->setCellValue('C7','本人电话');
-                $sheet->setCellValue('C8','家庭地址');
-                $sheet->setCellValue('C9','爱好特长');
-                $sheet->setCellValue('C10','获奖情况');
+                $sheet->setCellValue('C8','爱好特长');
 
                 $sheet->setCellValue('E3','省份');
                 $sheet->setCellValue('E4','性别');
@@ -267,48 +276,82 @@ class RegisterController extends BaseController
                 $sheet->setCellValue('E6','毕业中学');
                 $sheet->setCellValue('E7','邮编');
 
-                $sheet->setCellValue('A11','家庭成员信息');
-                $sheet->setCellValue('A12','姓名');
-                $sheet->setCellValue('B12','年龄');
-                $sheet->setCellValue('C12','与学生关系');
-                $sheet->setCellValue('D12','工作单位');
-                $sheet->setCellValue('E12','职业');
-                $sheet->setCellValue('F12','年收入');
-                $sheet->setCellValue('G12','健康状况');
-                $sheet->setCellValue('H12','手机');
+                $sheet->setCellValue('A9','家庭成员信息');
 
-                $sheet->cells('A1:H1', function($cells) {
+                $sheet->setCellValue('A10','姓名');
+                $sheet->setCellValue('B10','年龄');
+                $sheet->setCellValue('C10','与学生关系');
+                $sheet->setCellValue('D10','工作单位');
+                $sheet->setCellValue('E10','职业');
+                $sheet->setCellValue('F10','健康状况');
+                $sheet->setCellValue('G10','手机');
+
+                $sheet->setCellValue('A10','姓名');
+                $sheet->setCellValue('B10','年龄');
+                $sheet->setCellValue('C10','与学生关系');
+                $sheet->setCellValue('D10','工作单位');
+                $sheet->setCellValue('E10','职业');
+                $sheet->setCellValue('F10','健康状况');
+                $sheet->setCellValue('G10','手机');
+
+                $sheet->setCellValue('A15','申请理由');
+                $sheet->setCellValue('A19','获奖情况');
+
+                $sheet->setCellValue('A20','奖项名称');
+                $sheet->setCellValue('C20','等第');
+                $sheet->setCellValue('D20','获奖时间');
+                $sheet->setCellValue('E20','颁发部门');
+
+                //$sheet->setCellValue('A26','个人自述');
+
+
+                $sheet->cells('A16:G18', function($cells) {
+                    $cells->setValignment('center');
+                });
+
+                $sheet->cells('A1:G1', function($cells) {
                     $cells->setAlignment('center');
                     $cells->setFontSize(16);
                 });
-                $sheet->cells('A11', function($cells) {
+                $sheet->cells('A9', function($cells) {
                     $cells->setAlignment('center');
                 });
-                $sheet->cells('C2:H14', function($cells) {
+                $sheet->cells('A15', function($cells) {
+                    $cells->setAlignment('center');
+                });
+                $sheet->cells('A19', function($cells) {
+                    $cells->setAlignment('center');
+                });
+                $sheet->cells('A26', function($cells) {
+                    $cells->setAlignment('center');
+                });
+                $sheet->cells('C2:G12', function($cells) {
                     $cells->setAlignment('center');
                 });
 
                 $sheet->setWidth(array(
-                    'A'     =>  11,
-                    'B'     =>  10,
+                    'A'     =>  10,
+                    'B'     =>  8,
                     'C'     =>  12,
-                    'D'     =>  26,
+                    'D'     =>  28,
                     'E'     =>  13,
                     'F'     =>  9,
-                    'G'     =>  10,
-                    'H'     =>  12,
+                    'G'     =>  22,
                 ));
                 //$sheet->setHeight(1, 22);
                 $sheet->getDefaultRowDimension()->setRowHeight(18);
                 //写入学生信息
-                $sheet->setCellValue('D3',$data->student_id);
+
+                $sheet->getStyle('D3')->getNumberFormat()->setFormatCode("@");
+                $sheet->setCellValue('D3',$data->student_id.'  ');
                 $sheet->setCellValue('D4',$data->name);
-                $sheet->setCellValue('D5', $data->politics);
-                $sheet->setCellValue('D6',$data->profession);
+                $sheet->setCellValue('D5', $data->email);
+                $sheet->setCellValue('D6',$data->address);
                 $sheet->setCellValue('D7',$data->telphone);
-                $sheet->setCellValue('D8',$data->address);
-                $sheet->setCellValue('D9',$data->hobby);
-                $sheet->setCellValue('D10',$data->reward);
+                $sheet->setCellValue('D8',$data->hobby);
+                //$sheet->setCellValue('D9',$data->hobby);
+                //$sheet->setCellValue('D10',$data->reward);
+                $sheet->setCellValue('A16',$data->reason);
 
                 $sheet->setCellValue('F3',$data->province);
                 $sheet->setCellValue('F4',$data->gender);
@@ -317,18 +360,42 @@ class RegisterController extends BaseController
                 $sheet->setCellValue('F7',$data->postcode);
 
                 //家庭成员信息
+                $sheet->row(11, array(
+                    $data->family->name1, $data->family->age1,$data->family->relation1,$data->family->work1,$data->family->position1,$data->family->healthy1,$data->family->tel1
+                ));
+                $sheet->row(12, array(
+                    $data->family->name2, $data->family->age2,$data->family->relation2,$data->family->work2,$data->family->position2,$data->family->healthy2,$data->family->tel2
+                ));
                 $sheet->row(13, array(
-                    $data->family->name1, $data->family->age1,$data->family->relation1,$data->family->work1,$data->family->position1,$data->family->salary1,$data->family->healthy1,$data->family->tel1
+                    $data->family->name3, $data->family->age3,$data->family->relation3,$data->family->work3,$data->family->position3,$data->family->healthy3,$data->family->tel3
                 ));
                 $sheet->row(14, array(
-                    $data->family->name2, $data->family->age2,$data->family->relation2,$data->family->work2,$data->family->position2,$data->family->salary2,$data->family->healthy2,$data->family->tel2
+                    $data->family->name4, $data->family->age4,$data->family->relation4,$data->family->work4,$data->family->position4,$data->family->healthy4,$data->family->tel4
                 ));
+
+                $sheet->row(21, array(
+                    $data->reward->name1, $data->reward->level1,$data->reward->time1,$data->reward->deparment1
+                ));
+                $sheet->row(22, array(
+                    $data->reward->name2, $data->reward->level2,$data->reward->time2,$data->reward->deparment2
+                ));
+                $sheet->row(23, array(
+                    $data->reward->name3, $data->reward->level3,$data->reward->time3,$data->reward->deparment3
+                ));
+                $sheet->row(24, array(
+                    $data->reward->name4, $data->reward->level4,$data->reward->time4,$data->reward->deparment4
+                ));
+                $sheet->row(25, array(
+                    $data->reward->name5, $data->reward->level5,$data->reward->time5,$data->reward->deparment5
+                ));
+
+
                 //写入头像
                 if(!empty($data->userpic)){
                     $img = new PHPExcel_Worksheet_Drawing();
                     $img->setPath(public_path($data->userpic));//写入图片路径
-                    $img->setHeight(210);//写入图片高度
-                    $img->setWidth(150);//写入图片宽度
+                    $img->setHeight(165);//写入图片高度
+                    $img->setWidth(125);//写入图片宽度
                     //$img->setOffsetX(1);//写入图片在指定格中的X坐标值
                     //$img->setOffsetY(1);//写入图片在指定格中的Y坐标值
                     //$img->setRotation(1);//设置旋转角度
@@ -354,14 +421,14 @@ class RegisterController extends BaseController
         }
         $ids = explode(',',ltrim($ids,','));
 
-        $arr[] = ['考生号','姓名','性别','身高','省份','政治面貌','录取学院','录取专业','毕业中学','邮编','本人电话','家庭地址'];
+        $arr[] = ['考生号','姓名','性别','身高','省份','邮箱地址','录取学院','毕业中学','邮编','本人电话','家庭地址','个人爱好'];
         foreach($ids as $id){
             $data = $this->registerRepository->find($id);
             $common = config('common');
             $data->gender =  $data->gender ? '男' : '女';
             $data->province =  $common['province'][$data->province];
-            $data->politics =  $common['politics'][$data->politics];
-            $data->profession =  $common['academy'][$data->academy]['profession'][$data->profession];
+            //$data->politics =  $common['politics'][$data->politics];
+            //$data->profession =  $common['academy'][$data->academy]['profession'][$data->profession];
             $data->academy =  $common['academy'][$data->academy]['name'];
             $arr[] = [
                 $data->student_id,
@@ -369,19 +436,19 @@ class RegisterController extends BaseController
                 $data->gender,
                 $data->stature,
                 $data->province,
-                $data->politics,
+                $data->email,
                 $data->academy,
-                $data->profession,
                 $data->middleschool,
                 $data->postcode,
                 $data->telphone,
                 $data->address,
+                $data->hobby,
             ];
         }
         return Excel::create('报名信息表', function($excel) use ($arr) {
             $excel->sheet('mySheet', function ($sheet) use ($arr) {
                 $nums = count($arr);
-                $sheet->setAutoSize(true);
+
                 //$sheet->getDefaultRowDimension()->setRowHeight(18);
                 $sheet->fromArray($arr);
                 $sheet->mergeCells('A1:L1');
@@ -396,18 +463,18 @@ class RegisterController extends BaseController
                 });
 
                 $sheet->setWidth(array(
-                    'A'     =>  12,
+                    'A'     =>  16,
                     'B'     =>  12,
-                    'C'     =>  10,
-                    'D'     =>  10,
-                    'E'     =>  12,
-                    'F'     =>  12,
-                    'G'     =>  24,
-                    'H'     =>  24,
-                    'I'     =>  16,
-                    'J'     =>  10,
-                    'K'     =>  14,
-                    'L'     =>  24,
+                    'C'     =>  12,
+                    'D'     =>  12,
+                    'E'     =>  16,
+                    'F'     =>  20,
+                    'G'     =>  22,
+                    'H'     =>  22,
+                    'I'     =>  12,
+                    'J'     =>  14,
+                    'K'     =>  38,
+                    'L'     =>  40,
                 ));
             });
         })->download('xlsx');

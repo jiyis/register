@@ -39,7 +39,7 @@ class UploadController extends BaseController
             $filepath = $lastpath . $fileName;
             $content =$file->getPathname();
             if($name == 'userpic'){
-                $result = $this->manager->saveImage($filepath, $content,150,210,true);
+                $result = $this->manager->saveImage($filepath, $content,125,165,true);
             }else{
                 $result = $this->manager->saveImage($filepath, $content);
             }
