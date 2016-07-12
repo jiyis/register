@@ -14,9 +14,6 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 
 Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
 
 ## Security Vulnerabilities
 
@@ -26,40 +23,44 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
-## Install
-sudo npm install -g gulp  #全局安装npm
-sudo npm install -g bower #全局安装bower
+---
 
-cd summer
-sudo npm install gulp   #在项目本地安装gulp
-sudo npm install bower  #在项目本地安装bower
-sudp npm install        #安装项目Node依赖、Laravel Elixir
 
-#在项目根目录新增文件.bowerrc
+## 安装步骤
+* sudo npm install -g gulp      #全局安装npm
+* sudo npm install -g bower     #全局安装bower
+* cd register
+* sudo npm install gulp   #在项目本地安装gulp
+* sudo npm install bower  #在项目本地安装bower
+* sudp npm install        #安装项目Node依赖、Laravel Elixir
 
+## 在项目根目录新增文件.bowerrc
+
+```json
 {
     "directory": "vendor/bower_dl"
 }
-#执行命令bower init创建文件bower.json地方
+```
+执行命令 bower init创建文件bower.json
 
-#如果是linux  后面加上 --allow-root
-sudo bower install admin-lte
-sudo bower install fontawesome
-sudo bower install ionicons
-sudo bower install https://github.com/smalot/bootstrap-datetimepicker.git
-sudo bower install DataTables
-sudo bower install sweetalert
-sudo bower install dropzone
-sudo bower install toastr
-sudo bower install fileupload
-sudo bower install fancybox
 
-npm install --save-dev gulp-import-css
-npm install gulp-cssimport
-gulp copyfiles
-gulp
+## 如果是linux 后面加上 --allow-root  windows不需要
+*  sudo bower install admin-lte --allow-root
+*  sudo bower install fontawesome --allow-root
+*  sudo bower install ionicons --allow-root
+*  sudo bower install https://github.com/smalot/bootstrap-datetimepicker.git --allow-root
+*  sudo bower install DataTables --allow-root
+*  sudo bower install sweetalert --allow-root
+*  sudo bower install dropzone --allow-root
+*  sudo bower install toastr --allow-root
+*  sudo bower install fileupload --allow-root
+*  sudo bower install fancybox --allow-root
+*  npm install --save-dev gulp-import-css
+*  npm install gulp-cssimport
+*  npm install gulp-rename
+*  gulp copyfiles
+*  gulp
+*  php artisan migrate
+*  php artisan key:generate
 
-php artisan migrate
-php artisan key:generate
-
-#火狐中datetmepick的插件会报错，但是其他的插件没有时间选项，解决方法把js文件中this.defaultTimeZone=(new Date()).toString().split("(")[1].slice(0,-1);改为this.defaultTimeZone='GMT '+(new Date()).getTimezoneOffset()/60
+* 火狐中datetmepick的插件会报错，但是其他的插件没有时间选项，解决方法把js文件中this.defaultTimeZone=(new Date()).toString().split("(")[1].slice(0,-1);改为this.defaultTimeZone='GMT '+(new Date()).getTimezoneOffset()/60
