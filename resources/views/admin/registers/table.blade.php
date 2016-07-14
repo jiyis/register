@@ -32,16 +32,34 @@
             <td>{!! $register->academy !!}</td>
             <td>{!! $register->telphone !!}</td>
             <td>{!! $register->created_at->format('Y-m-d') !!}</td>
-            <td>{!! $register->state ? '<span class="label label-success">已审核</span>':'<span class="label label-warning">未审核</span>' !!}</td>
+            <td>@if($register->state == 0)
+                    <span class="label label-danger">未审核</span>
+                @elseif($register->state == 1)
+                    <span class="label label-warning">已审核</span>
+                @else
+                    <span class="label label-success">已录取</span>
+                @endif
+            </td>
             <td>
                 <a href="{{ route('admin.registers.edit',['id'=>$register->id]) }}"
                    class="btn btn-white btn-xs"><i class="fa fa-pencil"></i> 编辑</a>
                 <a class="btn btn-danger btn-xs user-delete"
                    data-href="{{ route('admin.registers.destroy',$register->id) }}">
                     <i class="fa fa-trash-o"></i> 删除</a>
-                <a class="btn btn-success btn-xs check"
-                   data-href="{{ route('admin.registers.check',$register->id) }}">
-                    <i class="fa fa-share"></i> 审核</a>
+                @if($register->state == 0)
+                    <a class="btn btn-primary btn-xs check"
+                       data-href="{{ route('admin.registers.check',['id' => $register->id,'value'=> 1]) }}">
+                        <i class="fa fa-share"></i> 审核</a>
+                @elseif($register->state == 1)
+                    <a class="btn btn-success btn-xs check"
+                       data-href="{{ route('admin.registers.check',['id' => $register->id,'value'=> 2]) }}">
+                        <i class="fa fa-share"></i> 录取</a>
+                @else
+                    <a class="btn btn-danger btn-xs check"
+                       data-href="{{ route('admin.registers.check',['id' => $register->id,'value'=> 0]) }}">
+                        <i class="fa fa-share"></i> 取消</a>
+                @endif
+
                 <a class="btn btn-info btn-xs"
                    href="{{ route('admin.registers.export',['id'=>$register->id]) }}">
                     <i class="fa fa-share"></i> 导出</a>

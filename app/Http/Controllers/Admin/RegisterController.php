@@ -193,9 +193,11 @@ class RegisterController extends BaseController
      */
     public function check(Request $request)
     {
-        $id = (int)key($request->all());
+        $data = $request->all();
+        $id = (int)$data['id'];
+        $value = (int)$data['value'];
 
-        $result = $this->registerRepository->review($id);
+        $result = $this->registerRepository->review($id,$value);
 
         return response()->json($result ? ['status' => 1] : ['status' => 0]);
     }

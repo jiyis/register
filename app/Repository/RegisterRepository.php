@@ -51,10 +51,10 @@ class RegisterRepository extends BaseRepository
      * @return mixed
      * 审核和取消审核切换
      */
-    public function review($id)
+    public function review($id,$value)
     {
         $register = $this->model->find($id);
-        $result = $this->model->where('id',$id)->update(['state'=>1]);
+        $result = $this->model->where('id',$id)->update(['state'=>$value]);
 
         return $result;
     }

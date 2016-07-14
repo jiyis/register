@@ -71,9 +71,9 @@
         //审核学生
         $(".check").click(function () {
             Rbac.ajax.check({
-                confirmTitle: '确定要审核该学生吗？',
+                confirmTitle: '确定要操作该学生吗？',
                 href: $(this).data('href'),
-                successTitle: '学生报名审核成功！'
+                successTitle: '操作成功！'
             });
         });
         //批量导出
