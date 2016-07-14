@@ -110,7 +110,7 @@ return [
 
     'attributes'           => [
         'name'                  => '名称',
-        'student_id'            => '学号',
+        'student_id'            => '考试号',
         'username'              => '用户名',
         'email'                 => '邮箱',
         'first_name'            => '名',

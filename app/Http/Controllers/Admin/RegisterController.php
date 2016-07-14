@@ -6,7 +6,7 @@ use App\Http\Requests\Admin\CreateRegisterRequest;
 use App\Http\Requests\Admin\UpdateRegisterRequest;
 use App\Repository\RegisterRepository;
 use Illuminate\Http\Request;
-use Breadcrumbs, Toastr, Response, Excel;
+use Breadcrumbs, Toastr, Response, Excel,File;
 use App\Services\CommonServices;
 use PHPExcel_Worksheet_Drawing;
 
@@ -14,11 +14,13 @@ class RegisterController extends BaseController
 {
     /** @var  RegisterRepository */
     private $registerRepository;
+    private $filepath;
 
     public function __construct(RegisterRepository $registerRepo)
     {
         parent::__construct();
         $this->registerRepository = $registerRepo;
+        $this->filepath = storage_path('exports/enroll.xls');
 
         Breadcrumbs::register('admin-registers', function ($breadcrumbs) {
             $breadcrumbs->parent('控制台');
@@ -43,9 +45,12 @@ class RegisterController extends BaseController
         });
 
         $registers = $this->registerRepository->all();
+        $registerCount = $this->registerRepository->getNumOfRegister(1);
+        $enrollCount = $this->registerRepository->getNumOfRegister(2);
+        $state = file_exists($this->filepath);
 
         return view('admin.registers.index')
-            ->with('registers', $registers);
+            ->with('registers', $registers)->with('registerCount', $registerCount)->with('enrollCount', $enrollCount)->with('state',$state);
     }
 
     /**
@@ -186,6 +191,39 @@ class RegisterController extends BaseController
         return response()->json($result ? ['status' => 1] : ['status' => 0]);
     }
 
+    /**
+     * @return mixed
+     * 结束报名
+     */
+    public function complete()
+    {
+        $enrollers = $this->registerRepository->findWhere(['state'=>2],['user_id'])->toArray();
+        $enrollers = $this->registerRepository->getNameById($enrollers)->toArray();
+
+        return Excel::create('enroll', function($excel) use ($enrollers) {
+            $excel->sheet('mySheet', function ($sheet) use ($enrollers) {
+
+                $sheet->fromArray($enrollers);
+                //$sheet->row(1, array('敬文新教育录取名单'));
+                /*$sheet->cells('A', function($cells) {
+                    $cells->setAlignment('center');
+                    $cells->setFontSize(16);
+                });*/
+
+                $sheet->setWidth(array(
+                    'A'     =>  16,
+                    'B'     =>  16,
+                ));
+                $sheet->setCellValue('A1','考生号');
+                $sheet->setCellValue('B1','姓名');
+            });
+        })->store('xls')->export('xls');
+    }
+    public function open()
+    {
+        $result = File::delete($this->filepath);
+        return response()->json($result ? ['status' => 1] : ['status' => 0]);
+    }
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse

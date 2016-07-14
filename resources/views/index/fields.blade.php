@@ -3,9 +3,9 @@
     @parent
 @endsection
 <div class="panel-body">
-    <!-- 学号 字段 -->
+    <!-- 考试号 字段 -->
     <div class="control-group col-sm-4">
-        {!! Form::label('student_id', '学号 *',['class'=>'col-sm-4 control-label']) !!}
+        {!! Form::label('student_id', '考试号 *',['class'=>'col-sm-4 control-label']) !!}
         <div class="col-sm-8">
             <input type="text" disabled="disabled" data-original-title="不可修改" data-trigger="hover" data-toggle="tooltip" value="{{  Auth::guard('web')->user()->student_id }}" class="form-control tooltips">
         </div>

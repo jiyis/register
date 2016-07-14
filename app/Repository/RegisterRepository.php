@@ -102,7 +102,24 @@ class RegisterRepository extends BaseRepository
         return $registers;
     }
 
+    /**
+     * @param $value
+     * @return mixed
+     * 根据状态返回报名的人数
+     */
+    public function getNumOfRegister($value)
+    {
+       return parent::findWhere(['state'=>$value])->count();
+    }
 
+    /**
+     * @param array $user_id
+     * 根据用户ID返回姓名
+     */
+    public function getNameById(array $user_id)
+    {
+        return User::whereIn('id',$user_id)->select('student_id','name')->get();
+    }
     /*public function presenter()
     {
         return "App\\Presenter\\RegisterPresenter";

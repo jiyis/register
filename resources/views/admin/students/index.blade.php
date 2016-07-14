@@ -53,7 +53,7 @@
                                             <label for="selectall"></label>
                                         </span>-->
                                     </th>
-                                    <th>学号</th>
+                                    <th>考试号</th>
                                     <th>姓名</th>
                                     <th>邮箱</th>
                                     <th>头像</th>

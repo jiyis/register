@@ -4,7 +4,7 @@
 @endsection
 <div class="panel-body panel-body-nopadding">
     <div class="form-group">
-        {!! Form::label('name', '学号 *',['class'=>'col-sm-3 control-label']) !!}
+        {!! Form::label('name', '考试号 *',['class'=>'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
             <input type="text" disabled="disabled" data-original-title="不可修改" data-trigger="hover" data-toggle="tooltip" value="{{  $user->student_id }}" class="form-control tooltips">
         </div>

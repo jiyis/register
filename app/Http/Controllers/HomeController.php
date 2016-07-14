@@ -72,4 +72,5 @@ class HomeController extends BaseController
         $res = $academy[$academy_id]['profession'];
         return response()->json($res);
     }
+
 }
