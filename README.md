@@ -64,5 +64,3 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 *  php artisan key:generate
 
 * 火狐中datetmepick的插件会报错，但是其他的插件没有时间选项，解决方法把js文件中this.defaultTimeZone=(new Date()).toString().split("(")[1].slice(0,-1);改为this.defaultTimeZone='GMT '+(new Date()).getTimezoneOffset()/60
-
-测试自动部署1
