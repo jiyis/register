@@ -26,7 +26,7 @@ Route::get('download/result',function(){
     $file = storage_path('exports/enroll.xls');
 
     if(file_exists($file)){
-        return response()->download($file,date('Y',time()).'届敬文新教育录取名单');
+        return response()->download($file,date('Y',time()).'届敬文新教育录取名单.xls');
     }
 });
 
