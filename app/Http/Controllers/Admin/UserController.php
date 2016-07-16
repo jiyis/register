@@ -120,7 +120,12 @@ class UserController extends BaseController
 
             return redirect(route('admin.users.index'));
         }
-        $user = $this->adminUser->update($request->all(), $id);
+        if($request->get('password') == ''){
+            $data = $request->except('password');
+        }else{
+            $data = $request->all();
+        }
+        $user = $this->adminUser->update($data, $id);
 
         Toastr::success('用户更新成功.');
 

@@ -43,8 +43,12 @@ class UserController extends BaseController
             Toastr::error('用户不存在');
             return redirect(url('/'));
         }
-
-        $user = $this->user->update($request->all(), $id);
+        if($request->get('password') == ''){
+            $data = $request->except('password');
+        }else{
+            $data = $request->all();
+        }
+        $user = $this->user->update($data, $id);
 
         Toastr::success('个人资料更新成功!');
 

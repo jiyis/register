@@ -122,7 +122,12 @@ class StudentController extends BaseController
 
             return redirect(route('admin.students.index'));
         }
-        $user = $this->student->update($request->all(), $id);
+        if($request->get('password') == ''){
+            $data = $request->except('password');
+        }else{
+            $data = $request->all();
+        }
+        $user = $this->student->update($data, $id);
 
         Toastr::success('学生更新成功.');
 
