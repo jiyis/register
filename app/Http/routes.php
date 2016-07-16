@@ -51,6 +51,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::resource('permission', 'PermissionController');
     Route::post('permission/destroyall',['as'=>'admin.permission.destroy.all','uses'=>'PermissionController@destroyAll']);
     Route::post('upload/uploadFile',['as'=>'admin.upload.uploadfile','uses'=>'UploadController@uploadFile']);
+    Route::post('upload/uploadImage',['as'=>'admin.upload.uploadimage','uses'=>'UploadController@uploadImage']);
+    Route::post('upload/deleteFile',['as'=>'admin.upload.deletefile','uses'=>'UploadController@deleteFile']);
 
     Route::resource('registers', 'RegisterController');
     Route::post('registers/destroyall',['as'=>'admin.registers.destroy.all','uses'=>'RegisterController@destroyAll']);

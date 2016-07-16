@@ -8,6 +8,11 @@ use Toastr;
 
 abstract class Request extends FormRequest
 {
+    public function authorize()
+    {
+        return true;
+    }
+
     //
     protected function formatErrors(Validator $validator)
     {

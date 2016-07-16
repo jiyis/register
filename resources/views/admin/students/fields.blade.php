@@ -69,7 +69,7 @@
             @endif
             Dropzone.autoDiscover = false;//防止报"Dropzone already attached."的错误
             $("#userpic").dropzone({
-                url: "{!! route('upload.uploadimage') !!}",
+                url: "{!! route('admin.upload.uploadimage') !!}",
                 method: "post",
                 addRemoveLinks: true,
                 dictDefaultMessage: "点击或者拖拽<br><span style='line-height: 50px;'>照片到这里上传</span>",
@@ -81,6 +81,7 @@
                 sending: function(file, xhr, formData) {
                     formData.append("_token", $('[name=_token]').val()); // Laravel expect the token post value to be named _token by default
                     formData.append("name", 'userpic');
+                    formData.append("student_id", student_id);
                 },
                 init: function() {
                     var myDropzone = this;

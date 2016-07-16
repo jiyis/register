@@ -56,7 +56,7 @@ class HomeController extends BaseController
             Toastr::error('报名失败!');
             return redirect(url('/home'));
         }
-        Toastr::success('新用户添加成功!');
+        Toastr::success('报名成功!');
         return redirect('home');
     }
 

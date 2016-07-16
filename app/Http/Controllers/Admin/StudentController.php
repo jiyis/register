@@ -73,7 +73,7 @@ class StudentController extends BaseController
         }
         Toastr::success('新学生添加成功!');
 
-        return redirect('admin/users');
+        return redirect('admin/students');
     }
 
     /**
