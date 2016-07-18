@@ -85,9 +85,12 @@
                 /*border-top: 1px solid #d2d6de;*/
                 color: #fff;
                 position:relative;
-                bottom: 0;
                 text-align: center;
                 z-index: 1;
+                width:100%;
+            }
+            .center-block{
+                width: 100%;
             }
         </style>
     @show
