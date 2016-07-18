@@ -12,7 +12,7 @@
         <th>录取学院</th>
         <th>手机号码</th>
         <th>年级</th>
-        <th>报名时间</th>
+        <th>时间</th>
         <th>状态</th>
         <th>操作</th>
     </thead>
@@ -30,8 +30,8 @@
             <td>{!! $register->gender !!}</td>
             <td>{!! $register->academy !!}</td>
             <td>{!! $register->telphone !!}</td>
-            <td>{!! substr($register->created_at->format('Y'),-2) !!}界</td>
-            <td>{!! $register->created_at->format('Y-m-d') !!}</td>
+            <td>{!! substr($register->created_at->format('Y'),-2) !!}届</td>
+            <td>{!! $register->created_at->format('m-d') !!}</td>
             <td>@if($register->state == 0)
                     <span class="label label-danger">未审核</span>
                 @elseif($register->state == 1)
