@@ -42,6 +42,14 @@
                 padding-bottom: 50px;
                 padding-top: 70px;
             }
+            @media screen and (max-width:720px){
+                .login {
+                    position: relative;
+                    padding-bottom: 10px;
+                    padding-top: 1px;
+                }
+            }
+
             .login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
 
             input {
@@ -78,13 +86,8 @@
                 color: #fff;
                 position:relative;
                 bottom: 0;
-                width: 40%;
-                min-width: 400px;
                 text-align: center;
                 z-index: 1;
-                margin-left:30%;
-                margin-right:30%;
-                padding-bottom:30px;
             }
         </style>
     @show
