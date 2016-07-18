@@ -86,11 +86,12 @@
                 color: #fff;
                 position:relative;
                 text-align: center;
-                z-index: 1;
                 width:100%;
+                padding: 0 10px;
             }
             .center-block{
                 width: 100%;
+                max-width:398px;
             }
         </style>
     @show
