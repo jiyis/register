@@ -115,10 +115,10 @@
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('student_id') ? ' has-error' : '' }}">
-                                <label for="student_id" class="col-md-4 control-label">考试号</label>
+                                <label for="student_id" class="col-md-4 control-label">考生号</label>
 
                                 <div class="col-md-6">
-                                    <input id="student_id" type="text" class="form-control" name="student_id" value="{{ old('student_id') }}"  placeholder="考试号" required="required">
+                                    <input id="student_id" type="text" class="form-control" name="student_id" value="{{ old('student_id') }}"  placeholder="考生号" required="required">
 
                                     @if ($errors->has('student_id'))
                                         <span class="help-block">
@@ -129,7 +129,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">密码</label>
+                                <label for="password" class="col-md-4 control-label">初始密码为身份证号</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password"  placeholder="密码" required="required" >

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\CommonServices;
 use App\Http\Requests\Index\CreateRegisterRequest;
 use App\Repository\RegisterRepository;
-use Toastr;
+use Toastr, Auth;
 
 class HomeController extends BaseController
 {
@@ -38,6 +38,11 @@ class HomeController extends BaseController
         if(!$this->register->check($this->user_id)){
             $register = $this->register->findWhere(['user_id'=>$this->user_id])->first();
             return view('index/result',compact('register'));
+        }
+        //判断是否上传头像，否则跳转到上传页面
+        if(empty(Auth::guard('web')->user()->userpic)){
+            Toastr::error('请先上传个人照片才可报名！');
+            return redirect('changepwd');
         }
         return view('index/home');
     }

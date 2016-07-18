@@ -173,6 +173,18 @@ class StudentController extends BaseController
         return response()->json($result ? ['status' => 1] : ['status' => 0]);
     }
 
+    /**
+     * @return mixed
+     */
+    public function deleteAll()
+    {
+        $result = $this->student->deleteAll();
+
+        Toastr::success('学生全部删除成功.');
+
+        return redirect(route('admin.students.index'));
+    }
+
     public function upload()
     {
         return view('admin.upload.import');

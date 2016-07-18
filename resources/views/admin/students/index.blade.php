@@ -34,6 +34,8 @@
                                             class="glyphicon glyphicon-trash"></i></a>
                                 <a class="btn btn-info tooltips various" data-toggle="tooltip"
                                    data-fancybox-type="iframe" href="{{ route('admin.upload') }}" ><i class="fa fa-share"></i>批量导入</a>
+                                <a class="btn btn-danger tooltips" href="{{ route('admin.students.delete.all') }}"><i
+                                            class="glyphicon glyphicon-trash"></i>全部删除</a>
                             </div>
                         </div><!-- pull-right -->
 
@@ -53,7 +55,7 @@
                                             <label for="selectall"></label>
                                         </span>-->
                                     </th>
-                                    <th>考试号</th>
+                                    <th>考生号</th>
                                     <th>姓名</th>
                                     <th>邮箱</th>
                                     <th>头像</th>

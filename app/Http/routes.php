@@ -68,6 +68,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::resource('students', 'StudentController');
     Route::post('students/import',['as'=>'admin.students.import','uses'=>'StudentController@import']);
     Route::post('students/destroyall',['as'=>'admin.students.destroy.all','uses'=>'StudentController@destroyAll']);
+    Route::get('deleteall',['as'=>'admin.students.delete.all','uses'=>'StudentController@deleteAll']);
 
 });
 

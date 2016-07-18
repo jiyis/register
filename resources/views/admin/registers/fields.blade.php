@@ -4,9 +4,9 @@
 @endsection
 
 <div class="panel-body panel-body-nopadding">
-    <!-- 考试号 字段 -->
+    <!-- 考生号 字段 -->
     <div class="form-group col-sm-12">
-        {!! Form::label('student_id', '考试号 *',['class'=>'col-sm-3 control-label']) !!}
+        {!! Form::label('student_id', '考生号 *',['class'=>'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
             {!! Form::text('student_id', old('student_id'), ['class' => 'form-control tooltips','disabled' => 'disabled']) !!}
         </div>

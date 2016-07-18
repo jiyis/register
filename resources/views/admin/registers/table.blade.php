@@ -5,7 +5,7 @@
                 <input type="checkbox" class="square" id="selectall">
             </label>
         </th>
-        <th>考试号</th>
+        <th>考生号</th>
         <th>姓名</th>
         <th>省份</th>
         <th>性别</th>
