@@ -34,8 +34,8 @@ class AuthenticateAdmin
         $previousUrl = URL::previous();
         $action = Route::currentRouteAction();
         $action = last(explode('@',$action));
-        $scopeAuth = str_replace($action,'*',Route::currentRouteName());
-        if(!Auth::guard($guard)->user()->can(Route::currentRouteName())&&!Auth::guard($guard)->user()->can($scopeAuth)) {
+        //$scopeAuth = str_replace($action,'*',Route::currentRouteName());&&!Auth::guard($guard)->user()->can($scopeAuth)
+        if(!Auth::guard($guard)->user()->can(Route::currentRouteName())) {
             if($request->ajax() && ($request->getMethod() != 'GET')) {
                 return response()->json([
                     'status' => -1,
@@ -43,7 +43,8 @@ class AuthenticateAdmin
                     'msg' => '您没有权限执行此操作'
                 ]);
             } else {
-                return view('admin.errors.403', compact('previousUrl'));
+                return response()->view('admin.errors.403', compact('previousUrl'));
+                //return view('admin.errors.403', compact('previousUrl'));
             }
         }
 
