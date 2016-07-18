@@ -76,7 +76,7 @@
                 /*background: #fff none repeat scroll 0 0;*/
                 /*border-top: 1px solid #d2d6de;*/
                 color: #fff;
-                position:absolute;
+                position:relative;
                 bottom: 0;
                 width: 40%;
                 min-width: 400px;
@@ -129,10 +129,10 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">初始密码为身份证号</label>
+                                <label for="password" class="col-md-4 control-label">密码</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password"  placeholder="密码" required="required" >
+                                    <input id="password" type="password" class="form-control" name="password"  placeholder="初始密码为身份证号" required="required" >
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
