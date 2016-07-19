@@ -62,5 +62,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 *  gulp
 *  php artisan migrate
 *  php artisan key:generate
-
+* entrust缓存不支持file和database,所以需要在.env 中把CACHE_DRIVER=file 改为 CACHE_DRIVER=array 。然后增加DB_PREFIX=jiyi_ ，把resource/sql 目录下 sql导入即可。
 * 火狐中datetmepick的插件会报错，但是其他的插件没有时间选项，解决方法把js文件中this.defaultTimeZone=(new Date()).toString().split("(")[1].slice(0,-1);改为this.defaultTimeZone='GMT '+(new Date()).getTimezoneOffset()/60
+
+
