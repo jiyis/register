@@ -64,7 +64,7 @@
             //上传个人照片
             var userpic = '/';
             @if(isset($user))
-                var userpic =  "{{ '/'.$user->userpic }}";
+                var userpic =  "{{ $user->userpic }}";
                 var student_id = "{{ $user->student_id}}";
             @endif
             Dropzone.autoDiscover = false;//防止报"Dropzone already attached."的错误
@@ -89,7 +89,7 @@
                     if(userpic != '/'){
                         var mockFile = { name: 'userpic-'+student_id };
                         myDropzone.options.addedfile.call(myDropzone, mockFile);
-                        myDropzone.options.thumbnail.call(myDropzone, mockFile, userpic);
+                        myDropzone.options.thumbnail.call(myDropzone, mockFile, '/'+userpic);
                         $('.dz-size').empty();
                         $('.dz-details').addClass('download');
                         $('.dz-image').addClass('download');

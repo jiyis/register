@@ -41,7 +41,20 @@ class CreateRegisterRequest extends Request
             'name.max' => '用户名称最多20个字符',
             'email.required' => '邮箱不能为空',
             'email.email' => '邮箱非法',
-            'password.max' => '密码最多20个字符'
+            'gender.required' => '性别不能为空',
+            'stature.required' => '身高不能为空',
+            'academy.required' => '学院不能为空',
+            'middleschool.required' => '毕业中学不能为空',
+            'telphone.required' => '手机号码不能为空',
+            'postcode.required' => '邮编不能为空',
+            'address.required' => '家庭住址不能为空',
+            //'family.required' => 'required',
+            'hobby.required' => '爱好特长不能为空',
+            'personal.required' => '个人自述不能为空',
+            //'certificate.required' => 'required',
+            'reason.required' => '申请理由不能为空',
+            'province.required' => '省份不能为空',
+
         ];
     }
 }

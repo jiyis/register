@@ -20,14 +20,14 @@
 
 
     <div class="form-group">
-        {!! Form::label('password', '密码 *',['class'=>'col-sm-3 control-label']) !!}
+        {!! Form::label('password', '密码 ',['class'=>'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {!! Form::password('password', ['class' => 'form-control tooltips','data-toggle' => 'tooltip','data-trigger' => 'hover']) !!}
+            {!! Form::password('password', ['class' => 'form-control tooltips','data-toggle' => 'tooltip','data-trigger' => 'hover','placeholder' => '不输入则不修改密码']) !!}
         </div>
     </div>
 
     <div class="control-group">
-        <label class="col-sm-3 control-label" for="userpic">个人照片 *<br><span class="uploadtips">请上传125*165尺寸的照片，否则会出现照片残缺。</span></label>
+        <label class="col-sm-3 control-label" for="userpic">个人照片 *<br><span class="uploadtips">请上传正面免冠证件片，125*165尺寸左右，否则会出现照片残缺。</span></label>
         <div class="col-sm-6">
             <div id="userpic" class="register-file dropzone"  required="required"> </div>
             <input type="hidden" name="userpic" id="userpicval">
@@ -58,7 +58,7 @@
                 radioClass: 'iradio_square-purple'
             });
             //上传个人照片
-            var userpic =  "{{ '/'.$user->userpic }}";
+            var userpic =  "{{ $user->userpic }}";
             Dropzone.autoDiscover = false;//防止报"Dropzone already attached."的错误
             $("#userpic").dropzone({
                 url: "{!! route('upload.uploadimage') !!}",
@@ -77,10 +77,10 @@
                 init: function() {
                     var myDropzone = this;
                     //如果已经上传，显示出来
-                    if(userpic != '/'){
+                    if(userpic != ''){
                         var mockFile = { name: 'userpic-'+"{{ $user->student_id}}" };
                         myDropzone.options.addedfile.call(myDropzone, mockFile);
-                        myDropzone.options.thumbnail.call(myDropzone, mockFile, userpic);
+                        myDropzone.options.thumbnail.call(myDropzone, mockFile, '/'+userpic);
                         $('.dz-details').hide();
                         $('#userpicval').val(userpic);
                     }

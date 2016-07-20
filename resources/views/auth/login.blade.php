@@ -106,73 +106,67 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                @if(file_exists(storage_path('exports/enroll.xls')))
-                    <div class="panel-heading">敬文新教育书院报名系统</div>
-                    <div class="panel-body">
+                <div class="panel-heading">敬文新教育书院报名系统</div>
+                <div class="panel-body">
+                    @if(file_exists(storage_path('exports/enroll.xls')))
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-md-offset-3 text-center">
                                 <h2 class="fast"><i class="fa fa-hand-peace-o"></i> 报名时间已经结束 </h2>
                                 <p style="font-size: 16px;padding: 10px;">请点击<a href="{{ url('download/result') }}" style="padding: 6px;"><strong class="text-error">录取名单</strong></a>下载查看录取名单</p>
                             </div>
                         </div>
-                    </div>
-                    @else
-                    <div class="panel-heading">敬文新教育书院报名系统</div>
-                    <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                            {{ csrf_field() }}
-                            <div class="form-group{{ $errors->has('student_id') ? ' has-error' : '' }}">
-                                <label for="student_id" class="col-md-4 control-label">考生号</label>
+                    @endif
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                        {{ csrf_field() }}
+                        <div class="form-group{{ $errors->has('student_id') ? ' has-error' : '' }}">
+                            <label for="student_id" class="col-md-4 control-label">考生号</label>
 
-                                <div class="col-md-6">
-                                    <input id="student_id" type="text" class="form-control" name="student_id" value="{{ old('student_id') }}"  placeholder="考生号" required="required">
+                            <div class="col-md-6">
+                                <input id="student_id" type="text" class="form-control" name="student_id" value="{{ old('student_id') }}"  placeholder="考生号" required="required">
 
-                                    @if ($errors->has('student_id'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('student_id') }}</strong>
-                                    </span>
-                                    @endif
+                                @if ($errors->has('student_id'))
+                                    <span class="help-block">
+                                    <strong>{{ $errors->first('student_id') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">密码</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password"  placeholder="初始密码为身份证号" required="required" >
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox icheck">
+                                    <label>
+                                        <input type="checkbox" name="remember" value="{{ old('remember') }}">&nbsp;&nbsp;记住我
+                                    </label>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">密码</label>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-sign-in"></i> 登录
+                                </button>
 
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password"  placeholder="初始密码为身份证号" required="required" >
-
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
+                                <!--<a class="btn btn-link" href="{{ url('/password/reset') }}">忘记密码</a>-->
                             </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox icheck">
-                                        <label>
-                                            <input type="checkbox" name="remember" value="{{ old('remember') }}">&nbsp;&nbsp;记住我
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-btn fa-sign-in"></i> 登录
-                                    </button>
-
-                                    <!--<a class="btn btn-link" href="{{ url('/password/reset') }}">忘记密码</a>-->
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                @endif
-
-
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

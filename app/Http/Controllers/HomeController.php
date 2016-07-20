@@ -34,6 +34,11 @@ class HomeController extends BaseController
      */
     public function index()
     {
+        //判断是否报名结束
+        if($this->register->finish()){
+            $register = $this->register->findWhere(['user_id'=>$this->user_id])->first();
+            return view('index/finish',compact('register'));
+        }
         //判断是否已经报名成功，报名后不允许再次进入
         if(!$this->register->check($this->user_id)){
             $register = $this->register->findWhere(['user_id'=>$this->user_id])->first();
@@ -44,6 +49,7 @@ class HomeController extends BaseController
             Toastr::error('请先上传个人照片才可报名！');
             return redirect('changepwd');
         }
+
         return view('index/home');
     }
 

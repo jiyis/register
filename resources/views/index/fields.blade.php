@@ -95,7 +95,7 @@
         <table class="table  table-bordered table-hover family-table">
         <thead>
         <tr>
-            <th colspan="8" class="text-center family-title">家庭成员信息</th>
+            <th colspan="8" class="text-center family-title">家庭成员信息（*）</th>
         </tr>
         <tr>
             <th style="width: 12%">
@@ -117,7 +117,7 @@
                 健康状况
             </th>
             <th style="width: 12%">
-                手机
+                联系电话
             </th>
         </tr>
         </thead>
@@ -220,7 +220,7 @@
 
     <!-- 申请理由 Field -->
     <div class="control-group col-sm-12 col-lg-12">
-        {!! Form::label('hobby', '申请理由:',['class'=>'col-sm-2 control-label']) !!}
+        {!! Form::label('hobby', '申请理由 *',['class'=>'col-sm-2 control-label']) !!}
         <div class="col-sm-8">
             {!! Form::textarea('reason', old('reason'), ['class' => 'form-control tooltips', 'rows' => '6','maxlength' => '500','data-toggle' => 'tooltip','data-trigger' => 'hover','data-original-title' => '最多500字',' placeholder' => '最多500字']) !!}
         </div>
@@ -333,7 +333,7 @@
 
     <!-- 个人自述 字段 -->
     <div class="control-group col-sm-12">
-        <label class="col-sm-2 control-label" for="personal"><span>个人自述 *</span><br><span class="uploadtips">撰写个人申请报告,包括自身成长经历及体会、个性特长及取得的成果、进入高校的努力方向及设想等（须由本人亲笔书写，不超过1000字，用A4纸）</span></label>
+        <label class="col-sm-2 control-label" for="personal"><span>个人自述 *</span><br><span class="uploadtips">自述内容包括成长经历及体会、个性特长及取得的成果、进入高校的努力方向及设想等。须由本人亲笔书写，不超过1000字，用A4大小稿纸书写。扫描或者拍照后上传，上传文件不超过20M。</span></label>
         <div class="col-sm-6">
             <div id="personal" class="register-file dropzone"  required="required"> </div>
             <input type="hidden" name="personal" id="personalval">
@@ -342,7 +342,7 @@
 
     <!-- 获奖证书 字段 -->
     <div class="control-group col-sm-12">
-        <label class="col-sm-2 control-label" for="certificate"><span>获奖证书 *</span><br><span class="uploadtips">需要把高中期间获奖证书（不超过五件）扫描或者拍照，打包成压缩包上传。</span></label>
+        <label class="col-sm-2 control-label" for="certificate"><span>获奖证书 </span><br><span class="uploadtips">需要把高中期间获奖证书（不超过五件）扫描或者拍照，打包成压缩包后上传，上传文件不超过20M。</span></label>
         <div class="col-sm-6">
             <div id="certificate" class="register-file dropzone" required="required" > </div>
             <input type="hidden" name="certificate" id="certificateval">
@@ -354,7 +354,8 @@
 <div class="panel-footer">
     <div class="row">
         <div class="col-sm-3 col-sm-offset-4">
-            <button class="btn btn-success">保存</button>
+            <a href="javascript:void(0);"  class="btn btn-success btn-save">保存</a>
+            <button class="btn btn-success  btn-publish hide">保存</button>
             &nbsp;
             <a href="{{ action('HomeController@index') }}" class="btn btn-default pull-right">取消</a>
         </div>
@@ -459,6 +460,17 @@
                     dataType: 'json',
                 });
             }
+            //确认提交
+            $(".btn-save").click(function () {
+                if($(".register")[0].checkValidity()) {
+                    swal({   title: "确定要提交报名信息吗?",   text: "提交后将无法再次更改，请确保填写的信息正确无误。",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "确定",cancelButtonText: "取消",   closeOnConfirm: false }, function(){
+                        $('.btn-publish').click();
+                    });
+                }else{
+                    $('.btn-publish').click();
+                }
+
+            });
         })
     </script>
 @endsection

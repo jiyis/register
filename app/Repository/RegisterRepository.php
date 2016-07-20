@@ -47,6 +47,14 @@ class RegisterRepository extends BaseRepository
     }
 
     /**
+     * 是否报名完成
+     */
+    public function finish()
+    {
+        if(file_exists(storage_path('exports/enroll.xls'))) return true;
+        return false;
+    }
+    /**
      * @param $id
      * @return mixed
      * 审核和取消审核切换

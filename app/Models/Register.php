@@ -82,9 +82,9 @@ class Register extends Model
         'address' => 'required',
         //'family' => 'required',
         'hobby' => 'required',
-        'reward' => 'required',
+        //'reward' => 'required',
         'personal' => 'required',
-        'certificate' => 'required',
+        //'certificate' => 'required',
         'reason' => 'required',
     ];
 

@@ -9,7 +9,7 @@
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title">编辑用户</h4>
+                            <h4 class="panel-title">编辑用户(*为必填)</h4>
                         </div>
 
                         {!! Form::model($user, ['route' => ['user.update', $user],'class' => 'form-horizontal form-bordered', 'method' => 'patch', 'files' => true ]) !!}
