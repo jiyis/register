@@ -29,7 +29,7 @@ Route::get('download/result',function(){
         return response()->download($file,date('Y',time()).'届敬文新教育录取名单.xls');
     }
 });
-
+Route::get('download/word', ['as'=>'download.word','uses'=>'HomeController@getword']);
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     //Route::auth();

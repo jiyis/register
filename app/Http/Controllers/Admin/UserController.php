@@ -145,12 +145,12 @@ class UserController extends BaseController
         if (empty($user)) {
             Toastr::error('用户未找到');
 
-            return redirect(route('admin.users.index'));
+            return response()->json(['status' => 0]);
         }
         $result = $this->adminUser->delete($id);
         //Toastr::success('用户删除成功');
 
-        return redirect(route('admin.users.index'));
+        return response()->json($result ? ['status' => 1] : ['status' => 0]);
     }
 
     /**

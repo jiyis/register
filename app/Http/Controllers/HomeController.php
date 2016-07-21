@@ -84,4 +84,17 @@ class HomeController extends BaseController
         return response()->json($res);
     }
 
+    /**
+     * @return mixed
+     * 下载个人自述的pdf
+     */
+    public function getword()
+    {
+        $file = storage_path('app/public/apply.pdf');
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return response()->download($file,'苏州科技大学敬文新教育书院个人自述申请表.pdf',$headers);
+    }
+
 }
