@@ -19,7 +19,7 @@
                                     @else
                                     <h2 class="fast"><i class="fa fa-clock-o"></i> 您已经成功报名 </h2>
                                     <ol class="text-left">
-                                        <li>请继续将视频资料上传到邮箱:w_newedu@126.com,视频格式为mp4、mkv.</li>
+                                        <li>请继续将视频资料上传到邮箱:jw_newedu@126.com,视频格式为mp4、mkv.</li>
                                         <li>8月20日10:00再次登录该报名系统，查询初审结果。</li>
                                     </ol>
                                 @endif
