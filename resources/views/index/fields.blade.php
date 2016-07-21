@@ -333,7 +333,7 @@
 
     <!-- 个人自述 字段 -->
     <div class="control-group col-sm-12">
-        <label class="col-sm-2 control-label" for="personal"><span>个人自述 *</span><br><span class="uploadtips">自述内容包括成长经历及体会、个性特长及取得的成果、进入高校的努力方向及设想等。须由本人亲笔书写，不超过1000字，用A4大小稿纸书写。扫描或者拍照后上传，上传文件不超过20M。</span></label>
+        <label class="col-sm-2 control-label" for="personal"><span>个人自述 *</span><br><span class="uploadtips">请点击下载《苏州科技大学敬文新教育书院个人自述申请表》（链接文档）后打印，手工填写完成后分页扫描或拍照，打包为压缩文件后上传，上传文件不超过3M。</span></label>
         <div class="col-sm-6">
             <div id="personal" class="register-file dropzone"  required="required"> </div>
             <input type="hidden" name="personal" id="personalval">
@@ -342,7 +342,7 @@
 
     <!-- 获奖证书 字段 -->
     <div class="control-group col-sm-12">
-        <label class="col-sm-2 control-label" for="certificate"><span>获奖证书 </span><br><span class="uploadtips">需要把高中期间获奖证书（不超过五件）扫描或者拍照，打包成压缩包后上传，上传文件不超过20M。</span></label>
+        <label class="col-sm-2 control-label" for="certificate"><span>获奖证书 </span><br><span class="uploadtips">需要把高中期间获奖证书（不超过五件）扫描或者拍照，打包成压缩包后上传，上传文件不超过7M。</span></label>
         <div class="col-sm-6">
             <div id="certificate" class="register-file dropzone" required="required" > </div>
             <input type="hidden" name="certificate" id="certificateval">
