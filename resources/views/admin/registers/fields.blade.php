@@ -417,29 +417,34 @@
             Dropzone.autoDiscover = false;//防止报"Dropzone already attached."的错误
             var personal =  "{{ '/'.$register->personal }}";
             $("#personal").dropzone({
-                url: "{!! route('upload.uploadimage') !!}",
+                url: "{!! route('upload.uploadfile') !!}",
                 method: "post",
                 addRemoveLinks: true,
                 dictDefaultMessage: "点击或者拖拽<br><span style='line-height: 50px;'>文件到这里上传</span>",
                 dictCancelUpload: "x",
                 dictRemoveFile: '移除文件',
                 maxFiles: 1,
-                maxFilesize: 5,
-                acceptedFiles: "image/*",
+                maxFilesize: 20,
+                acceptedFiles: ".rar,.zip,.gz,.7z,.tar.gz",
                 sending: function(file, xhr, formData) {
                     formData.append("_token", $('[name=_token]').val()); // Laravel expect the token post value to be named _token by default
                     formData.append("name", 'personal');
                 },
                 init: function() {
                     var myDropzone = this;
+                    //如果已经上传，显示出来
                     if(personal != '/'){
-                        var mockFile = { name: 'personal-'+"{{ $register->personal}}" };
+                        var mockFile = { name: '点击下载个人自述扫描件' };
                         myDropzone.options.addedfile.call(myDropzone, mockFile);
-                        myDropzone.options.thumbnail.call(myDropzone, mockFile, personal);
-                        $('.dz-details').hide();
+                        myDropzone.options.thumbnail.call(myDropzone, mockFile, '/assets/images/download.png');
+                        $('.dz-size').empty();
+                        $('.dz-details').addClass('download');
+                        $('.dz-image').addClass('download');
+                        $('.dz-progress').remove();
+                        $('.dz-success-mark').remove();
+                        $('.dz-error-mark').remove();
                         $('#personalval').val("{{ $register->personal}}");
                     }
-
                     this.on("maxfilesexceeded", function(file) {
                         swal("最多只能上传一个文件，请先移除!");
                         myDropzone.removeFile(file);
