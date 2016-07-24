@@ -60,6 +60,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('exportall',['as'=>'admin.export.all','uses'=>'RegisterController@exportAll']);
     Route::get('download',['as'=>'admin.download','uses'=>'RegisterController@download']);
     Route::post('registers/check',['as'=>'admin.registers.check','uses'=>'RegisterController@check']);
+    Route::post('registers/goinit',['as'=>'admin.registers.goinit','uses'=>'RegisterController@goinit']);
     Route::post('registers/complete',['as'=>'admin.register.complete','uses'=>'RegisterController@complete']);
     Route::post('registers/open',['as'=>'admin.register.open','uses'=>'RegisterController@open']);
 
@@ -69,6 +70,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::post('students/import',['as'=>'admin.students.import','uses'=>'StudentController@import']);
     Route::post('students/destroyall',['as'=>'admin.students.destroy.all','uses'=>'StudentController@destroyAll']);
     Route::get('deleteall',['as'=>'admin.students.delete.all','uses'=>'StudentController@deleteAll']);
+
+    Route::resource('systems', 'SystemController');
 
 });
 

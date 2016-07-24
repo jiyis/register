@@ -34,14 +34,17 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        //判断是否报名结束
+        $register = $this->register->findWhere(['user_id'=>$this->user_id])->first();
+        //报名结束
         if($this->register->finish()){
-            $register = $this->register->findWhere(['user_id'=>$this->user_id])->first();
             return view('index/finish',compact('register'));
         }
-        //判断是否已经报名成功，报名后不允许再次进入
+        //初审结束，录取进行中
+        if($this->register->reviewFinish()){
+            return view('index/review',compact('register'));
+        }
+        //判断是否已经报名成功，报名后不允许再次进入，初审进行中
         if(!$this->register->check($this->user_id)){
-            $register = $this->register->findWhere(['user_id'=>$this->user_id])->first();
             return view('index/result',compact('register'));
         }
         //判断是否上传头像，否则跳转到上传页面

@@ -12,7 +12,6 @@
         <th>录取学院</th>
         <th>手机号码</th>
         <th>年级</th>
-        <th>时间</th>
         <th>状态</th>
         <th>操作</th>
     </thead>
@@ -31,11 +30,14 @@
             <td>{!! $register->academy !!}</td>
             <td>{!! $register->telphone !!}</td>
             <td>{!! substr($register->created_at->format('Y'),-2) !!}届</td>
-            <td>{!! $register->created_at->format('m-d') !!}</td>
-            <td>@if($register->state == 0)
-                    <span class="label label-danger">未审核</span>
-                @elseif($register->state == 1)
-                    <span class="label label-warning">已审核</span>
+            <td>@if($register->review_state == 0)
+                    <span class="label label-default">未操作</span>
+                @elseif($register->review_state == 1)
+                    <span class="label label-warning">初审未通过</span>
+                @elseif($register->review_state == 2 && $register->register_state == 0)
+                    <span class="label label-info">已初审</span>
+                @elseif($register->review_state == 2 && $register->register_state == 1)
+                    <span class="label label-danger">录取未通过</span>
                 @else
                     <span class="label label-success">已录取</span>
                 @endif
@@ -43,22 +45,11 @@
             <td>
                 <a href="{{ route('admin.registers.edit',['id'=>$register->id]) }}"
                    class="btn btn-white btn-xs"><i class="fa fa-pencil"></i> 编辑</a>
-                <a class="btn btn-danger btn-xs user-delete"
+                <!--<a class="btn btn-danger btn-xs user-delete"
                    data-href="{{ route('admin.registers.destroy',$register->id) }}">
-                    <i class="fa fa-trash-o"></i> 删除</a>
-                @if($register->state == 0)
-                    <a class="btn btn-primary btn-xs check"
-                       data-href="{{ route('admin.registers.check',['id' => $register->id,'value'=> 1]) }}">
-                        <i class="fa fa-share"></i> 审核</a>
-                @elseif($register->state == 1)
-                    <a class="btn btn-success btn-xs check"
-                       data-href="{{ route('admin.registers.check',['id' => $register->id,'value'=> 2]) }}">
-                        <i class="fa fa-share"></i> 录取</a>
-                @else
-                    <a class="btn btn-danger btn-xs check"
-                       data-href="{{ route('admin.registers.check',['id' => $register->id,'value'=> 0]) }}">
-                        <i class="fa fa-share"></i> 取消</a>
-                @endif
+                    <i class="fa fa-trash-o"></i> 删除</a>-->
+                {!!  $register->state !!}
+
 
                 <a class="btn btn-info btn-xs"
                    href="{{ route('admin.registers.export',['id'=>$register->id]) }}">

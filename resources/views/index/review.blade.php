@@ -10,11 +10,13 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-md-offset-3 text-center">
-                                <h2 class="fast"><i class="fa fa-clock-o"></i> 您已经成功报名 </h2>
-                                <ol class="text-left">
-                                    <li>请继续将视频资料上传到邮箱:jw_newedu@126.com,视频格式为mp4、mkv.</li>
-                                    <li>8月20日10:00再次登录该报名系统，查询初审结果。</li>
-                                </ol>
+                                @if($register)
+                                    <h2 class="fast"><i class="fa fa-smile-o"></i> 恭喜您已通过初审 </h2>
+                                    <p>接下来会进行复审，请耐心等到录取通知结果！</p>
+                                @else
+                                    <h2 class="fast"><i class="fa fa-meh-o"></i> 很遗憾！您未通过初审 </h2>
+                                    <p></p>
+                                @endif
                             </div>
                         </div>
                     </div>

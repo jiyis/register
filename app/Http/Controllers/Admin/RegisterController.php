@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\CreateRegisterRequest;
 use App\Http\Requests\Admin\UpdateRegisterRequest;
 use App\Repository\RegisterRepository;
+use App\Repository\SystemRepository;
 use Illuminate\Http\Request;
 use Breadcrumbs, Toastr, Response, Excel,File;
 use App\Services\CommonServices;
@@ -14,12 +15,14 @@ class RegisterController extends BaseController
 {
     /** @var  RegisterRepository */
     private $registerRepository;
+    private $systemRepository;
     private $filepath;
 
-    public function __construct(RegisterRepository $registerRepo)
+    public function __construct(RegisterRepository $registerRepo,SystemRepository $systemRepository)
     {
         parent::__construct();
         $this->registerRepository = $registerRepo;
+        $this->systemRepository = $systemRepository;
         $this->filepath = storage_path('exports/enroll.xls');
 
         Breadcrumbs::register('admin-registers', function ($breadcrumbs) {
@@ -45,12 +48,13 @@ class RegisterController extends BaseController
         });
 
         $registers = $this->registerRepository->all();
-        $registerCount = $this->registerRepository->getNumOfRegister(1);
+        $registerCount = $this->registerRepository->getNumOfReview(2);
+        $unenrollCount = $this->registerRepository->getNumOfRegister(1);
         $enrollCount = $this->registerRepository->getNumOfRegister(2);
         $state = file_exists($this->filepath);
 
         return view('admin.registers.index')
-            ->with('registers', $registers)->with('registerCount', $registerCount)->with('enrollCount', $enrollCount)->with('state',$state);
+            ->with('registers', $registers)->with('registerCount', $registerCount)->with('enrollCount', $enrollCount)->with('unenrollCount',$unenrollCount)->with('state',$state);
     }
 
     /**
@@ -197,7 +201,8 @@ class RegisterController extends BaseController
      */
     public function complete()
     {
-        $enrollers = $this->registerRepository->findWhere(['state'=>2],['user_id'])->toArray();
+        $this->systemRepository->update(['register_status'=>0,'review_status'=>0],1);
+        $enrollers = $this->registerRepository->findWhere(['register_state'=>2],['user_id'])->toArray();
         $enrollers = $this->registerRepository->getNameById($enrollers)->toArray();
 
         return Excel::create('enroll', function($excel) use ($enrollers) {
@@ -234,8 +239,25 @@ class RegisterController extends BaseController
         $data = $request->all();
         $id = (int)$data['id'];
         $value = (int)$data['value'];
+        $type = $data['type'];
 
-        $result = $this->registerRepository->review($id,$value);
+        $result = $this->registerRepository->review($id,$value,$type);
+
+        return response()->json($result ? ['status' => 1] : ['status' => 0]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * 撤销到最初始状态
+     */
+    public function goinit(Request $request)
+    {
+        $data = $request->all();
+        $id = (int)$data['id'];
+
+        $this->registerRepository->review($id,0,'register_state');
+        $result = $this->registerRepository->review($id,0,'review_state');
 
         return response()->json($result ? ['status' => 1] : ['status' => 0]);
     }

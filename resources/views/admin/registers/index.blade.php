@@ -25,14 +25,14 @@
                                     <a class="btn btn-info tooltips multiexport" data-toggle="tooltip"
                                        data-original-title="批量导出" ><i class="fa fa-share"></i>批量导出</a>
 									@if($state)
-										<a class="btn btn-success tooltips registeropen" data-toggle="tooltip" data-original-title="完成报名" ><i class="fa fa-cloud-download"></i>开启报名</a>
+										<a class="btn btn-danger tooltips registeropen" data-toggle="tooltip" data-original-title="完成报名" ><i class="fa fa-cloud-download"></i>删除录取名单</a>
 										@else
-										<a class="btn btn-danger tooltips registerclose" data-toggle="tooltip" data-original-title="完成报名" ><i class="fa fa-cloud-download"></i>关闭报名</a>
+										<a class="btn btn-success tooltips registerclose" data-toggle="tooltip" data-original-title="完成报名" ><i class="fa fa-cloud-download"></i>生成录取名单</a>
 									@endif
 	                            </div>
 	                        </div><!-- pull-right -->
 
-	                        <h4 class="subtitle mb5">报名成员列表 <span style="font-size: 14px;padding-left: 8px;color: firebrick">当前学年报名学生中共有<b style="color: #3b97d7;padding: 0 5px;">{{ $registerCount }}个学生在已审核状态</b>,<b style="color: darkorange;padding: 0 5px;">{{ $enrollCount }}个学生已被录取</b></span></h4>
+	                        <h4 class="subtitle mb5">报名成员列表 <span style="font-size: 14px;padding-left: 8px;color: firebrick">当前共有<b style="color: #3b97d7;padding: 0 5px;">{{ $registerCount }}个学生在已审核状态</b>,<b style="color: darkorange;padding: 0 5px;">{{ $unenrollCount }}个学生已初审未录取</b><b style="color: darkorange;padding: 0 5px;">{{ $enrollCount }}个学生已被录取</b></span></h4>
  							<div class="table-responsive col-md-12">
 	                            @if($registers->isEmpty())
 	                                <div class="well text-center">暂无报名成员信息！</div>
@@ -84,30 +84,30 @@
 		//完成报名
 		$(".registerclose").click(function () {
 
-			swal({   title: "确定要结束报名吗?",   text: "结束后将无法报名，确定要结束吗？",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "确定",cancelButtonText: "取消",   closeOnConfirm: false }, function(){
+			swal({   title: "确定要生成录取名单吗?",   text: "生成录取名单后前台会显示录取名单，确定要生成录吗？",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "确定",cancelButtonText: "取消",   closeOnConfirm: false }, function(){
 				$.ajax({
 					url: "{{ route('admin.register.complete') }}",
 					type: "POST"
 				}).done(function(data) {
-					swal("操作成功!", "已停止报名！", "success");
+					swal("操作成功!", "已生成录取名单！", "success");
 					window.location.reload();
 				}).error(function(data) {
-					swal("OMG", "删除操作失败了!", "error");
+					swal("OMG", "操作失败了!", "error");
 				});
 			});
 		});
 		//取消报名
 		$(".registeropen").click(function () {
 
-			swal({   title: "确定要开启报名吗?",   text: "开启将开始报名，确定要开启吗？",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "确定",cancelButtonText: "取消",   closeOnConfirm: false }, function(){
+			swal({   title: "确定要删除录取名单吗?",   text: "删除录取名单后前台会不显示，确定要删除吗？",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "确定",cancelButtonText: "取消",   closeOnConfirm: false }, function(){
 				$.ajax({
 					url: "{{ route('admin.register.open') }}",
 					type: "POST"
 				}).done(function(data) {
-					swal("操作成功!", "已开启报名！", "success");
+					swal("操作成功!", "已删除录取名单！", "success");
 					window.location.reload();
 				}).error(function(data) {
-					swal("OMG", "删除操作失败了!", "error");
+					swal("OMG", "操作失败了!", "error");
 				});
 			});
 		});
@@ -134,7 +134,7 @@
 			$('#datatables').dataTable({
 				columnDefs:[{
 					orderable:false,//禁用排序
-					'aTargets':[0,3,4,5,6,9,10]   //指定的列
+					'aTargets':[0,3,4,5,6,9]   //指定的列
 				}],
 				order: [[ 1, "asc" ]],
 				autoWidth: true,
