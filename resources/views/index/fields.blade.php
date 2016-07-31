@@ -354,8 +354,8 @@
 <div class="panel-footer">
     <div class="row">
         <div class="col-sm-3 col-sm-offset-4">
-            <a href="javascript:void(0);"  class="btn btn-success btn-save">保存</a>
-            <button class="btn btn-success  btn-publish hide">保存</button>
+            <a href="javascript:void(0);"  class="btn btn-success btn-save">提交</a>
+            <button class="btn btn-success  btn-publish hide">提交</button>
             &nbsp;
             <a href="{{ action('HomeController@index') }}" class="btn btn-default pull-right">取消</a>
         </div>
