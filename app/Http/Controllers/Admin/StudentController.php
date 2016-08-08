@@ -210,6 +210,10 @@ class StudentController extends BaseController
             $data = current($data);
 
             if(!empty($data)){
+                $checkTit = array_diff(array_keys(current($data)),['ksh','xm','sfzh']);
+                if(!empty($checkTit)){
+                    return response()->json(['status' => 0,'msg' => '表格不规范，请检查第一行是否为ksh,xm,sfzh的格式']);
+                }
                 if($res = array_intersect(array_column($data,'ksh'),$allStudents)){
                     return response()->json(['status' => 0,'msg' => 'excel中部分数据已存在数据库中，请不要重复导入。']);
                 }
