@@ -1,4 +1,4 @@
-@media (min-width:1200px){.container{width:1200px}}
+@media (min-width:1200px){.container{width:96%;}}
 .form-group::after {
     clear: both;
     display: block;
