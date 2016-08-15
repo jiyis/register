@@ -136,7 +136,7 @@
 					orderable:false,//禁用排序
 					'aTargets':[0,3,4,5,6,9]   //指定的列
 				}],
-				order: [[ 1, "asc" ]],
+				//order: [[ 1, "asc" ]],
 				autoWidth: true,
 				language: {
 					url: '/assets/language/datatables-zh.json'
