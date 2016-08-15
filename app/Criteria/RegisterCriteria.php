@@ -18,7 +18,7 @@ class RegisterCriteria implements CriteriaInterface
 
     public function apply($model, RepositoryInterface $repository)
     {
-        $model = $model->where('created_at','>',Carbon::now()->startOfYear())->where('created_at','<',Carbon::now()->endOfYear())->orderBy('created_at','asc')->orderBy('register_state','asc')->orderBy('review_state','asc');
+        $model = $model->where('created_at','>',Carbon::now()->startOfYear())->where('created_at','<',Carbon::now()->endOfYear())->orderBy('created_at','asc');
         //$model = $model->where(DB::raw('YEAR(created_at)'),Carbon::now()->format('Y'))->orderBy('created_at')->orderBy('state','asc');
         return $model;
     }
