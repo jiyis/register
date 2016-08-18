@@ -543,7 +543,7 @@ class RegisterController extends BaseController
     /**************************************************************************/
     public function getAllExcel()
     {
-        File::delete('allstudents.zip');
+        File::delete('allstudents.zip',true);
         File::deleteDirectory(storage_path('allstudents'));
         $registers = $this->registerRepository->all();
         foreach ($registers as $k=>$v){
