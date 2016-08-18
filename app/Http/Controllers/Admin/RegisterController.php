@@ -550,7 +550,7 @@ class RegisterController extends BaseController
             $this->exportNew($v);
         }
         shell_exec("zip -r /resource/register/public/allstudents.zip /resource/register/storage/allstudents/*");
-        return response()->download(public_path(allstudents.zip));
+        return response()->download(public_path('allstudents.zip'));
 
     }
     public function exportNew($data)
