@@ -550,7 +550,8 @@ class RegisterController extends BaseController
     }
     public function exportNew($data)
     {
-        return Excel::create(iconv('UTF-8', 'GBK', $data->student_id.$data->name), function($excel) use ($data) {
+        File::deleteDirectory(storage_path('allstudents'));
+        return Excel::create($data->student_id.$data->name, function($excel) use ($data) {
             $excel->sheet('mySheet', function($sheet) use ($data)
             {
                 //$sheet->getDefaultStyle()->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);//水平居左
