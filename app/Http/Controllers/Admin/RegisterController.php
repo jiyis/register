@@ -543,6 +543,7 @@ class RegisterController extends BaseController
     /**************************************************************************/
     public function getAllExcel()
     {
+        File::deleteDirectory(storage_path('allstudents'));
         $registers = $this->registerRepository->all();
         foreach ($registers as $k=>$v){
             $this->exportNew($v);
@@ -550,7 +551,6 @@ class RegisterController extends BaseController
     }
     public function exportNew($data)
     {
-        File::deleteDirectory(storage_path('allstudents'));
         return Excel::create($data->student_id.$data->name, function($excel) use ($data) {
             $excel->sheet('mySheet', function($sheet) use ($data)
             {
