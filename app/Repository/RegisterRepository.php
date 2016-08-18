@@ -117,6 +117,7 @@ class RegisterRepository extends BaseRepository
         foreach ($registers as $key => $register) {
             $register->student_id = $users[$register->user_id]['student_id'];
             $register->name = $users[$register->user_id]['name'];
+            $register->userpic = $users[$register->user_id]['userpic'];
             $register->gender =  $register->gender ? '男' : '女';
             $register->province =  $common['province'][$register->province];
             //$register->politics =  $common['politics'][$register->politics];

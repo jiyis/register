@@ -57,6 +57,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::resource('registers', 'RegisterController');
     Route::post('registers/destroyall',['as'=>'admin.registers.destroy.all','uses'=>'RegisterController@destroyAll']);
     Route::get('registers/export/{registers}',['as'=>'admin.registers.export','uses'=>'RegisterController@export']);
+    Route::get('exportallexcel',['as'=>'admin.registers.getallexcel','uses'=>'RegisterController@getAllExcel']);
     Route::get('exportall',['as'=>'admin.export.all','uses'=>'RegisterController@exportAll']);
     Route::get('download',['as'=>'admin.download','uses'=>'RegisterController@download']);
     Route::post('registers/check',['as'=>'admin.registers.check','uses'=>'RegisterController@check']);
