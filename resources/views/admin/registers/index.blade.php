@@ -75,11 +75,24 @@
 		});
         //审核学生
         $(".check").click(function () {
-            Rbac.ajax.check({
+			$.ajax({
+				type: 'POST',
+				url: $(this).data('href'),
+				success:function(data) {
+					if(data.status == 0){
+						swal({title:'删除失败，错误原因：'+result.msg,confirmButtonColor: "#DD6B55"});
+						return false;
+					}
+					swal({title:'操作成功！'});
+					location.reload();
+				},
+				dataType: 'json',
+			});
+            /*Rbac.ajax.check({
                 //confirmTitle: '确定要操作该学生吗？',
                 href: $(this).data('href'),
                 successTitle: '操作成功！'
-            });
+            });*/
         });
 		//完成报名
 		$(".registerclose").click(function () {
@@ -138,6 +151,7 @@
 				}],
 				//order: [[ 1, "asc" ]],
 				autoWidth: true,
+				"bPaginate": false,
 				language: {
 					url: '/assets/language/datatables-zh.json'
 				}
