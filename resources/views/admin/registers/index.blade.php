@@ -76,7 +76,7 @@
         //审核学生
         $(".check").click(function () {
             Rbac.ajax.check({
-                confirmTitle: '确定要操作该学生吗？',
+                //confirmTitle: '确定要操作该学生吗？',
                 href: $(this).data('href'),
                 successTitle: '操作成功！'
             });
