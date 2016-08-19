@@ -14,9 +14,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('*', function ($view) {
-            $current_route = \Request::route()->getName();
-            $curRoutes = explode('.', $current_route);
-            $view->with('curRoutes', $curRoutes);
+            $request = \Request::route();
+            if(!empty($request)){
+                $current_route = $request->getName();
+                $curRoutes = explode('.', $current_route);
+                $view->with('curRoutes', $curRoutes);
+            }
         });
     }
 
