@@ -11,8 +11,10 @@
 |
 */
 
-Route::auth();
-
+//Route::auth();
+Route::get('/login', function(){
+    return view('errors/503');
+});
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 Route::get('changepwd', 'UserController@edit');
