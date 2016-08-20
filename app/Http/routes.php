@@ -11,10 +11,7 @@
 |
 */
 
-//Route::auth();
-Route::get('/login', function(){
-    return view('errors/503');
-});
+Route::auth();
 
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
