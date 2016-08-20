@@ -34,7 +34,7 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        $register = $this->register->findWhere(['user_id'=>$this->user_id])->first();
+        $register = $this->register->skipCriteria()->findWhere(['user_id'=>$this->user_id])->first();
         //报名结束
         if($this->register->finish()){
             return view('index/finish',compact('register'));
