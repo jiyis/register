@@ -29,6 +29,13 @@ Route::get('download/result',function(){
         return response()->download($file,date('Y',time()).'届敬文新教育录取名单.xls');
     }
 });
+Route::get('download/admission',function(){
+    $file = storage_path('app/public/firstresult.docx');
+    if(file_exists($file)){
+        return response()->download($file,'苏州科技大学敬文新教育书院2016级新生拟录取名单公示.docx');
+    }
+});
+
 Route::get('download/word', ['as'=>'download.word','uses'=>'HomeController@getword']);
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
