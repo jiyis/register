@@ -48,6 +48,9 @@ class AuthenticateAdmin
             }
         }
 
-        return $next($request);
+        $response = $next($request);
+        //验证成功了，记录用户操作日志，主要是看当前请求了哪个页面。
+        var_dump(Auth::guard($guard)->user());die;
+        return $response;
     }
 }

@@ -32,13 +32,14 @@ class UserController extends BaseController
     public function edit()
     {
         $user = $this->user->find($this->user_id);
+
         return view('index.user.edit', compact('user'));
     }
 
     public function update(UpdateUserRequest $request, $id)
     {
         $user = $this->user->findWithoutFail($id);
-
+        $this->authorize('update', $user);
         if(empty($user)){
             Toastr::error('用户不存在');
             return redirect(url('/'));
