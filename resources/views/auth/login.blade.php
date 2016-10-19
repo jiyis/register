@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>敬文新教育书院报名系统</title>
+    <title>敬文书院报名系统</title>
 
     @section('css')
         <link rel="stylesheet" href="{{ elixir('assets/css/frontend.css') }}">
@@ -111,7 +111,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">敬文新教育书院报名系统<a style="color:#4A77D4;padding-left: 15px;font-size: 14px;" href="{{ url('download/admission') }}">苏州科技大学敬文新教育书院2016级新生拟录取名单公示</a></div>
+                <div class="panel-heading">敬文书院报名系统<!--<a style="color:#4A77D4;padding-left: 15px;font-size: 14px;" href="{{ url('download/admission') }}">苏州科技大学敬文书院2016级新生拟录取名单公示</a>--></div>
                 <div class="panel-body">
                     @if(file_exists(storage_path('exports/enroll.xls')))
                         <div class="row">
@@ -177,7 +177,7 @@
     </div>
 </div>
 <footer class="main-footer">
-    <strong>敬文新教育书院 &nbsp;&nbsp;邮编：215009  &nbsp;&nbsp;&nbsp;&nbsp;Copyright &copy; 2016 苏州科技大学.All rights reserved.</strong>
+    <strong>敬文书院 &nbsp;&nbsp;邮编：215009  &nbsp;&nbsp;&nbsp;&nbsp;Copyright &copy; 2016 苏州科技大学.All rights reserved.</strong>
 </footer>
 <script src="{{ elixir('assets/js/frontend.js') }}"></script>
 <script type="text/javascript">

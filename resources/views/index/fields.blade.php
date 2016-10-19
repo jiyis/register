@@ -333,7 +333,7 @@
 
     <!-- 个人自述 字段 -->
     <div class="control-group col-sm-12">
-        <label class="col-sm-2 control-label" for="personal"><span>个人自述 *</span><br><span class="uploadtips">请点击下载<a href="{{ route('download.word') }}">《苏州科技大学敬文新教育书院个人自述申请表》</a> 后打印，手工填写完成后分页扫描或拍照后上传，上传文件不超过3M。</span></label>
+        <label class="col-sm-2 control-label" for="personal"><span>个人自述 *</span><br><span class="uploadtips">请点击下载<a href="{{ route('download.word') }}">《苏州科技大学敬文书院个人自述申请表》</a> 后打印，手工填写完成后分页扫描或拍照后上传，上传文件不超过3M。</span></label>
         <div class="col-sm-6">
             <div id="personal" class="register-file dropzone"  required="required"> </div>
             <input type="hidden" name="personal" id="personalval">

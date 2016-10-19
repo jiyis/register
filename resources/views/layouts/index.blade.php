@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <title>敬文新教育书院</title>
+    <title>敬文书院</title>
 
     @section('css')
         <link rel="stylesheet" href="{{ elixir('assets/css/frontend.css') }}">
@@ -24,7 +24,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                敬文新教育书院
+                敬文书院
             </a>
         </div>
 

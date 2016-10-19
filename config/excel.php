@@ -61,7 +61,7 @@ return array(
         'creator'        => 'Gary',
         'lastModifiedBy' => 'Gary',
         'title'          => '敬文书院报名表',
-        'description'    => '敬文新教育书院报名表',
+        'description'    => '敬文书院报名表',
         'subject'        => '敬文书院报名表',
         'keywords'       => '敬文书院, 苏州科技大学, 报名',
         'category'       => 'Excel',

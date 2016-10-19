@@ -97,7 +97,7 @@ class HomeController extends BaseController
         $headers = array(
             'Content-Type: application/pdf',
         );
-        return response()->download($file,'苏州科技大学敬文新教育书院个人自述申请表.pdf',$headers);
+        return response()->download($file,'苏州科技大学敬文书院个人自述申请表.pdf',$headers);
     }
 
 }

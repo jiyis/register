@@ -32,7 +32,7 @@ Route::get('download/result',function(){
 Route::get('download/admission',function(){
     $file = storage_path('app/public/firstresult.docx');
     if(file_exists($file)){
-        return response()->download($file,'苏州科技大学敬文新教育书院2016级新生拟录取名单公示.docx');
+        return response()->download($file,'苏州科技大学敬文书院2016级新生拟录取名单公示.docx');
     }
 });
 

@@ -323,7 +323,7 @@ class RegisterController extends BaseController
                 }
 
                 //合并结束后开始设置titile
-                $sheet->row(1, array('敬文新教育书院报名信息表'));
+                $sheet->row(1, array('敬文书院报名信息表'));
                 $sheet->setCellValue('A2','基本信息');
                 $sheet->setCellValue('C3','考生号');
                 $sheet->setCellValue('C4','姓名');
@@ -513,7 +513,7 @@ class RegisterController extends BaseController
                 //$sheet->getDefaultRowDimension()->setRowHeight(18);
                 $sheet->fromArray($arr);
                 $sheet->mergeCells('A1:L1');
-                $sheet->row(1, array('敬文新教育书院报名信息表'));
+                $sheet->row(1, array('敬文书院报名信息表'));
                 $sheet->cells('A1:L1', function($cells) {
                     $cells->setAlignment('center');
                     $cells->setFontSize(16);
@@ -584,7 +584,7 @@ class RegisterController extends BaseController
                 }
 
                 //合并结束后开始设置titile
-                $sheet->row(1, array('敬文新教育书院报名信息表'));
+                $sheet->row(1, array('敬文书院报名信息表'));
                 $sheet->setCellValue('A2','基本信息');
                 $sheet->setCellValue('C3','考生号');
                 $sheet->setCellValue('C4','姓名');

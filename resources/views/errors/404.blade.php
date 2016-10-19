@@ -72,7 +72,7 @@
 
     <!-- top menu -->
     <div class="top-menu">
-        <a href="http://register.yearn.cc/" class="with-tooltip" title="返回敬文新教育书院" style="font-size:20px;">返回首页</a>
+        <a href="http://register.yearn.cc/" class="with-tooltip" title="返回敬文书院" style="font-size:20px;">返回首页</a>
     </div>
     <!-- top menu -->
 

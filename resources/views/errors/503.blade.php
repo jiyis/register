@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>敬文新教育书院</title>
+        <title>敬文书院</title>
 
         <style>
             html, body {
